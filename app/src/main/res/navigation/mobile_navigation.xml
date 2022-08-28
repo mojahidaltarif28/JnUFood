@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.jnufood.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_food_item"
+        android:name="com.example.jnufood.ui.Food_Item.FoodItem"
+        android:label="@string/food"
+        tools:layout="@layout/fragment_fooditem" />
+
+    <fragment
+        android:id="@+id/registration"
+        android:name="com.example.jnufood.Fragment.Registration"
+        android:label="@string/registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registration_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/your_Order"
+        android:name="com.example.jnufood.Fragment.Your_Order"
+        android:label="@string/order"
+        tools:layout="@layout/fragment_your__order" />
+    <fragment
+        android:id="@+id/history"
+        android:name="com.example.jnufood.Fragment.History"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/contact_us"
+        android:name="com.example.jnufood.Fragment.Contact_Us"
+        android:label="@string/contact"
+        tools:layout="@layout/fragment_contact__us" />
+    <fragment
+        android:id="@+id/about"
+        android:name="com.example.jnufood.Fragment.About"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.jnufood.Fragment.Login"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_nav_login_to_registration"
+            app:destination="@id/registration" />
+    </fragment>
+
+</navigation>

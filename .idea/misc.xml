@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/btn_bg.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic__email.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_department.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_food_item.xml" value="0.2265" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_id.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_login.xml" value="0.2265" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_person.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_phone_number.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_security.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/input_bg.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/side_nav_bar.xml" value="0.104" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/font/amarante.xml" value="0.12962962962962962" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/activity_registration.xml" value="0.22826086956521738" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/app_bar_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/content_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_about.xml" value="0.24010416666666667" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_contact__us.xml" value="0.24010416666666667" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_history.xml" value="0.24010416666666667" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_login__registration.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_registration.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/fragment_your__order.xml" value="0.24010416666666667" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/menu/activity_main_drawer.xml" value="0.25052083333333336" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/menu/main.xml" value="0.25416666666666665" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2265" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
