@@ -1,17 +1,18 @@
 package com.example.jnufood.Fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jnufood.R;
 import com.example.jnufood.databinding.FragmentHomeBinding;
@@ -61,7 +62,8 @@ public class Login extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+
+         }
     //private FragmentHomeBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,7 +75,23 @@ public class Login extends Fragment {
           @Override
           public void onClick(View view) {
               Navigation.findNavController(view).navigate(R.id.action_nav_login_to_registration);
+
           }
+      });
+
+      final EditText login_phone=view.findViewById(R.id.login_phone);
+      final EditText login_password=view.findViewById(R.id.login_password);
+      final Button login_btn=view.findViewById(R.id.btn_login);
+      login_btn.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              final String phone=login_phone.getText().toString();
+              final String password=login_password.getText().toString();
+              if(phone.isEmpty()||password.isEmpty()){
+                Toast toast= Toast.makeText(getActivity(),"Enter your phone or password",Toast.LENGTH_SHORT);
+                toast.show();
+              }
+                        }
       });
 
        return view;

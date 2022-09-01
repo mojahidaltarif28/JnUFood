@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/input_dept" />
 
     <EditText
-        android:id="@+id/login_phone"
+        android:id="@+id/registration_phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -121,14 +121,14 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/login_phone"
+        app:layout_constraintEnd_toEndOf="@+id/registration_phone"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/login_phone"
-        app:layout_constraintTop_toBottomOf="@+id/login_phone"
+        app:layout_constraintStart_toStartOf="@+id/registration_phone"
+        app:layout_constraintTop_toBottomOf="@+id/registration_phone"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/registration_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -151,7 +151,7 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -160,9 +160,9 @@
         android:text="Register"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/login_password"
-        app:layout_constraintStart_toStartOf="@+id/login_password"
-        app:layout_constraintTop_toBottomOf="@+id/login_password" />
+        app:layout_constraintEnd_toEndOf="@+id/registration_password"
+        app:layout_constraintStart_toStartOf="@+id/registration_password"
+        app:layout_constraintTop_toBottomOf="@+id/registration_password" />
 
     <TextView
         android:id="@+id/already_account"
@@ -174,8 +174,8 @@
         android:textAlignment="center"
         android:textColor="@color/purple_500"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/btn_login"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintStart_toStartOf="@+id/btn_register"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
     <TextView
         android:id="@+id/login_a"
@@ -190,10 +190,10 @@
         android:textColor="#E91E63"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintEnd_toEndOf="@+id/btn_register"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/already_account"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
     <ImageView
         android:id="@+id/imageView3"
