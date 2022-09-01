@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "394658845588",
+    "project_id": "jnufood",
+    "storage_bucket": "jnufood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394658845588:android:6d8b64d3c6e2f1199af581",
+        "android_client_info": {
+          "package_name": "com.example.jnufood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394658845588-e200e7tj13qjgdk1ir5fjaislqbdbpar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3i64oE4rLYJBbn-wjasKlZ9XLzqsGK6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394658845588-e200e7tj13qjgdk1ir5fjaislqbdbpar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
