@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
+        binding.appBarMain.toolbar.setTitleTextColor(getResources().getColor(R.color.red));
 
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_food_item, R.id.nav_login, R.id.your_Order, R.id.history, R.id.contact_us, R.id.about)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 
         NavigationUI.setupWithNavController(navigationView, navController);
-
     }
 
     @Override
