@@ -5,9 +5,13 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jnufood.R;
@@ -18,7 +22,7 @@ import com.example.jnufood.R;
  * create an instance of this fragment.
  */
 public class Registration extends Fragment {
-
+  EditText confirm_show,password_show ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,6 +73,59 @@ public class Registration extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_registration_to_nav_login);
+            }
+        });
+
+        //password show hide part
+        password_show=view.findViewById(R.id.input_password);
+        confirm_show=view.findViewById(R.id.confirm_password);
+
+        password_show.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right=2;
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=password_show.getRight()-password_show.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection=password_show.getSelectionEnd();
+                        if(password_show.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                            password_show.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            password_show.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_security,0,R.drawable.ic_show,0);
+
+                        }else {
+                            password_show.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                            password_show.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_security,0,R.drawable.ic_hide,0);
+
+                        }
+                        password_show.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+        confirm_show.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right=2;
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=confirm_show.getRight()-confirm_show.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection=confirm_show.getSelectionEnd();
+                        if(confirm_show.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                            confirm_show.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            confirm_show.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_security,0,R.drawable.ic_show,0);
+
+                        }else {
+                            confirm_show.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                            confirm_show.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_security,0,R.drawable.ic_hide,0);
+
+                        }
+                        confirm_show.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
             }
         });
         return view;

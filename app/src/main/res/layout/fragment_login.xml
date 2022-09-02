@@ -11,7 +11,7 @@
     <EditText
         android:id="@+id/login_phone"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
@@ -38,10 +38,11 @@
     <EditText
         android:id="@+id/login_password"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_security"
+        android:drawableRight="@drawable/ic_show"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Password"
@@ -65,7 +66,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_bg"
-        android:backgroundTint="@color/purple_500"
         android:fontFamily="sans-serif-light"
         android:text="Sign In"
         android:textSize="16sp"
@@ -98,6 +98,7 @@
         android:textColor="#673AB7"
         android:textSize="16sp"
         android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintStart_toStartOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
