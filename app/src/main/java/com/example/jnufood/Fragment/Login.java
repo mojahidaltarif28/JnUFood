@@ -27,6 +27,8 @@ import com.example.jnufood.databinding.FragmentHomeBinding;
  */
 public class Login extends Fragment {
     EditText password_show;
+    private EditText login_phone,login_password;
+    Button login_btn;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -84,20 +86,17 @@ public class Login extends Fragment {
             }
         });
         //Login part from firebase
-        final EditText login_phone = view.findViewById(R.id.login_phone);
-        final EditText login_password = view.findViewById(R.id.login_password);
-        final Button login_btn = view.findViewById(R.id.btn_login);
+         login_phone = view.findViewById(R.id.login_phone);
+         login_password = view.findViewById(R.id.login_password);
+         login_btn = view.findViewById(R.id.btn_login);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String phone = login_phone.getText().toString();
-                final String password = login_password.getText().toString();
-                if (phone.isEmpty() || password.isEmpty()) {
-                    Toast toast = Toast.makeText(getActivity(), "Enter your username or password", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+                checkCrededentials();
             }
         });
+
+
 
         //password show hide part
         password_show = view.findViewById(R.id.login_password);
@@ -129,5 +128,27 @@ public class Login extends Fragment {
 
         return view;
     }
+    private void checkCrededentials() {
+        String login_phone_s=login_phone.getText().toString();
+        String login_password_s=login_password.getText().toString();
+        if(login_phone_s.isEmpty()){
+            showError(login_phone,"please enter your phone number");
+        }
+        else if(login_phone_s.length()!=11){
+            showError(login_phone," Incorrect phone number");
+        }
+        else if(login_password_s.isEmpty()||login_password_s.length()<6){
+            showError(login_password,"Incorrect Password");
+        }
+        else{
+            Toast.makeText(getActivity(),"Call login method",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showError(EditText input, String s) {
+        input.setError(s);
+        input.requestFocus();
+    }
+
 
 }

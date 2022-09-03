@@ -3,16 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/btn_bg.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic__email.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_about.xml" value="0.104" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_department.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_food_item.xml" value="0.2265" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_hide.xml" value="0.1035" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_history.xml" value="0.104" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_id.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_launcher_login_background.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_login.xml" value="0.2265" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_menu_camera.xml" value="0.104" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1" />
+        <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_person.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_phone_number.xml" value="0.1" />
         <entry key="..\:/6th semester/Android Development/JnUFood/app/src/main/res/drawable/ic_security.xml" value="0.1" />

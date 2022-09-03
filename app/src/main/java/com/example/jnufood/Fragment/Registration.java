@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jnufood.R;
 
@@ -28,6 +30,8 @@ public class Registration extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private EditText phone,input_password,confirm_password,email,name,dept;
+    Button btn_register;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -75,6 +79,25 @@ public class Registration extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_registration_to_nav_login);
             }
         });
+
+
+        //password and phone validation and firebase connection
+
+        phone =view.findViewById(R.id.registration_phone);
+        email=view.findViewById(R.id.input_email);
+        input_password=view.findViewById(R.id.input_password);
+        confirm_password=view.findViewById(R.id.confirm_password);
+        name=view.findViewById(R.id.input_name);
+        dept=view.findViewById(R.id.input_dept);
+        btn_register=view.findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkCrededentials();
+            }
+        });
+
+
 
         //password show hide part
         password_show=view.findViewById(R.id.input_password);
@@ -130,5 +153,42 @@ public class Registration extends Fragment {
         });
         return view;
 
+    }
+
+    private void checkCrededentials() {
+        String phone_s=phone.getText().toString();
+        String email_s=email.getText().toString();
+        String input_password_s=input_password.getText().toString();
+        String confirm_password_s=confirm_password.getText().toString();
+        String name_s=name.getText().toString();
+        String dept_s=dept.getText().toString();
+
+        if(name_s.isEmpty()){
+            showError(name,"Please enter your name");
+        }
+
+        else if(phone_s.isEmpty()||phone_s.length()!=11){
+            showError(phone,"Phone number is not valid");
+        }
+        else if(!email_s.isEmpty()&&(!email_s.contains(".")||!email_s.contains("@"))){
+            showError(email,"Email is not valid");
+        }
+        else if(dept_s.isEmpty()){
+            showError(dept,"Please enter your department");
+        }
+        else if(input_password_s.isEmpty()||input_password_s.length()<6){
+            showError(input_password,"password must be at least 6 characters");
+        }
+        else if(confirm_password_s.isEmpty()||!confirm_password_s.equals(input_password_s)){
+            showError(confirm_password,"Password does not match");
+        }
+        else{
+            Toast.makeText(getActivity(),"call Register method",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showError(EditText input, String s) {
+       input.setError(s);
+       input.requestFocus();
     }
 }

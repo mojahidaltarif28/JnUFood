@@ -51,9 +51,9 @@
         android:textColor="#242526"
         android:textColorHint="#242526"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/Input_email"
-        app:layout_constraintStart_toStartOf="@+id/Input_email"
-        app:layout_constraintTop_toBottomOf="@+id/Input_email" />
+        app:layout_constraintEnd_toEndOf="@+id/input_email"
+        app:layout_constraintStart_toStartOf="@+id/input_email"
+        app:layout_constraintTop_toBottomOf="@+id/input_email" />
 
     <EditText
         android:id="@+id/input_password"
@@ -89,7 +89,7 @@
         android:drawableLeft="@drawable/ic_baseline_phone_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Mobile Number"
+        android:hint="@string/phone"
         android:inputType="phone"
         android:minHeight="48dp"
         android:paddingLeft="20dp"
@@ -105,7 +105,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/Input_email"
+        android:id="@+id/input_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

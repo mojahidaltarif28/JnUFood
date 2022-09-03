@@ -11,7 +11,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_login">Login / Registration</string>
-    <string name="email_or_phone">Email or Phone</string>
+    <string name="phone">Mobile Number</string>
     <string name="food_item">Food Item</string>
     <string name="your_order">Your Order</string>
     <string name="history">History</string>
