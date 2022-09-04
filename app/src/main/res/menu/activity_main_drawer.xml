@@ -28,6 +28,14 @@
             android:id="@+id/history"
             android:icon="@drawable/ic_history"
             android:title="@string/history" />
+        <item
+            android:id="@+id/nav_applyForDeliveryBoy"
+            android:icon="@drawable/ic_find"
+            android:title="@string/find_job" />
+        <item
+            android:id="@+id/nav_administration"
+            android:icon="@drawable/ic_admin"
+            android:title="@string/administraion" />
     </group>
     <item android:title="">
         <menu>

@@ -1,5 +1,6 @@
 package com.example.jnufood.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -94,6 +95,7 @@ public class Registration extends Fragment {
             @Override
             public void onClick(View view) {
                 checkCrededentials();
+//                Navigation.findNavController(view).navigate(R.id.action_registration_to_OTP_Verify);
             }
         });
 
@@ -183,7 +185,14 @@ public class Registration extends Fragment {
             showError(confirm_password,"Password does not match");
         }
         else{
-            Toast.makeText(getActivity(),"call Register method",Toast.LENGTH_SHORT).show();
+           //pass all value to the otp fragment
+
+            Intent intent=new Intent(getActivity(),OTP_Verify.class);
+            intent.putExtra("mobile",phone.getText().toString());
+            startActivity(intent);
+
+
+
         }
     }
 

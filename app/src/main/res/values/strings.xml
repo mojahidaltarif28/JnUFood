@@ -28,5 +28,7 @@
     <string name="jnufood">JnUFood</string>
     <string name="all_rights_are_reserved">All rights are reserved</string>
     <string name="todo">TODO</string>
+    <string name="find_job">Find Job</string>
+    <string name="administraion">Administraion</string>
 
 </resources>

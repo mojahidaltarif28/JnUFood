@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_registration_to_nav_login"
             app:destination="@id/nav_login" />
+        <action
+            android:id="@+id/action_registration_to_OTP_Verify"
+            app:destination="@id/OTP_Verify" />
     </fragment>
     <fragment
         android:id="@+id/your_Order"
@@ -55,5 +58,20 @@
             android:id="@+id/action_nav_login_to_registration"
             app:destination="@id/registration" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_administration"
+        android:name="com.example.jnufood.Fragment.Administration"
+        android:label="Administration"
+        tools:layout="@layout/fragment_administration" />
+    <fragment
+        android:id="@+id/nav_applyForDeliveryBoy"
+        android:name="com.example.jnufood.Fragment.ApplyForDeliveryBoy"
+        android:label="Apply for delivery boy"
+        tools:layout="@layout/fragment_apply_for_delivery_boy" />
+    <fragment
+        android:id="@+id/OTP_Verify"
+        android:name="com.example.jnufood.Fragment.OTP_Verify"
+        android:label="OTP Verification"
+        tools:layout="@layout/fragment_o_t_p__verify" />
 
 </navigation>
