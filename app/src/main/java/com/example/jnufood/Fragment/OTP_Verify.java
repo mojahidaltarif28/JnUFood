@@ -63,7 +63,7 @@ public class OTP_Verify extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_o_t_p__verify, container, false);
-        TextView mobile=view.findViewById(R.id.otp_mobile);
+        TextView mobile=view.findViewById(R.id.mobile);
         mobile.setText(String.format(
                 "+88-%s", getActivity().getIntent().getStringExtra("mobile")
         ));

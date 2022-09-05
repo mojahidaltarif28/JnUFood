@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lrbg"
+
+    android:background="#21FFC107"
     android:padding="10dp"
     tools:context=".MainActivity">
 
@@ -68,6 +69,7 @@
         android:background="@drawable/btn_bg"
         android:fontFamily="sans-serif-light"
         android:text="Sign In"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/login_password"

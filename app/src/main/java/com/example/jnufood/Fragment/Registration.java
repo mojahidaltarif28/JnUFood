@@ -95,9 +95,12 @@ public class Registration extends Fragment {
             @Override
             public void onClick(View view) {
                 checkCrededentials();
-//                Navigation.findNavController(view).navigate(R.id.action_registration_to_OTP_Verify);
+                Navigation.findNavController(view).navigate(R.id.action_registration_to_OTP_Verify);
             }
         });
+
+
+
 
 
 
@@ -187,9 +190,7 @@ public class Registration extends Fragment {
         else{
            //pass all value to the otp fragment
 
-            Intent intent=new Intent(getActivity(),OTP_Verify.class);
-            intent.putExtra("mobile",phone.getText().toString());
-            startActivity(intent);
+
 
 
 
