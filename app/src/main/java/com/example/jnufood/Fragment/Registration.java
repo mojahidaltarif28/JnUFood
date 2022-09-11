@@ -125,7 +125,9 @@ public class Registration extends Fragment {
                 else{
                     //pass all value to the otp fragment
 
-                    NavDirections action=RegistrationDirections.actionRegistrationToOTPVerify(phone.getText().toString());
+                    NavDirections action=RegistrationDirections.actionRegistrationToOTPVerify(phone.getText().toString(),name.getText().toString(),
+                            email.getText().toString(),dept.getText().toString(),input_password.getText().toString());
+
 
                   Navigation.findNavController(view).navigate(action);
 

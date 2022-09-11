@@ -75,9 +75,25 @@
         tools:layout="@layout/fragment_o_t_p__verify" >
 
         <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
             android:name="mobile_no"
             app:argType="string"
-            app:nullable="true" />
+           />
+
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true"
+            />
+        <argument
+            android:name="dept"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+
     </fragment>
 
 </navigation>

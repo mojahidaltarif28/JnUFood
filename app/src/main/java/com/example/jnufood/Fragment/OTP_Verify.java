@@ -4,9 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jnufood.R;
@@ -18,6 +22,8 @@ import com.example.jnufood.R;
  */
 public class OTP_Verify extends Fragment {
 
+    EditText otp1,otp2,otp3,otp4,otp5,otp6;
+    Button submit;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,11 +68,151 @@ public class OTP_Verify extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_o_t_p__verify, container, false);
-        TextView mobile=view.findViewById(R.id.mobile);
-        String phone=OTP_VerifyArgs.fromBundle(getArguments()).getMobileNo();
-        mobile.setText(phone);
+        View view = inflater.inflate(R.layout.fragment_o_t_p__verify, container, false);
+        otp1 = view.findViewById(R.id.otp1);
+        otp2 = view.findViewById(R.id.otp2);
+        otp3 = view.findViewById(R.id.otp3);
+        otp4 = view.findViewById(R.id.otp4);
+        otp5 = view.findViewById(R.id.otp5);
+        otp6 = view.findViewById(R.id.otp6);
+        submit=view.findViewById(R.id.btn_otp_submit);
+
+        next_text_auto();
+
+
+        TextView mobile = view.findViewById(R.id.mobile);
+        String name= OTP_VerifyArgs.fromBundle(getArguments()).getName();
+        String phone = OTP_VerifyArgs.fromBundle(getArguments()).getMobileNo();
+        String email=OTP_VerifyArgs.fromBundle(getArguments()).getEmail();
+        String dept=OTP_VerifyArgs.fromBundle(getArguments()).getDept();
+        String password=OTP_VerifyArgs.fromBundle(getArguments()).getPassword();
+        mobile.setText(phone+""+name+""+email+""+dept+""+password);
 
         return view;
+    }
+
+    private void next_text_auto() {
+        otp1.requestFocus();
+        otp1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+               if(otp1.getText().toString().length()==1) {
+                    otp2.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        otp2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if(otp2.getText().toString().length()==1){
+                    otp3.requestFocus();
+                }
+                else {
+                    otp1.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        otp3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(otp3.getText().toString().length()==1){
+                    otp4.requestFocus();
+                }
+                else{
+                    otp2.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        otp4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(otp4.getText().toString().length()==1){
+                    otp5.requestFocus();
+                }else{
+                    otp3.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        otp5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(otp5.getText().toString().length()==1){
+                    otp6.requestFocus();
+                }else {
+                    otp4.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        otp6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(otp6.getText().toString().length()==1){
+                    submit.requestFocus();
+                }else {
+                    otp5.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 }
