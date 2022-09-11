@@ -72,6 +72,12 @@
         android:id="@+id/OTP_Verify"
         android:name="com.example.jnufood.Fragment.OTP_Verify"
         android:label="OTP Verification"
-        tools:layout="@layout/fragment_o_t_p__verify" />
+        tools:layout="@layout/fragment_o_t_p__verify" >
+
+        <argument
+            android:name="mobile_no"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

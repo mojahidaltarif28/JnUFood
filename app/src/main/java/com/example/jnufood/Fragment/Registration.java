@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.text.method.HideReturnsTransformationMethod;
@@ -94,8 +96,42 @@ public class Registration extends Fragment {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkCrededentials();
-                Navigation.findNavController(view).navigate(R.id.action_registration_to_OTP_Verify);
+                String phone_s=phone.getText().toString();
+                String email_s=email.getText().toString();
+                String input_password_s=input_password.getText().toString();
+                String confirm_password_s=confirm_password.getText().toString();
+                String name_s=name.getText().toString();
+                String dept_s=dept.getText().toString();
+
+                if(name_s.isEmpty()){
+                    showError(name,"Please enter your name");
+                }
+
+                else if(phone_s.isEmpty()||phone_s.length()!=11){
+                    showError(phone,"Phone number is not valid");
+                }
+                else if(!email_s.isEmpty()&&(!email_s.contains(".")||!email_s.contains("@"))){
+                    showError(email,"Email is not valid");
+                }
+                else if(dept_s.isEmpty()){
+                    showError(dept,"Please enter your department");
+                }
+                else if(input_password_s.isEmpty()||input_password_s.length()<6){
+                    showError(input_password,"password must be at least 6 characters");
+                }
+                else if(confirm_password_s.isEmpty()||!confirm_password_s.equals(input_password_s)){
+                    showError(confirm_password,"Password does not match");
+                }
+                else{
+                    //pass all value to the otp fragment
+
+                    NavDirections action=RegistrationDirections.actionRegistrationToOTPVerify(phone.getText().toString());
+
+                  Navigation.findNavController(view).navigate(action);
+
+
+
+                }
             }
         });
 
@@ -160,42 +196,6 @@ public class Registration extends Fragment {
 
     }
 
-    private void checkCrededentials() {
-        String phone_s=phone.getText().toString();
-        String email_s=email.getText().toString();
-        String input_password_s=input_password.getText().toString();
-        String confirm_password_s=confirm_password.getText().toString();
-        String name_s=name.getText().toString();
-        String dept_s=dept.getText().toString();
-
-        if(name_s.isEmpty()){
-            showError(name,"Please enter your name");
-        }
-
-        else if(phone_s.isEmpty()||phone_s.length()!=11){
-            showError(phone,"Phone number is not valid");
-        }
-        else if(!email_s.isEmpty()&&(!email_s.contains(".")||!email_s.contains("@"))){
-            showError(email,"Email is not valid");
-        }
-        else if(dept_s.isEmpty()){
-            showError(dept,"Please enter your department");
-        }
-        else if(input_password_s.isEmpty()||input_password_s.length()<6){
-            showError(input_password,"password must be at least 6 characters");
-        }
-        else if(confirm_password_s.isEmpty()||!confirm_password_s.equals(input_password_s)){
-            showError(confirm_password,"Password does not match");
-        }
-        else{
-           //pass all value to the otp fragment
-
-
-
-
-
-        }
-    }
 
     private void showError(EditText input, String s) {
        input.setError(s);
