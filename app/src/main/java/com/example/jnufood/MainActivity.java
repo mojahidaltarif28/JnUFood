@@ -3,6 +3,7 @@ package com.example.jnufood;
 
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private DrawerLayout drawerLayout;
+    protected NavigationView navigationView;
 
 
     @Override
@@ -39,15 +42,29 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.toolbar.setTitleTextColor(getResources().getColor(R.color.red));
+//        drawerLayout=findViewById(R.id.drawer_layout);
+//        navigationView=findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//               switch (item.getItemId())
+//               {
+//                   case
+//                       return true;
+//               }
+//
+//                return true;
+//            }
+//        });
 
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+//        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
 
         DrawerLayout drawer = binding.drawerLayout;

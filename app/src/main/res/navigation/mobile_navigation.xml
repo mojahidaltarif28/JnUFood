@@ -93,6 +93,9 @@
         <argument
             android:name="password"
             app:argType="string" />
+        <argument
+            android:name="verificationId"
+            app:argType="string" />
 
     </fragment>
 

@@ -86,11 +86,13 @@ public class OTP_Verify extends Fragment {
         String email=OTP_VerifyArgs.fromBundle(getArguments()).getEmail();
         String dept=OTP_VerifyArgs.fromBundle(getArguments()).getDept();
         String password=OTP_VerifyArgs.fromBundle(getArguments()).getPassword();
-        mobile.setText(phone+""+name+""+email+""+dept+""+password);
+        mobile.setText(phone);
+
 
         return view;
     }
 
+    // Automatic focus next textfield otp code
     private void next_text_auto() {
         otp1.requestFocus();
         otp1.addTextChangedListener(new TextWatcher() {

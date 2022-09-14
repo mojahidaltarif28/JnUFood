@@ -3,6 +3,7 @@ package com.example.jnufood.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
@@ -16,10 +17,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jnufood.R;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +34,7 @@ import com.example.jnufood.R;
  * create an instance of this fragment.
  */
 public class Registration extends Fragment {
-  EditText confirm_show,password_show ;
+    EditText confirm_show,password_show ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -93,6 +100,7 @@ public class Registration extends Fragment {
         name=view.findViewById(R.id.input_name);
         dept=view.findViewById(R.id.input_dept);
         btn_register=view.findViewById(R.id.btn_register);
+        final ProgressBar progressBar=view.findViewById(R.id.progress_bar_r);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +110,7 @@ public class Registration extends Fragment {
                 String confirm_password_s=confirm_password.getText().toString();
                 String name_s=name.getText().toString();
                 String dept_s=dept.getText().toString();
+
 
                 if(name_s.isEmpty()){
                     showError(name,"Please enter your name");
@@ -125,11 +134,39 @@ public class Registration extends Fragment {
                 else{
                     //pass all value to the otp fragment
 
-                    NavDirections action=RegistrationDirections.actionRegistrationToOTPVerify(phone.getText().toString(),name.getText().toString(),
-                            email.getText().toString(),dept.getText().toString(),input_password.getText().toString());
+                    progressBar.setVisibility(view.VISIBLE);
+                    btn_register.setVisibility(view.INVISIBLE);
+                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                            "+88"+phone.getText().toString(),
+                            60,
+                            TimeUnit.SECONDS,
+                            getActivity(),
+                            new PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+                                @Override
+                                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                    progressBar.setVisibility(view.GONE);
+                                    btn_register.setVisibility(view.VISIBLE);
+                                }
 
+                                @Override
+                                public void onVerificationFailed(@NonNull FirebaseException e) {
+                                    progressBar.setVisibility(view.GONE);
+                                    btn_register.setVisibility(view.VISIBLE);
+                                }
 
-                  Navigation.findNavController(view).navigate(action);
+                                @Override
+                                public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                  progressBar.setVisibility(view.GONE);
+                                  btn_register.setVisibility(view.VISIBLE);
+
+                                    NavDirections action= (NavDirections) RegistrationDirections.actionRegistrationToOTPVerify(name.getText().toString(),phone.getText().toString(),
+                                            email.getText().toString(),dept.getText().toString(),input_password.getText().toString(),verificationId);
+
+                                    Navigation.findNavController(view).navigate(action);
+                                }
+                            }
+                    );
+
 
 
 
@@ -200,7 +237,7 @@ public class Registration extends Fragment {
 
 
     private void showError(EditText input, String s) {
-       input.setError(s);
-       input.requestFocus();
+        input.setError(s);
+        input.requestFocus();
     }
 }
