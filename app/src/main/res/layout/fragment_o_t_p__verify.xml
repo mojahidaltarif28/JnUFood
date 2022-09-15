@@ -153,6 +153,28 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/wrong_otp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/wrong_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OTP is Incorrect"
+                android:textColor="#FF0000"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -178,16 +200,10 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            >
 
             <Button
                 android:id="@+id/btn_otp_submit"
@@ -197,16 +213,16 @@
                 android:background="@drawable/btn_bg"
                 android:text="Submit"
                 android:textColor="@color/white" />
-                <ProgressBar
-                    android:id="@+id/progress_bar"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:visibility="gone"/>
+            <ProgressBar
+                android:id="@+id/progress_bar_o"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/icon"
+                android:visibility="visible" />
+
 
         </FrameLayout>
 
     </LinearLayout>
-
-</LinearLayout>
-    </ScrollView>
+</ScrollView>

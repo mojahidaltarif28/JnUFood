@@ -30,5 +30,6 @@
     <string name="todo">TODO</string>
     <string name="find_job">Find Job</string>
     <string name="administraion">Administraion</string>
+    <string name="my_account">My Account</string>
 
 </resources>

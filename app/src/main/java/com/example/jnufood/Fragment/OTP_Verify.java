@@ -2,6 +2,7 @@ package com.example.jnufood.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -11,9 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jnufood.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,8 +32,9 @@ import com.example.jnufood.R;
  */
 public class OTP_Verify extends Fragment {
 
-    EditText otp1,otp2,otp3,otp4,otp5,otp6;
+    EditText otp1, otp2, otp3, otp4, otp5, otp6;
     Button submit;
+    LinearLayout wrong_otp;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,18 +86,64 @@ public class OTP_Verify extends Fragment {
         otp4 = view.findViewById(R.id.otp4);
         otp5 = view.findViewById(R.id.otp5);
         otp6 = view.findViewById(R.id.otp6);
-        submit=view.findViewById(R.id.btn_otp_submit);
+        submit = view.findViewById(R.id.btn_otp_submit);
 
         next_text_auto();
 
-
+        wrong_otp=view.findViewById(R.id.wrong_otp);
         TextView mobile = view.findViewById(R.id.mobile);
-        String name= OTP_VerifyArgs.fromBundle(getArguments()).getName();
+        String name = OTP_VerifyArgs.fromBundle(getArguments()).getName();
         String phone = OTP_VerifyArgs.fromBundle(getArguments()).getMobileNo();
-        String email=OTP_VerifyArgs.fromBundle(getArguments()).getEmail();
-        String dept=OTP_VerifyArgs.fromBundle(getArguments()).getDept();
-        String password=OTP_VerifyArgs.fromBundle(getArguments()).getPassword();
+        String email = OTP_VerifyArgs.fromBundle(getArguments()).getEmail();
+        String dept = OTP_VerifyArgs.fromBundle(getArguments()).getDept();
+        String password = OTP_VerifyArgs.fromBundle(getArguments()).getPassword();
         mobile.setText(phone);
+
+        final ProgressBar progressBar = view.findViewById(R.id.progress_bar_o);
+        final Button btn_submit = view.findViewById(R.id.btn_otp_submit);
+        String otp_id = OTP_VerifyArgs.fromBundle(getArguments()).getVerificationId();
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (otp1.getText().toString().trim().isEmpty() ||
+                        otp2.getText().toString().trim().isEmpty() ||
+                        otp3.getText().toString().trim().isEmpty() ||
+                        otp4.getText().toString().trim().isEmpty() ||
+                        otp5.getText().toString().trim().isEmpty() ||
+                        otp6.getText().toString().trim().isEmpty()
+                ){
+                    wrong_otp.setVisibility(view.VISIBLE);
+                }else{
+                    wrong_otp.setVisibility(view.GONE);
+                    String code=otp1.getText().toString()+otp2.getText().toString()+
+                            otp3.getText().toString()+otp4.getText().toString()+
+                            otp5.getText().toString()+otp6.getText().toString();
+                    if(otp_id!=null){
+                        progressBar.setVisibility(view.VISIBLE);
+                        btn_submit.setVisibility(view.INVISIBLE);
+                        PhoneAuthCredential phoneAuthCredential= PhoneAuthProvider.getCredential(
+                                otp_id,
+                                code
+                        );
+                        FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                       progressBar.setVisibility(view.GONE);
+                                        btn_submit.setVisibility(view.VISIBLE);
+                                       if (task.isSuccessful()){
+                                           wrong_otp.setVisibility(view.GONE);
+                                           Toast.makeText(getActivity(),"Successfully Verified",Toast.LENGTH_SHORT).show();
+                                       }
+                                       else {
+                                           wrong_otp.setVisibility(view.VISIBLE);
+                                       }
+                                    }
+                                });
+                    }
+                }
+            }
+        });
 
 
         return view;
@@ -103,7 +160,7 @@ public class OTP_Verify extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-               if(otp1.getText().toString().length()==1) {
+                if (otp1.getText().toString().length() == 1) {
                     otp2.requestFocus();
                 }
             }
@@ -122,10 +179,9 @@ public class OTP_Verify extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if(otp2.getText().toString().length()==1){
+                if (otp2.getText().toString().length() == 1) {
                     otp3.requestFocus();
-                }
-                else {
+                } else {
                     otp1.requestFocus();
                 }
             }
@@ -143,10 +199,9 @@ public class OTP_Verify extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(otp3.getText().toString().length()==1){
+                if (otp3.getText().toString().length() == 1) {
                     otp4.requestFocus();
-                }
-                else{
+                } else {
                     otp2.requestFocus();
                 }
             }
@@ -164,9 +219,9 @@ public class OTP_Verify extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(otp4.getText().toString().length()==1){
+                if (otp4.getText().toString().length() == 1) {
                     otp5.requestFocus();
-                }else{
+                } else {
                     otp3.requestFocus();
                 }
             }
@@ -184,9 +239,9 @@ public class OTP_Verify extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(otp5.getText().toString().length()==1){
+                if (otp5.getText().toString().length() == 1) {
                     otp6.requestFocus();
-                }else {
+                } else {
                     otp4.requestFocus();
                 }
             }
@@ -204,9 +259,9 @@ public class OTP_Verify extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(otp6.getText().toString().length()==1){
+                if (otp6.getText().toString().length() == 1) {
                     submit.requestFocus();
-                }else {
+                } else {
                     otp5.requestFocus();
                 }
             }
@@ -217,4 +272,5 @@ public class OTP_Verify extends Fragment {
             }
         });
     }
+
 }

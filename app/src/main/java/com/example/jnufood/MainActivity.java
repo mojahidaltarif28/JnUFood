@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
+         NavigationView navigation=findViewById(R.id.my_account);
+
+
 //        drawerLayout=findViewById(R.id.drawer_layout);
 //        navigationView=findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -76,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_food_item, R.id.nav_login, R.id.your_Order, R.id.history, R.id.contact_us, R.id.about,R.id.nav_applyForDeliveryBoy,R.id.nav_administration)
                 .setDrawerLayout(drawer)
                 .build();
+
          NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-
         NavigationUI.setupWithNavController(navigationView, navController);
 
 

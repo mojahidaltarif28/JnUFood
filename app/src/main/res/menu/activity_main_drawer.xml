@@ -12,6 +12,7 @@
             android:id="@+id/nav_food_item"
             android:icon="@drawable/ic_food_item"
             android:title="@string/food_item" />
+
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_login"
@@ -19,6 +20,11 @@
             android:title="@string/menu_login"
 
             />
+        <item
+            android:id="@+id/my_account"
+            android:icon="@drawable/ic_my_account"
+            android:visible="false"
+            android:title="@string/my_account" />
 
         <item
             android:id="@+id/your_Order"
