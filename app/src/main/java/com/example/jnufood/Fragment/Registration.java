@@ -120,6 +120,7 @@ public class Registration extends Fragment {
                 String dept_s = dept.getText().toString();
 
 
+
                 if (name_s.isEmpty()) {
                     showError(name, "Please enter your name");
                 } else if (phone_s.isEmpty() || phone_s.length() != 11) {

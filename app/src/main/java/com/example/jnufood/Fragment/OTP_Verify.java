@@ -4,7 +4,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,10 +23,14 @@ import android.widget.Toast;
 import com.example.jnufood.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +42,8 @@ public class OTP_Verify extends Fragment {
     EditText otp1, otp2, otp3, otp4, otp5, otp6;
     Button submit;
     LinearLayout wrong_otp;
+    TextView counter, resend_txt,resend_txt_btn;
+    String otp_id;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -89,7 +98,9 @@ public class OTP_Verify extends Fragment {
         submit = view.findViewById(R.id.btn_otp_submit);
 
         next_text_auto();
-
+        //time counter
+        counter=view.findViewById(R.id.time_countdown);
+       otp_countetr();
         wrong_otp=view.findViewById(R.id.wrong_otp);
         TextView mobile = view.findViewById(R.id.mobile);
         String name = OTP_VerifyArgs.fromBundle(getArguments()).getName();
@@ -101,7 +112,49 @@ public class OTP_Verify extends Fragment {
 
         final ProgressBar progressBar = view.findViewById(R.id.progress_bar_o);
         final Button btn_submit = view.findViewById(R.id.btn_otp_submit);
-        String otp_id = OTP_VerifyArgs.fromBundle(getArguments()).getVerificationId();
+        otp_id = OTP_VerifyArgs.fromBundle(getArguments()).getVerificationId();
+        // resend option
+         resend_txt=view.findViewById(R.id.text_resend);
+          resend_txt_btn=view.findViewById(R.id.resend);
+        resend_txt_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getActivity(),"Please wait a moment,we will resend OTP to your mobile",Toast.LENGTH_LONG).show();
+                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                        "+88" + mobile.getText().toString(),
+                        60,
+                        TimeUnit.SECONDS,
+                        getActivity(),
+                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                            @Override
+                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                resend_txt.setVisibility(view.VISIBLE);
+                                resend_txt_btn.setVisibility(view.VISIBLE);
+
+
+                            }
+
+                            @Override
+                            public void onVerificationFailed(@NonNull FirebaseException e) {
+                                resend_txt.setVisibility(view.VISIBLE);
+                                resend_txt_btn.setVisibility(view.VISIBLE);
+                                Toast.makeText(getActivity(),"Please Check Your Internet Connection",Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onCodeSent(@NonNull String NewVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                otp_id=NewVerificationId;
+                               otp_countetr();
+                                Toast.makeText(getActivity(), "OTP send again to your mobile,please check", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+            }
+        });
+
+// submit otp option
+
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,9 +198,30 @@ public class OTP_Verify extends Fragment {
             }
         });
 
-
         return view;
     }
+
+    private void otp_countetr() {
+        long duration=TimeUnit.MINUTES.toMillis(1);
+        new CountDownTimer(duration, 1000) {
+            @Override
+            public void onTick(long l) {
+                String sDuration=String.format(Locale.ENGLISH,"%02d:%02d"
+                        ,TimeUnit.MILLISECONDS.toMinutes(l)
+                ,TimeUnit.MILLISECONDS.toSeconds(l)-TimeUnit
+                                .MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l)));
+                counter.setText(sDuration);
+            }
+
+            @Override
+            public void onFinish() {
+                counter.setVisibility(View.GONE);
+                resend_txt.setVisibility(View.VISIBLE);
+                resend_txt_btn.setVisibility(View.VISIBLE);
+            }
+        }.start();
+    }
+
 
     // Automatic focus next textfield otp code
     private void next_text_auto() {
