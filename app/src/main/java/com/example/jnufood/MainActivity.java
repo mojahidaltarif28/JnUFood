@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -19,13 +20,17 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.jnufood.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private DrawerLayout drawerLayout;
     protected NavigationView navigationView;
-
+    int  login_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,49 +47,24 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
-         NavigationView navigation=findViewById(R.id.my_account);
-
-
-//        drawerLayout=findViewById(R.id.drawer_layout);
-//        navigationView=findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//               switch (item.getItemId())
-//               {
-//                   case
-//                       return true;
-//               }
-//
-//                return true;
-//            }
-//        });
-
-
-//        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-
+        NavigationView navigation = findViewById(R.id.my_account);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_food_item, R.id.nav_login, R.id.your_Order, R.id.history, R.id.contact_us, R.id.about,R.id.nav_applyForDeliveryBoy,R.id.nav_administration)
+                R.id.nav_home, R.id.nav_food_item, R.id.nav_login, R.id.your_Order, R.id.history, R.id.contact_us, R.id.about, R.id.nav_applyForDeliveryBoy, R.id.nav_administration)
                 .setDrawerLayout(drawer)
                 .build();
 
-         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
+        if (login_code== -50) {
+            navigationView.getMenu().findItem(R.id.my_account).setVisible(true);
+        }
     }
 
     @Override
@@ -100,6 +80,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 
 }

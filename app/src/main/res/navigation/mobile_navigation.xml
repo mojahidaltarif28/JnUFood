@@ -96,6 +96,9 @@
         <argument
             android:name="verificationId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_OTP_Verify_to_nav_home"
+            app:destination="@id/nav_home" />
 
     </fragment>
 

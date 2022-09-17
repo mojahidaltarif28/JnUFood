@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
@@ -20,9 +21,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,8 +40,9 @@ import java.util.concurrent.TimeUnit;
  * Use the {@link OTP_Verify#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OTP_Verify extends Fragment {
+public class OTP_Verify extends Fragment  {
 
+    protected NavigationView navigationView;
     EditText otp1, otp2, otp3, otp4, otp5, otp6;
     Button submit;
     LinearLayout wrong_otp;
@@ -129,8 +133,7 @@ public class OTP_Verify extends Fragment {
                         new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                                resend_txt.setVisibility(view.VISIBLE);
-                                resend_txt_btn.setVisibility(view.VISIBLE);
+
 
 
                             }
@@ -145,7 +148,10 @@ public class OTP_Verify extends Fragment {
                             @Override
                             public void onCodeSent(@NonNull String NewVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 otp_id=NewVerificationId;
-                               otp_countetr();
+                                otp_countetr();
+                                counter.setVisibility(View.VISIBLE);
+                                resend_txt.setVisibility(view.GONE);
+                                resend_txt_btn.setVisibility(view.GONE);
                                 Toast.makeText(getActivity(), "OTP send again to your mobile,please check", Toast.LENGTH_SHORT).show();
 
                             }
@@ -173,7 +179,7 @@ public class OTP_Verify extends Fragment {
                             otp5.getText().toString()+otp6.getText().toString();
                     if(otp_id!=null){
                         progressBar.setVisibility(view.VISIBLE);
-                        btn_submit.setVisibility(view.INVISIBLE);
+                        btn_submit.setVisibility(view.GONE);
                         PhoneAuthCredential phoneAuthCredential= PhoneAuthProvider.getCredential(
                                 otp_id,
                                 code
@@ -186,7 +192,11 @@ public class OTP_Verify extends Fragment {
                                         btn_submit.setVisibility(view.VISIBLE);
                                        if (task.isSuccessful()){
                                            wrong_otp.setVisibility(view.GONE);
-                                           Toast.makeText(getActivity(),"Successfully Verified",Toast.LENGTH_SHORT).show();
+
+                                           Toast.makeText(getActivity(),"Registration Successfully",Toast.LENGTH_SHORT).show();
+
+                                           Navigation.findNavController(view).navigate(R.id.action_OTP_Verify_to_nav_home);
+
                                        }
                                        else {
                                            wrong_otp.setVisibility(view.VISIBLE);
@@ -199,6 +209,7 @@ public class OTP_Verify extends Fragment {
         });
 
         return view;
+
     }
 
     private void otp_countetr() {
