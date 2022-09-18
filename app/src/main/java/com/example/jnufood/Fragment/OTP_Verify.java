@@ -1,5 +1,6 @@
 package com.example.jnufood.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
+import com.example.jnufood.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -194,7 +196,9 @@ public class OTP_Verify extends Fragment  {
                                            wrong_otp.setVisibility(view.GONE);
 
                                            Toast.makeText(getActivity(),"Registration Successfully",Toast.LENGTH_SHORT).show();
-
+                                           Intent in=new Intent(getActivity(), MainActivity.class);
+                                           in.putExtra("login_code","-505");
+                                           startActivity(in);
                                            Navigation.findNavController(view).navigate(R.id.action_OTP_Verify_to_nav_home);
 
                                        }

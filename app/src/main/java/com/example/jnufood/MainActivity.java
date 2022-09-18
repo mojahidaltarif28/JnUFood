@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private DrawerLayout drawerLayout;
     protected NavigationView navigationView;
-    int  login_code;
+    int login_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +61,17 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
-        if (login_code== -50) {
-            navigationView.getMenu().findItem(R.id.my_account).setVisible(true);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getString("login_code")!=null) {
+                navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
+                navigationView.getMenu().findItem(R.id.my_account).setVisible(true);
+                navigationView.getMenu().findItem(R.id.history).setVisible(true);
+                navigationView.getMenu().findItem(R.id.your_Order).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_home).setVisible(true);
+            }
         }
     }
 
