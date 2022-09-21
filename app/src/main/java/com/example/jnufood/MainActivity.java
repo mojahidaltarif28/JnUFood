@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.your_Order).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
                 navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
-                navigationView.getMenu().findItem(R.id.nav_home).setVisible(true);
             }
         }
     }

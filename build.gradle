@@ -6,10 +6,11 @@ buildscript {
     }
     ext.nav_version="2.5.2"
     dependencies {
-        classpath 'com.google.gms:google-services:4.3.13'
+
         classpath 'com.android.tools.build:gradle:7.3.0'
 //        def nav_version = "2.5.2"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath 'com.google.gms:google-services:4.3.14'
     }
 }
 

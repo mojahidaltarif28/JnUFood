@@ -5,9 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -24,15 +21,18 @@ import android.widget.Toast;
 
 import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
-import com.example.jnufood.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -44,7 +44,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class OTP_Verify extends Fragment  {
 
-    protected NavigationView navigationView;
+    DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     EditText otp1, otp2, otp3, otp4, otp5, otp6;
     Button submit;
     LinearLayout wrong_otp;
@@ -195,11 +195,34 @@ public class OTP_Verify extends Fragment  {
                                        if (task.isSuccessful()){
                                            wrong_otp.setVisibility(view.GONE);
 
-                                           Toast.makeText(getActivity(),"Registration Successfully",Toast.LENGTH_SHORT).show();
-                                           Intent in=new Intent(getActivity(), MainActivity.class);
-                                           in.putExtra("login_code","-505");
-                                           startActivity(in);
-                                           Navigation.findNavController(view).navigate(R.id.action_OTP_Verify_to_nav_home);
+                                           databaseReference.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
+                                               @Override
+                                               public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                   if(snapshot.hasChild(phone)){
+                                                       Toast.makeText(getActivity(),"Mobile number already registerd",Toast.LENGTH_SHORT).show();
+
+                                                   }
+                                                   else {
+                                                       databaseReference.child("Customer").child(phone).child("Name").setValue(name);
+                                                       databaseReference.child("Customer").child(phone).child("Email").setValue(email);
+                                                       databaseReference.child("Customer").child(phone).child("Department").setValue(dept);
+                                                       databaseReference.child("Customer").child(phone).child("Password").setValue(password);
+                                                       getActivity().finish();
+                                                       Toast.makeText(getActivity(),"Registration Successfully",Toast.LENGTH_SHORT).show();
+                                                       Intent in=new Intent(getActivity(), MainActivity.class);
+                                                       in.putExtra("login_code","-505");
+                                                       startActivity(in);
+                                                   }
+                                               }
+
+                                               @Override
+                                               public void onCancelled(@NonNull DatabaseError error) {
+                                                   Toast.makeText(getActivity(),"Registration failed database error",Toast.LENGTH_SHORT).show();
+
+                                               }
+                                           });
+
+
 
                                        }
                                        else {

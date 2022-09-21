@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "394658845588",
+    "firebase_url": "https://jnufood-default-rtdb.firebaseio.com",
     "project_id": "jnufood",
     "storage_bucket": "jnufood.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "394658845588-426hgqnogmgtkf9j8sbik2uv144n9oh8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jnufood",
+            "certificate_hash": "f198d59070b7fdf280ba88ea85e6df8b6e3f5caa"
+          }
+        },
         {
           "client_id": "394658845588-e200e7tj13qjgdk1ir5fjaislqbdbpar.apps.googleusercontent.com",
           "client_type": 3

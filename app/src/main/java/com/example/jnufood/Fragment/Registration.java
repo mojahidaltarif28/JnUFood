@@ -24,11 +24,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -48,6 +54,7 @@ public class Registration extends Fragment {
     Button btn_register;
     TextView signin,text1;
     // TODO: Rename and change types of parameters
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     private String mParam1;
     private String mParam2;
 
@@ -134,45 +141,64 @@ public class Registration extends Fragment {
                 } else if (confirm_password_s.isEmpty() || !confirm_password_s.equals(input_password_s)) {
                     showError(confirm_password, "Password does not match");
                 } else {
-                    //pass all value to the otp fragment
 
-                    progressBar.setVisibility(view.VISIBLE);
-                    signin.setVisibility(view.INVISIBLE);
-                    text1.setVisibility(view.INVISIBLE);
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            "+88" + phone.getText().toString(),
-                            60,
-                            TimeUnit.SECONDS,
-                            getActivity(),
-                            new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                                @Override
-                                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                                    progressBar.setVisibility(view.GONE);
-                                    signin.setVisibility(view.VISIBLE);
-                                    text1.setVisibility(view.VISIBLE);
-                                }
+                    databaseReference.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(phone_s)){
+                               showError(phone,"Mobile number already registered");
 
-                                @Override
-                                public void onVerificationFailed(@NonNull FirebaseException e) {
-                                    progressBar.setVisibility(view.GONE);
-                                    signin.setVisibility(view.VISIBLE);
-                                    text1.setVisibility(view.VISIBLE);
-                                    Toast.makeText(getActivity(),"Please Check Your Internet Connection",Toast.LENGTH_LONG).show();
-                                }
-
-                                @Override
-                                public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                                    progressBar.setVisibility(view.GONE);
-                                    signin.setVisibility(view.INVISIBLE);
-                                    text1.setVisibility(view.INVISIBLE);
-                                    Toast.makeText(getActivity(), "OTP send to your mobile,please check", Toast.LENGTH_SHORT).show();
-                                    NavDirections action = (NavDirections) RegistrationDirections.actionRegistrationToOTPVerify(name.getText().toString(), phone.getText().toString(),
-                                            email.getText().toString(), dept.getText().toString(), input_password.getText().toString(), verificationId);
-
-                                    Navigation.findNavController(view).navigate(action);
-                                }
                             }
-                    );
+                            else {
+                                //pass all value to the otp fragment
+
+                                progressBar.setVisibility(view.VISIBLE);
+                                signin.setVisibility(view.INVISIBLE);
+                                text1.setVisibility(view.INVISIBLE);
+                                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                        "+88" + phone.getText().toString(),
+                                        60,
+                                        TimeUnit.SECONDS,
+                                        getActivity(),
+                                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                                            @Override
+                                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                                progressBar.setVisibility(view.GONE);
+                                                signin.setVisibility(view.VISIBLE);
+                                                text1.setVisibility(view.VISIBLE);
+                                            }
+
+                                            @Override
+                                            public void onVerificationFailed(@NonNull FirebaseException e) {
+                                                progressBar.setVisibility(view.GONE);
+                                                signin.setVisibility(view.VISIBLE);
+                                                text1.setVisibility(view.VISIBLE);
+                                                Toast.makeText(getActivity(),"Please Check Your Internet Connection",Toast.LENGTH_LONG).show();
+                                            }
+
+                                            @Override
+                                            public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                                progressBar.setVisibility(view.GONE);
+                                                signin.setVisibility(view.INVISIBLE);
+                                                text1.setVisibility(view.INVISIBLE);
+                                                Toast.makeText(getActivity(), "OTP send to your mobile,please check", Toast.LENGTH_SHORT).show();
+                                                NavDirections action = (NavDirections) RegistrationDirections.actionRegistrationToOTPVerify(name.getText().toString(), phone.getText().toString(),
+                                                        email.getText().toString(), dept.getText().toString(), input_password.getText().toString(), verificationId);
+
+                                                Navigation.findNavController(view).navigate(action);
+                                            }
+                                        }
+                                );
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(getActivity(),"Registration failed database error",Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
 
 
                 }
