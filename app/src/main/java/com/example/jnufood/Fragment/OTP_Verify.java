@@ -109,16 +109,18 @@ public class OTP_Verify extends Fragment  {
        otp_countetr();
         wrong_otp=view.findViewById(R.id.wrong_otp);
         TextView mobile = view.findViewById(R.id.mobile);
-        String name = OTP_VerifyArgs.fromBundle(getArguments()).getName();
-        String phone = OTP_VerifyArgs.fromBundle(getArguments()).getMobileNo();
-        String email = OTP_VerifyArgs.fromBundle(getArguments()).getEmail();
-        String dept = OTP_VerifyArgs.fromBundle(getArguments()).getDept();
-        String password = OTP_VerifyArgs.fromBundle(getArguments()).getPassword();
+         Bundle bundle=this.getArguments();
+        String name = bundle.getString("name");
+        String phone = bundle.getString("mobile");
+        String email = bundle.getString("email");
+        String dept = bundle.getString("dept");
+        String password = bundle.getString("password");
+        otp_id = bundle.getString("otp_id");
         mobile.setText(phone);
 
         final ProgressBar progressBar = view.findViewById(R.id.progress_bar_o);
         final Button btn_submit = view.findViewById(R.id.btn_otp_submit);
-        otp_id = OTP_VerifyArgs.fromBundle(getArguments()).getVerificationId();
+
         // resend option
          resend_txt=view.findViewById(R.id.text_resend);
           resend_txt_btn=view.findViewById(R.id.resend);
@@ -211,6 +213,7 @@ public class OTP_Verify extends Fragment  {
                                                        Toast.makeText(getActivity(),"Registration Successfully",Toast.LENGTH_SHORT).show();
                                                        Intent in=new Intent(getActivity(), MainActivity.class);
                                                        in.putExtra("login_code","-505");
+                                                       in.putExtra("mobile",phone);
                                                        startActivity(in);
                                                    }
                                                }

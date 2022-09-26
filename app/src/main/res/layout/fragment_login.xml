@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/loginlogo"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
@@ -65,7 +65,7 @@
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="sans-serif-light"
         android:text="Sign In"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/loginlogo"
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,5 +134,36 @@
         app:layout_constraintEnd_toEndOf="@+id/forgot_password"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
+
+    <TextView
+        android:id="@+id/incorrect_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/wrong_bg"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="Incorrect mobile number or password"
+        android:textColor="#FF0000"
+        android:textSize="13dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
+
+    <ProgressBar
+        android:id="@+id/login_progressbar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/icon"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ProgressBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,11 +13,11 @@ import com.example.jnufood.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link History#newInstance} factory method to
+ * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class History extends Fragment {
-String getm;
+public class HomeFragment extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,7 +27,7 @@ String getm;
     private String mParam1;
     private String mParam2;
 
-    public History() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +37,11 @@ String getm;
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment History.
+     * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static History newInstance(String param1, String param2) {
-        History fragment = new History();
+    public static HomeFragment newInstance(String param1, String param2) {
+        HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,15 +61,12 @@ String getm;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.fragment_home, container, false);
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_history, container, false);
-        TextView m=view.findViewById(R.id.home_m);
-        Bundle data=getArguments();
-        if (data!=null){
-            getm=data.getString("mobile");
-
-        }
-        m.setText(getm);
+//        TextView m=view.findViewById(R.id.login_code);
+//        Bundle bundle=this.getArguments();
+//        String mobile = bundle.getString("otp_id");
+//        m.setText("0181");
         return view;
     }
 }

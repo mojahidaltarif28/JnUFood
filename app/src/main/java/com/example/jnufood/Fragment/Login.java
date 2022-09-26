@@ -1,24 +1,31 @@
 package com.example.jnufood.Fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
-import com.example.jnufood.databinding.FragmentHomeBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,9 +33,12 @@ import com.example.jnufood.databinding.FragmentHomeBinding;
  * create an instance of this fragment.
  */
 public class Login extends Fragment {
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     EditText password_show;
+    TextView incorrect_pass;
     private EditText login_phone,login_password;
     Button login_btn;
+    public static final String SHARED_PREFS="sharedPrefs";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,9 +79,12 @@ public class Login extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
     }
 
+
     //private FragmentHomeBinding binding;
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,7 +94,7 @@ public class Login extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_nav_login_to_registration);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Registration()).commit();
 
             }
         });
@@ -89,10 +102,57 @@ public class Login extends Fragment {
          login_phone = view.findViewById(R.id.login_phone);
          login_password = view.findViewById(R.id.login_password);
          login_btn = view.findViewById(R.id.btn_login);
+         incorrect_pass=view.findViewById(R.id.incorrect_password);
+       final ProgressBar progressBar=view.findViewById(R.id.login_progressbar);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkCrededentials();
+                String login_phone_s=login_phone.getText().toString();
+                String login_password_s=login_password.getText().toString();
+                if(login_phone_s.isEmpty()){
+                    showError(login_phone,"please enter your phone number");
+                }
+                else if(login_phone_s.length()!=11){
+                    incorrect_pass.setVisibility(View.VISIBLE);
+                }
+                else if(login_password_s.isEmpty()||login_password_s.length()<6){
+                   incorrect_pass.setVisibility(View.VISIBLE);
+                }
+                else{
+                    databaseReference.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(login_phone_s)){
+                                final String getpassword=snapshot.child(login_phone_s).child("Password").getValue(String.class);
+                                if(getpassword.equals(login_password_s)){
+                                    incorrect_pass.setVisibility(View.GONE);
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    btn.setVisibility(View.GONE);
+                                    getActivity().finish();
+                                    Toast.makeText(getActivity(),"Successfully Logged In",Toast.LENGTH_SHORT).show();
+                                    Intent in=new Intent(getActivity(), MainActivity.class);
+                                    in.putExtra("login_code","-505");
+                                    in.putExtra("mobile",login_phone_s);
+                                    startActivity(in);
+
+
+                                }
+                                else{
+                                    incorrect_pass.setVisibility(View.VISIBLE);
+                                }
+                            }
+                            else {
+                               incorrect_pass.setVisibility(View.VISIBLE);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                      }
             }
         });
 
@@ -127,22 +187,6 @@ public class Login extends Fragment {
         });
 
         return view;
-    }
-    private void checkCrededentials() {
-        String login_phone_s=login_phone.getText().toString();
-        String login_password_s=login_password.getText().toString();
-        if(login_phone_s.isEmpty()){
-            showError(login_phone,"please enter your phone number");
-        }
-        else if(login_phone_s.length()!=11){
-            showError(login_phone," Incorrect phone number");
-        }
-        else if(login_password_s.isEmpty()||login_password_s.length()<6){
-            showError(login_password,"Incorrect Password");
-        }
-        else{
-            Toast.makeText(getActivity(),"Call login method",Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void showError(EditText input, String s) {

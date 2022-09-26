@@ -98,7 +98,7 @@ public class Registration extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_registration_to_nav_login);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login()).commit();
             }
         });
 
@@ -182,10 +182,16 @@ public class Registration extends Fragment {
                                                 signin.setVisibility(view.INVISIBLE);
                                                 text1.setVisibility(view.INVISIBLE);
                                                 Toast.makeText(getActivity(), "OTP send to your mobile,please check", Toast.LENGTH_SHORT).show();
-                                                NavDirections action = (NavDirections) RegistrationDirections.actionRegistrationToOTPVerify(name.getText().toString(), phone.getText().toString(),
-                                                        email.getText().toString(), dept.getText().toString(), input_password.getText().toString(), verificationId);
-
-                                                Navigation.findNavController(view).navigate(action);
+                                                   Bundle bundle =new Bundle();
+                                                bundle.putString("name",name_s);
+                                                bundle.putString("mobile",phone_s);
+                                                bundle.putString("email",email_s);
+                                                bundle.putString("dept",dept_s);
+                                                bundle.putString("password",input_password_s);
+                                                bundle.putString("otp_id",verificationId);
+                                                OTP_Verify otp_verify=new OTP_Verify();
+                                                otp_verify.setArguments(bundle);
+                                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,otp_verify).commit();
                                             }
                                         }
                                 );

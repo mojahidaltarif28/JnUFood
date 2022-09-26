@@ -6,29 +6,10 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.jnufood.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_food_item"
-        android:name="com.example.jnufood.ui.Food_Item.FoodItem"
-        android:label="@string/food"
-        tools:layout="@layout/fragment_fooditem" />
-
-    <fragment
         android:id="@+id/registration"
         android:name="com.example.jnufood.Fragment.Registration"
         android:label="@string/registration"
-        tools:layout="@layout/fragment_registration" >
-        <action
-            android:id="@+id/action_registration_to_nav_login"
-            app:destination="@id/nav_login" />
-        <action
-            android:id="@+id/action_registration_to_OTP_Verify"
-            app:destination="@id/OTP_Verify" />
-    </fragment>
+        tools:layout="@layout/fragment_registration" />
     <fragment
         android:id="@+id/your_Order"
         android:name="com.example.jnufood.Fragment.Your_Order"
@@ -53,11 +34,7 @@
         android:id="@+id/nav_login"
         android:name="com.example.jnufood.Fragment.Login"
         android:label="Sign In"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_nav_login_to_registration"
-            app:destination="@id/registration" />
-    </fragment>
+        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/nav_administration"
         android:name="com.example.jnufood.Fragment.Administration"
@@ -72,34 +49,16 @@
         android:id="@+id/OTP_Verify"
         android:name="com.example.jnufood.Fragment.OTP_Verify"
         android:label="OTP Verification"
-        tools:layout="@layout/fragment_o_t_p__verify" >
-
-        <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="mobile_no"
-            app:argType="string"
-           />
-
-        <argument
-            android:name="email"
-            app:argType="string"
-            app:nullable="true"
-            />
-        <argument
-            android:name="dept"
-            app:argType="string" />
-        <argument
-            android:name="password"
-            app:argType="string" />
-        <argument
-            android:name="verificationId"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_OTP_Verify_to_nav_home"
-            app:destination="@id/nav_home" />
-
-    </fragment>
+        tools:layout="@layout/fragment_o_t_p__verify" />
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.jnufood.Fragment.Logout"
+        android:label="Logout"
+        tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.jnufood.Fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 
 </navigation>

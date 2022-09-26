@@ -31,5 +31,6 @@
     <string name="find_job">Find Job</string>
     <string name="administraion">Administraion</string>
     <string name="my_account">My Account</string>
+    <string name="log_out">Log out</string>
 
 </resources>

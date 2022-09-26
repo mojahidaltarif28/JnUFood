@@ -8,10 +8,6 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="@string/home" />
-        <item
-            android:id="@+id/nav_food_item"
-            android:icon="@drawable/ic_food_item"
-            android:title="@string/food_item" />
 
         <item
             android:id="@+id/nav_login"
@@ -21,10 +17,10 @@
 
             />
         <item
-            android:id="@+id/my_account"
+            android:id="@+id/my_Account"
             android:icon="@drawable/ic_my_account"
             android:visible="false"
-            android:title="@string/my_account" />
+            android:title="My Account" />
 
         <item
             android:id="@+id/your_Order"
@@ -44,17 +40,24 @@
             android:id="@+id/nav_administration"
             android:icon="@drawable/ic_admin"
             android:title="@string/administraion" />
+
+
+
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_contact"
+            android:title="Help Center" />
+
     </group>
-    <item android:title="">
+    <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/contact_us"
-                android:icon="@drawable/ic_contact"
-                android:title="@string/contact_us" />
+                android:id="@+id/condition"
+                android:title="Terms and conditions" />
             <item
-                android:id="@+id/about"
-                android:icon="@drawable/ic_about"
-                android:title="@string/about" />
+                android:id="@+id/nav_logout"
+                android:visible="false"
+                android:title="@string/log_out" />
         </menu>
     </item>
 </menu>
