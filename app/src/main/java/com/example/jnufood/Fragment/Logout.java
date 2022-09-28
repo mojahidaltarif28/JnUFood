@@ -1,5 +1,6 @@
 package com.example.jnufood.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jnufood.MainActivity;
@@ -65,12 +67,19 @@ public class Logout extends Fragment {
 
 
     }
-
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
       View view=inflater.inflate(R.layout.fragment_logout, container, false);
         // Inflate the layout for this fragment
+    TextView logout_code=view.findViewById(R.id.logout_code);
+    Bundle bundle=this.getArguments();
+    String mobile;
+    if(getArguments().getString("otp_id")!=null){
+        mobile = bundle.getString("otp_id");
+        logout_code.setText(mobile);
+    }
         builder=new AlertDialog.Builder(getActivity());
        builder.setTitle("Alert!!")
                .setMessage("Do you want to Logged out")
@@ -90,7 +99,12 @@ public class Logout extends Fragment {
                    @Override
                    public void onClick(DialogInterface dialogInterface, int i) {
                        dialogInterface.cancel();
-                       getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new HomeFragment()).commit();
+                       String logout_code_m=logout_code.getText().toString();
+                       Bundle bundle1=new Bundle();
+                       bundle1.putString("otp_id",logout_code_m);
+                      HomeFragment homeFragment=new HomeFragment();
+                       homeFragment.setArguments(bundle1);
+                       getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,homeFragment).commit();
                    }
                })
                .show();

@@ -130,6 +130,7 @@ public class Login extends Fragment {
                                     btn.setVisibility(View.GONE);
                                     getActivity().finish();
                                     Toast.makeText(getActivity(),"Successfully Logged In",Toast.LENGTH_SHORT).show();
+
                                     Intent in=new Intent(getActivity(), MainActivity.class);
                                     in.putExtra("login_code","-505");
                                     in.putExtra("mobile",login_phone_s);

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jnufood.R;
 
@@ -17,7 +18,7 @@ import com.example.jnufood.R;
  * create an instance of this fragment.
  */
 public class History extends Fragment {
-String getm;
+    String getm;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,6 +27,7 @@ String getm;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String mobile;
 
     public History() {
         // Required empty public constructor
@@ -62,14 +64,12 @@ String getm;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_history, container, false);
-        TextView m=view.findViewById(R.id.home_m);
-        Bundle data=getArguments();
-        if (data!=null){
-            getm=data.getString("mobile");
-
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        Bundle bundle = this.getArguments();
+        if (getArguments().getString("otp_id") != null) {
+            mobile = bundle.getString("otp_id");
         }
-        m.setText(getm);
+        Toast.makeText(getActivity(), "login:" + mobile, Toast.LENGTH_SHORT).show();
         return view;
     }
 }

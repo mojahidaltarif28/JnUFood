@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 
 import com.example.jnufood.Fragment.Administration;
 import com.example.jnufood.Fragment.ApplyForDeliveryBoy;
+import com.example.jnufood.Fragment.Contact_Us;
 import com.example.jnufood.Fragment.History;
 import com.example.jnufood.Fragment.HomeFragment;
 import com.example.jnufood.Fragment.Login;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar  = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -49,17 +51,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        Bundle bundle = getIntent().getExtras();
+        if (savedInstanceState == null) {
+            HomeFragment homeFragment=new HomeFragment();
+            if (bundle != null) {
+                if (bundle.getString("login_code") != null) {
+                    String mobile = bundle.getString("mobile");
+                    Bundle bundle1 = new Bundle();
 
-        if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new HomeFragment()).commit();
+                    bundle1.putString("otp_id", mobile);
+                    homeFragment.setArguments(bundle1);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
+                }
+            }else {
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("otp_id","");
+                homeFragment.setArguments(bundle1);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
+            }
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
 
-        Bundle bundle = getIntent().getExtras();
+
 
         if (bundle != null) {
             if (bundle.getString("login_code") != null) {
@@ -94,9 +111,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
 
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
 
@@ -121,47 +138,89 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Bundle bundle = getIntent().getExtras();
-        Bundle bundle1= new Bundle();
 
-        switch (item.getItemId()){
+
+        switch (item.getItemId()) {
 
             case R.id.nav_home:
+                HomeFragment homeFragment=new HomeFragment();
                 if (bundle != null) {
                     if (bundle.getString("login_code") != null) {
                         String mobile = bundle.getString("mobile");
-                bundle1.putString("otp_id",mobile);
-                HomeFragment homeFragment=new HomeFragment();
-                homeFragment.setArguments(bundle1);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,homeFragment).commit();}}
-                else {
+                        Bundle bundle1 = new Bundle();
+
+                        bundle1.putString("otp_id", mobile);
+                        homeFragment.setArguments(bundle1);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
+                    }
+                }else {
+                    Bundle bundle1 = new Bundle();
                     bundle1.putString("otp_id","");
-                    HomeFragment homeFragment=new HomeFragment();
                     homeFragment.setArguments(bundle1);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
-
                 }
                 break;
             case R.id.nav_login:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login()).commit();
                 break;
             case R.id.my_Account:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new My_Account()).commit();
+                if (bundle != null) {
+                    if (bundle.getString("login_code") != null) {
+                        String mobile = bundle.getString("mobile");
+                        Bundle bundle1 = new Bundle();
+                        My_Account my_account = new My_Account();
+                        bundle1.putString("otp_id", mobile);
+                        my_account.setArguments(bundle1);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account).commit();
+                    }
+                }
                 break;
             case R.id.nav_applyForDeliveryBoy:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new ApplyForDeliveryBoy()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ApplyForDeliveryBoy()).commit();
                 break;
             case R.id.nav_administration:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Administration()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Administration()).commit();
                 break;
             case R.id.your_Order:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Your_Order()).commit();
+                if (bundle != null) {
+                    if (bundle.getString("login_code") != null) {
+                        String mobile = bundle.getString("mobile");
+                        Bundle bundle1 = new Bundle();
+                        Your_Order your_order = new Your_Order();
+                        bundle1.putString("otp_id", mobile);
+                        your_order.setArguments(bundle1);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, your_order).commit();
+                    }
+                }
                 break;
             case R.id.history:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new History()).commit();
+                if (bundle != null) {
+                    if (bundle.getString("login_code") != null) {
+                        String mobile = bundle.getString("mobile");
+                        Bundle bundle1 = new Bundle();
+                        History history = new History();
+                        bundle1.putString("otp_id", mobile);
+                        history.setArguments(bundle1);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history).commit();
+                    }
+                }
                 break;
             case R.id.nav_logout:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Logout()).commit();
+                if (bundle != null) {
+                    if (bundle.getString("login_code") != null) {
+                        String mobile = bundle.getString("mobile");
+                        Bundle bundle1 = new Bundle();
+                        Logout logout = new Logout();
+                        bundle1.putString("otp_id", mobile);
+                        logout.setArguments(bundle1);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logout).commit();
+                    }
+                }
+                   break;
+            case R.id.contact_us:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Contact_Us()).commit();
                 break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
 

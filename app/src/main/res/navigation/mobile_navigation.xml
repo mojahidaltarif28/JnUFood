@@ -26,11 +26,6 @@
         android:label="@string/contact"
         tools:layout="@layout/fragment_contact__us" />
     <fragment
-        android:id="@+id/about"
-        android:name="com.example.jnufood.Fragment.About"
-        android:label="@string/about"
-        tools:layout="@layout/fragment_about" />
-    <fragment
         android:id="@+id/nav_login"
         android:name="com.example.jnufood.Fragment.Login"
         android:label="Sign In"
@@ -60,5 +55,10 @@
         android:name="com.example.jnufood.Fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/my_Account"
+        android:name="com.example.jnufood.Fragment.My_Account"
+        android:label="fragment_my__account"
+        tools:layout="@layout/fragment_my__account" />
 
 </navigation>

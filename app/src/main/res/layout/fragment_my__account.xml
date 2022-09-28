@@ -1,14 +1,504 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.My_Account">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:background="#21FFC107"
+
+    android:paddingTop="0dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        >
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/close_edit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+
+            <TextView
+                android:id="@+id/close_edit_btn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="19dp"
+                android:drawableLeft="@drawable/ic_arrow_back"
+                android:textColor="@color/red1"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/my_Account_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:visibility="visible"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/ac_label_layout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical"
+                android:visibility="visible"
+
+                >
+
+                <TextView
+                    android:id="@+id/ac_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="My Account"
+                    android:textColor="@color/orange"
+                    android:textSize="30dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ac_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/layout_bg"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableRight="@drawable/ic_edit"
+                    android:text="Name"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ac_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="MD Mojahid AL Tarif"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ac_mobile_layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/layout_bg"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Mobile"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ac_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="01717268128"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ac_email_layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/layout_bg"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableRight="@drawable/ic_edit"
+                    android:text="Email"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ac_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="5dp"
+                    android:text="mojahidaltarif78@gmail.com"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ac_dept_layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/layout_bg"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableRight="@drawable/ic_edit"
+                    android:text="Department"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ac_dept"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="5dp"
+                    android:text="CSE"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ac_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/layout_bg"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableRight="@drawable/ic_edit"
+                    android:text="Password"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ac_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="5dp"
+                    android:text="********"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ac_name_edit_layout"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:layout_height="70dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Edit Name"
+                android:textColor="#3e3b3b"
+                android:textSize="13dp" />
+
+            <EditText
+                android:id="@+id/ac_name_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="18dp"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:background="@drawable/input_bg"
+                android:text="MD Mojahid AL Tarif"
+                android:textColor="@color/text_color"
+                android:textSize="20dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ac_email_edit_layout"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:layout_height="70dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Edit Email"
+                android:textColor="#3e3b3b"
+                android:textSize="13dp" />
+
+            <EditText
+                android:id="@+id/ac_email_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="18dp"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:background="@drawable/input_bg"
+                android:text="mojahidaltarif78@gmail.com"
+                android:textColor="@color/text_color"
+                android:textSize="20dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ac_dept_edit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:visibility="gone"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Edit Department"
+                android:textColor="#3e3b3b"
+                android:textSize="13dp" />
+
+            <EditText
+                android:id="@+id/ac_dept_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="18dp"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:background="@drawable/input_bg"
+                android:text="CSE"
+                android:textColor="@color/text_color"
+                android:textSize="20dp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ac_password_edit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginTop="70dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Current Password"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/ac_current_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="18dp"
+                    android:minHeight="48dp"
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="New Password"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/ac_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="18dp"
+                    android:minHeight="48dp"
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Confirm Password"
+                    android:textColor="#3e3b3b"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/ac_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="18dp"
+                    android:minHeight="48dp"
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="@color/text_color"
+                    android:textSize="20dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ac_save_btn"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:background="@drawable/btn_bg"
+            />
+    </LinearLayout>
+</ScrollView>

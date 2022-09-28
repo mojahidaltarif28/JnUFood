@@ -1,5 +1,6 @@
 package com.example.jnufood.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jnufood.R;
 
@@ -26,7 +28,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    String mobile;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -57,16 +59,17 @@ public class HomeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
         // Inflate the layout for this fragment
-//        TextView m=view.findViewById(R.id.login_code);
-//        Bundle bundle=this.getArguments();
-//        String mobile = bundle.getString("otp_id");
-//        m.setText("0181");
+        Bundle bundle=this.getArguments();
+        if(getArguments().getString("otp_id")!=null){
+            mobile = bundle.getString("otp_id");
+        }
+        Toast.makeText(getActivity(),"login:"+mobile,Toast.LENGTH_SHORT).show();
         return view;
     }
 }
