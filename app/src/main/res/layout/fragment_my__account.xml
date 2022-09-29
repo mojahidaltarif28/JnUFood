@@ -27,34 +27,27 @@
 
             >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:orientation="vertical"
-                android:visibility="visible"
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/icon" />
 
-                >
+            <TextView
 
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:text="My Account"
-                    android:layout_gravity="center"
-                    android:textColor="@color/orange"
-                    android:textSize="25dp" />
-
-
-            </LinearLayout>
+                android:id="@+id/font"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="My Account"
+                android:textColor="@color/orange"
+                android:textSize="25dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -96,7 +89,6 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="MD Mojahid AL Tarif"
                     android:textColor="@color/text_color"
                     android:textSize="20dp" />
 
@@ -130,7 +122,6 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="01717268128"
                     android:textColor="@color/text_color"
                     android:textSize="20dp" />
 
@@ -145,15 +136,16 @@
                 android:layout_marginEnd="5dp"
                 android:background="@drawable/layout_bg"
                 android:orientation="vertical">
-                    <TextView
-                        android:layout_width="290dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:text="Email"
-                        android:textColor="#3e3b3b"
-                        android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="290dp"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Email"
+                    android:textColor="#3e3b3b"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ac_email"
@@ -161,9 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
-
                     android:layout_marginRight="5dp"
-                    android:text="mojahidaltarif78@gmail.com"
                     android:textColor="@color/text_color"
                     android:textSize="20dp" />
 
@@ -180,15 +170,15 @@
                 android:background="@drawable/layout_bg"
                 android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="290dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:text="Department"
-                        android:textColor="#3e3b3b"
-                        android:textSize="14sp" />
+                <TextView
+                    android:layout_width="290dp"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Department"
+                    android:textColor="#3e3b3b"
+                    android:textSize="14sp" />
 
 
                 <TextView
@@ -197,9 +187,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
-
                     android:layout_marginRight="5dp"
-                    android:text="CSE"
                     android:textColor="@color/text_color"
                     android:textSize="20dp" />
 
@@ -215,16 +203,16 @@
                 android:layout_marginEnd="5dp"
                 android:background="@drawable/layout_bg"
                 android:orientation="vertical">
-                    <TextView
-                        android:layout_width="290dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:text="Password"
-                        android:textColor="#3e3b3b"
-                        android:textSize="14sp" />
 
+                <TextView
+                    android:layout_width="290dp"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Password"
+                    android:textColor="#3e3b3b"
+                    android:textSize="14sp" />
 
 
                 <TextView
@@ -233,7 +221,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
-
                     android:layout_marginRight="5dp"
                     android:text="********"
                     android:textColor="@color/text_color"
@@ -310,7 +297,6 @@
                     android:background="@drawable/input_bg"
                     android:minHeight="48dp"
                     android:paddingLeft="5dp"
-                    android:text="MD Mojahid AL Tarif"
                     android:textColor="@color/text_color"
                     android:textSize="18dp"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -347,7 +333,6 @@
                     android:background="@drawable/input_bg"
                     android:minHeight="48dp"
                     android:paddingLeft="5dp"
-                    android:text="mojahidaltarif78@gmail.com"
                     android:textColor="@color/text_color"
                     android:textSize="18dp"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -385,7 +370,6 @@
                     android:background="@drawable/input_bg"
                     android:minHeight="48dp"
                     android:paddingLeft="5dp"
-                    android:text="CSE"
                     android:textColor="@color/text_color"
                     android:textSize="18dp"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -418,12 +402,12 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginRight="18dp"
-                    android:drawableRight="@drawable/ic_show"
-                    android:paddingRight="5dp"
                     android:background="@drawable/input_bg"
+                    android:drawableRight="@drawable/ic_show"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:textColor="@color/text_color"
                     android:textSize="20dp"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -458,12 +442,12 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginRight="18dp"
-                    android:drawableRight="@drawable/ic_show"
                     android:background="@drawable/input_bg"
+                    android:drawableRight="@drawable/ic_show"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
-                    android:paddingRight="5dp"
                     android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:textColor="@color/text_color"
                     android:textSize="18dp"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -498,12 +482,12 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginRight="18dp"
-                    android:drawableRight="@drawable/ic_show"
-                    android:paddingRight="5dp"
                     android:background="@drawable/input_bg"
+                    android:drawableRight="@drawable/ic_show"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:textColor="@color/text_color"
                     android:textSize="18dp"
                     tools:ignore="TouchTargetSizeCheck" />
