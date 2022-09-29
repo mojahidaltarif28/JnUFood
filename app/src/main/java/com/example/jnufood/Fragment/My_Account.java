@@ -182,6 +182,11 @@ public class My_Account extends Fragment {
                                 Toast.makeText(getActivity(), "Update Successful", Toast.LENGTH_SHORT).show();
                                 ac_save_btn.setVisibility(View.VISIBLE);
                                 ac_progressbar.setVisibility(View.GONE);
+                                Bundle bundle1 = new Bundle();
+                                My_Account my_account = new My_Account();
+                                bundle1.putString("otp_id", mobile);
+                                my_account.setArguments(bundle1);
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account).commit();
                                  }
                         });
                     }
@@ -202,7 +207,13 @@ public class My_Account extends Fragment {
                         public void onSuccess(Object o) {
                             Toast.makeText(getActivity(), "Update Successful", Toast.LENGTH_SHORT).show();
                             ac_save_btn.setVisibility(View.VISIBLE);
-                            ac_progressbar.setVisibility(View.VISIBLE);
+                            ac_progressbar.setVisibility(View.GONE);
+                            Bundle bundle1 = new Bundle();
+                            My_Account my_account = new My_Account();
+                            bundle1.putString("otp_id", mobile);
+                            my_account.setArguments(bundle1);
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account).commit();
+
                         }
                     });
                 }
