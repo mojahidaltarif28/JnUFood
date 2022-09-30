@@ -94,7 +94,7 @@ public class Login extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Registration()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Registration(),null).addToBackStack(null).commit();
 
             }
         });
@@ -149,7 +149,7 @@ public class Login extends Fragment {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
+                            Toast.makeText(getActivity(),"Please check your internet connection",Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -184,6 +184,14 @@ public class Login extends Fragment {
                     }
                 }
                 return false;
+            }
+        });
+
+        TextView forgot_password=view.findViewById(R.id.forgot_password);
+        forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Forgot_password_otp_send(),null).addToBackStack(null).commit();
             }
         });
 

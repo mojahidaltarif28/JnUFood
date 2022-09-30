@@ -60,5 +60,15 @@
         android:name="com.example.jnufood.Fragment.My_Account"
         android:label="fragment_my__account"
         tools:layout="@layout/fragment_my__account" />
+    <fragment
+        android:id="@+id/forgot_password_otp_send"
+        android:name="com.example.jnufood.Fragment.Forgot_password_otp_send"
+        android:label="fragment_forgot_password_otp_send"
+        tools:layout="@layout/fragment_forgot_password_otp_send" />
+    <fragment
+        android:id="@+id/forgot_password_change_password"
+        android:name="com.example.jnufood.Fragment.Forgot_password_change_password"
+        android:label="fragment_forgot_password_change_password"
+        tools:layout="@layout/fragment_forgot_password_change_password" />
 
 </navigation>

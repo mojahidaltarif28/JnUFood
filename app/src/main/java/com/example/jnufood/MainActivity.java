@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
 
+
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
 
 
     @Override
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 break;
             case R.id.nav_login:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login(),null).addToBackStack(null).commit();
                 break;
             case R.id.my_Account:
                 if (bundle != null) {
@@ -171,15 +173,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         My_Account my_account = new My_Account();
                         bundle1.putString("otp_id", mobile);
                         my_account.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account,null).addToBackStack(null).commit();
                     }
                 }
                 break;
             case R.id.nav_applyForDeliveryBoy:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ApplyForDeliveryBoy()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ApplyForDeliveryBoy(),null).addToBackStack(null).commit();
                 break;
             case R.id.nav_administration:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Administration()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Administration(),null).addToBackStack(null).commit();
                 break;
             case R.id.your_Order:
                 if (bundle != null) {
@@ -189,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Your_Order your_order = new Your_Order();
                         bundle1.putString("otp_id", mobile);
                         your_order.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, your_order).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, your_order,null).addToBackStack(null).commit();
                     }
                 }
                 break;
@@ -201,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         History history = new History();
                         bundle1.putString("otp_id", mobile);
                         history.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history,null).addToBackStack(null).commit();
                     }
                 }
                 break;
@@ -213,12 +215,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Logout logout = new Logout();
                         bundle1.putString("otp_id", mobile);
                         logout.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logout).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logout,null).addToBackStack(null).commit();
                     }
                 }
                    break;
             case R.id.contact_us:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Contact_Us()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Contact_Us(),null).addToBackStack(null).commit();
                 break;
 
         }

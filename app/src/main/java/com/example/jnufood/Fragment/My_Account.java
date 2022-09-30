@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
-import com.example.jnufood.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -111,6 +110,7 @@ public class My_Account extends Fragment {
         Button ac_save_btn = view.findViewById(R.id.ac_save_btn);
         ProgressBar ac_progressbar = view.findViewById(R.id.progress_bar_ac);
         TextView ac_edit_btn = view.findViewById(R.id.ac_edit_btn);
+        LinearLayout progress_bar_my_ac=view.findViewById(R.id.progress_bar_my_ac);
 
 
         close_edit_btn.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +129,7 @@ public class My_Account extends Fragment {
             }
         });
         //get and set value from database
+        progress_bar_my_ac.setVisibility(View.VISIBLE);
         databaseReference.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -144,6 +145,8 @@ public class My_Account extends Fragment {
                     ac_name_edit.setText(name);
                     ac_email_edit.setText(email);
                     ac_dept_edit.setText(dept);
+                    my_ac_show.setVisibility(View.VISIBLE);
+                    progress_bar_my_ac.setVisibility(View.GONE);
                 }
             }
 
@@ -186,7 +189,7 @@ public class My_Account extends Fragment {
                                 My_Account my_account = new My_Account();
                                 bundle1.putString("otp_id", mobile);
                                 my_account.setArguments(bundle1);
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account).commit();
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account,null).addToBackStack(null).commit();
                                  }
                         });
                     }
@@ -212,7 +215,7 @@ public class My_Account extends Fragment {
                             My_Account my_account = new My_Account();
                             bundle1.putString("otp_id", mobile);
                             my_account.setArguments(bundle1);
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account,null).addToBackStack(null).commit();
 
                         }
                     });

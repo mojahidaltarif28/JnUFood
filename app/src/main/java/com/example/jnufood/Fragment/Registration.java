@@ -52,9 +52,9 @@ public class Registration extends Fragment {
 
     private EditText phone, input_password, confirm_password, email, name, dept;
     Button btn_register;
-    TextView signin,text1;
+    TextView signin, text1;
     // TODO: Rename and change types of parameters
-    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     private String mParam1;
     private String mParam2;
 
@@ -98,7 +98,7 @@ public class Registration extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login()).commit();
             }
         });
 
@@ -113,7 +113,7 @@ public class Registration extends Fragment {
         dept = view.findViewById(R.id.input_dept);
         signin = view.findViewById(R.id.login_a);
         btn_register = view.findViewById(R.id.btn_register);
-        text1=view.findViewById(R.id.already_account);
+        text1 = view.findViewById(R.id.already_account);
 
         final ProgressBar progressBar = view.findViewById(R.id.progress_bar_r);
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +125,6 @@ public class Registration extends Fragment {
                 String confirm_password_s = confirm_password.getText().toString();
                 String name_s = name.getText().toString();
                 String dept_s = dept.getText().toString();
-
 
 
                 if (name_s.isEmpty()) {
@@ -145,11 +144,10 @@ public class Registration extends Fragment {
                     databaseReference.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(phone_s)){
-                               showError(phone,"Mobile number already registered");
+                            if (snapshot.hasChild(phone_s)) {
+                                showError(phone, "Mobile number already registered");
 
-                            }
-                            else {
+                            } else {
                                 //pass all value to the otp fragment
 
                                 progressBar.setVisibility(view.VISIBLE);
@@ -173,7 +171,7 @@ public class Registration extends Fragment {
                                                 progressBar.setVisibility(view.GONE);
                                                 signin.setVisibility(view.VISIBLE);
                                                 text1.setVisibility(view.VISIBLE);
-                                                Toast.makeText(getActivity(),"Please Check Your Internet Connection",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getActivity(), "Please Check Your Internet Connection", Toast.LENGTH_LONG).show();
                                             }
 
                                             @Override
@@ -182,16 +180,16 @@ public class Registration extends Fragment {
                                                 signin.setVisibility(view.INVISIBLE);
                                                 text1.setVisibility(view.INVISIBLE);
                                                 Toast.makeText(getActivity(), "OTP send to your mobile,please check", Toast.LENGTH_SHORT).show();
-                                                   Bundle bundle =new Bundle();
-                                                bundle.putString("name",name_s);
-                                                bundle.putString("mobile",phone_s);
-                                                bundle.putString("email",email_s);
-                                                bundle.putString("dept",dept_s);
-                                                bundle.putString("password",input_password_s);
-                                                bundle.putString("otp_id",verificationId);
-                                                OTP_Verify otp_verify=new OTP_Verify();
+                                                Bundle bundle = new Bundle();
+                                                bundle.putString("name", name_s);
+                                                bundle.putString("mobile", phone_s);
+                                                bundle.putString("email", email_s);
+                                                bundle.putString("dept", dept_s);
+                                                bundle.putString("password", input_password_s);
+                                                bundle.putString("otp_id", verificationId);
+                                                OTP_Verify otp_verify = new OTP_Verify();
                                                 otp_verify.setArguments(bundle);
-                                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,otp_verify).commit();
+                                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, otp_verify, null).addToBackStack(null).commit();
                                             }
                                         }
                                 );
@@ -200,11 +198,10 @@ public class Registration extends Fragment {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(getActivity(),"Registration failed database error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Registration failed database error", Toast.LENGTH_SHORT).show();
 
                         }
                     });
-
 
 
                 }
