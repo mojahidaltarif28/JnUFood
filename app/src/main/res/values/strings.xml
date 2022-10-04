@@ -16,6 +16,7 @@
     <string name="your_order">Your Order</string>
     <string name="history">History</string>
     <string name="home">Home</string>
+    <string name="root_fragment">ROOT_FRAGMENT_TAG</string>
     <string name="contact_us">Contact Us</string>
     <string name="about">About</string>
     <!-- TODO: Remove or change this placeholder text -->

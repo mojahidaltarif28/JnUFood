@@ -23,6 +23,8 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -45,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -153,7 +154,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                         bundle1.putString("otp_id", mobile);
                         homeFragment.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
+                        String ROOT_FRAGMENT_TAG="HomeFragment";
+                        FragmentManager fm=getSupportFragmentManager();
+                        FragmentTransaction ft=fm.beginTransaction();
+                        ft.replace(R.id.fragment, homeFragment,null).addToBackStack(null).commit();
+//                        fm.popBackStack();
                     }
                 }else {
                     Bundle bundle1 = new Bundle();

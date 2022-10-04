@@ -52,7 +52,6 @@ public class Registration extends Fragment {
 
     private EditText phone, input_password, confirm_password, email, name, dept;
     Button btn_register;
-    TextView signin, text1;
     // TODO: Rename and change types of parameters
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     private String mParam1;
@@ -94,15 +93,6 @@ public class Registration extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registration, container, false);
-        TextView btn = view.findViewById(R.id.login_a);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login()).commit();
-            }
-        });
-
-
         //password and phone validation and firebase connection
 
         phone = view.findViewById(R.id.registration_phone);
@@ -111,9 +101,7 @@ public class Registration extends Fragment {
         confirm_password = view.findViewById(R.id.confirm_password);
         name = view.findViewById(R.id.input_name);
         dept = view.findViewById(R.id.input_dept);
-        signin = view.findViewById(R.id.login_a);
         btn_register = view.findViewById(R.id.btn_register);
-        text1 = view.findViewById(R.id.already_account);
 
         final ProgressBar progressBar = view.findViewById(R.id.progress_bar_r);
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -151,8 +139,6 @@ public class Registration extends Fragment {
                                 //pass all value to the otp fragment
 
                                 progressBar.setVisibility(view.VISIBLE);
-                                signin.setVisibility(view.INVISIBLE);
-                                text1.setVisibility(view.INVISIBLE);
                                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                                         "+88" + phone.getText().toString(),
                                         60,
@@ -162,23 +148,17 @@ public class Registration extends Fragment {
                                             @Override
                                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                                 progressBar.setVisibility(view.GONE);
-                                                signin.setVisibility(view.VISIBLE);
-                                                text1.setVisibility(view.VISIBLE);
                                             }
 
                                             @Override
                                             public void onVerificationFailed(@NonNull FirebaseException e) {
                                                 progressBar.setVisibility(view.GONE);
-                                                signin.setVisibility(view.VISIBLE);
-                                                text1.setVisibility(view.VISIBLE);
                                                 Toast.makeText(getActivity(), "Please Check Your Internet Connection", Toast.LENGTH_LONG).show();
                                             }
 
                                             @Override
                                             public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                                 progressBar.setVisibility(view.GONE);
-                                                signin.setVisibility(view.INVISIBLE);
-                                                text1.setVisibility(view.INVISIBLE);
                                                 Toast.makeText(getActivity(), "OTP send to your mobile,please check", Toast.LENGTH_SHORT).show();
                                                 Bundle bundle = new Bundle();
                                                 bundle.putString("name", name_s);

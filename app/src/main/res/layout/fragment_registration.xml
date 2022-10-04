@@ -185,36 +185,6 @@
         app:layout_constraintStart_toStartOf="@+id/confirm_password"
         app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
 
-    <TextView
-        android:id="@+id/already_account"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:text="Already have an Account?"
-        android:textAlignment="center"
-        android:textColor="#0A6159"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/btn_register"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
-
-    <TextView
-        android:id="@+id/login_a"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="sans-serif"
-        android:text="Sign In"
-        android:textAlignment="textStart"
-        android:textColor="#E91E63"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_register"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/already_account"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
     <ImageView
         android:id="@+id/imageView3"

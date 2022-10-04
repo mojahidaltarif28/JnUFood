@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -235,8 +237,9 @@ public class Forgot_password_change_password extends Fragment {
                             progressBar_p.setVisibility(View.GONE);
                            new_password_part.setVisibility(View.GONE);
                            otp_verify_part.setVisibility(View.VISIBLE);
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login()).commit();
-
+                            FragmentManager fm=getActivity().getSupportFragmentManager();
+                            FragmentTransaction ft=fm.beginTransaction();
+                            ft.replace(R.id.fragment, new Login()).commit();
                         }
                     });
                 }

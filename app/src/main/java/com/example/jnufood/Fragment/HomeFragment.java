@@ -3,15 +3,33 @@ package com.example.jnufood.Fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jnufood.Get_Menu_Item;
+import com.example.jnufood.GridAdapter;
 import com.example.jnufood.R;
+import com.example.jnufood.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +37,11 @@ import com.example.jnufood.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    RecyclerView recyclerView;
+    GridView HomeGridView;
+    GridAdapter gridAdapter;
+    ArrayList<Get_Menu_Item> list;
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +52,7 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     String mobile;
+    GridView gridView;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -58,6 +82,7 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
     @SuppressLint("MissingInflatedId")
     @Override
@@ -70,6 +95,33 @@ public class HomeFragment extends Fragment {
             mobile = bundle.getString("otp_id");
         }
         Toast.makeText(getActivity(),"login:"+mobile,Toast.LENGTH_SHORT).show();
+
+//       gridview part
+        HomeGridView=view.findViewById(R.id.home_grid_view);
+       list=new ArrayList<>();
+        loadDataGridView();
         return view;
+    }
+
+    private void loadDataGridView() {
+        databaseReference.child("food_Item").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                   Get_Menu_Item get_menu_item=dataSnapshot.getValue(Get_Menu_Item.class);
+
+                   list.add(get_menu_item);
+                }
+                GridAdapter adapter=new GridAdapter(getActivity(),list);
+                HomeGridView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }
