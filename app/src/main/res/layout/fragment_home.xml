@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@color/orange1"
         android:orientation="vertical">
 
         <EditText
@@ -34,6 +35,22 @@
 
 
             />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/progress_bar_home"
+        android:visibility="visible"
+        android:orientation="vertical">
+    <ProgressBar
+
+        android:layout_marginTop="130dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/icon"
+         />
 
     </LinearLayout>
   <LinearLayout

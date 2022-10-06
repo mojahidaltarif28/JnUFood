@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/layout_bg"
+        android:background="@drawable/grid_image_bg"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -16,7 +16,6 @@
             android:id="@+id/grid_image_home"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/layout_bg"
             android:scaleType="centerCrop"
              />
 
@@ -27,7 +26,7 @@
             android:fontFamily="casual"
             android:text="Fast Food"
             android:textAlignment="center"
-            android:textColor="@color/orange"
+            android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
 

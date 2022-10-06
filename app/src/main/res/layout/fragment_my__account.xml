@@ -78,7 +78,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Name"
-                    android:textColor="#3e3b3b"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="14sp" />
 
 
@@ -89,7 +90,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="20dp" />
 
 
@@ -112,7 +114,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Mobile"
-                    android:textColor="#3e3b3b"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="13dp" />
 
                 <TextView
@@ -122,7 +125,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="20dp" />
 
 
@@ -144,7 +148,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Email"
-                    android:textColor="#3e3b3b"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="14sp" />
 
                 <TextView
@@ -154,7 +159,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="20dp" />
 
 
@@ -177,7 +183,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Department"
-                    android:textColor="#3e3b3b"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="14sp" />
 
 
@@ -188,7 +195,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="20dp" />
 
 
@@ -211,7 +219,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Password"
-                    android:textColor="#3e3b3b"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="14sp" />
 
 
@@ -223,7 +232,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="********"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/white"
+                    android:fontFamily="casual"
                     android:textSize="20dp" />
 
 
@@ -265,7 +275,7 @@
                     android:layout_marginLeft="19dp"
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/ic_arrow_back"
-                    android:textColor="@color/red1"
+                    android:textColor="@color/orange"
                     android:textSize="20dp" />
 
                 <TextView
@@ -298,7 +308,7 @@
                     android:layout_marginRight="5dp"
                     android:paddingLeft="5dp"
                     android:text="Edit Name"
-                    android:textColor="#3e3b3b"
+                    android:textColor="#0077c0"
                     android:textSize="13dp" />
 
                 <EditText
@@ -334,7 +344,7 @@
                     android:layout_marginRight="5dp"
                     android:paddingLeft="5dp"
                     android:text="Edit Email"
-                    android:textColor="#3e3b3b"
+                    android:textColor="#0077c0"
                     android:textSize="13dp" />
 
                 <EditText
@@ -371,7 +381,7 @@
                     android:layout_marginRight="5dp"
                     android:paddingLeft="5dp"
                     android:text="Edit Department"
-                    android:textColor="#3e3b3b"
+                    android:textColor="#0077c0"
                     android:textSize="13dp" />
 
                 <EditText
@@ -406,7 +416,7 @@
                     android:layout_marginRight="5dp"
                     android:paddingLeft="5dp"
                     android:text="Current Password(for changing password)"
-                    android:textColor="#3e3b3b"
+                    android:textColor="#0077c0"
                     android:textSize="13dp" />
 
                 <EditText
@@ -446,7 +456,7 @@
                     android:layout_marginRight="5dp"
                     android:paddingLeft="5dp"
                     android:text="New Password"
-                    android:textColor="#3e3b3b"
+                    android:textColor="#0077c0"
                     android:textSize="13dp" />
 
                 <EditText
@@ -486,7 +496,7 @@
                     android:layout_marginRight="5dp"
                     android:paddingLeft="5dp"
                     android:text="Confirm Password"
-                    android:textColor="#3e3b3b"
+                    android:textColor="#0077c0"
                     android:textSize="13dp" />
 
                 <EditText
