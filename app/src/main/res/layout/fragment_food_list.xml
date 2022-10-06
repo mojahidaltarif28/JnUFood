@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
     tools:context=".Fragment.FoodList">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@color/orange1"
+        android:orientation="horizontal">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/search"
+            android:drawableLeft="@drawable/ic_search_"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Search"
+            android:padding="10dp"
+            android:minHeight="48dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#242526"
+            android:textColorHint="#242526"
+            android:textSize="16sp"
+
+
+            />
+        <TextView
+            android:layout_marginTop="-10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_cart"
+            />
+
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/progress_bar_food_list"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <ProgressBar
+            android:layout_marginTop="130dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/icon"
+            />
 
-</FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/food_list_grid_view"
+            android:numColumns="3"
+
+            />
+    </LinearLayout>
+</LinearLayout>

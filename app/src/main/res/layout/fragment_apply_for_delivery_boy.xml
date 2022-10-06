@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#21FFC107"
     tools:context=".Fragment.ApplyForDeliveryBoy">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp"
+    >
 
-    <EditText
-        android:id="@+id/input_name"
-        android:layout_width="0dp"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/icon"
+        />
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:text="Application Form"
+        android:textAlignment="center"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        />
+    <EditText
+        android:id="@+id/dba_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Name"
+        android:hint="Full Name"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -29,21 +49,58 @@
         android:textColor="#242526"
         android:textColorHint="#242526"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        />
+    <EditText
+        android:id="@+id/dba_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/ic_baseline_phone_24"
+        android:drawablePadding="10dp"
+        android:hint="@string/phone"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#242526"
+        android:textColorHint="#242526"
+        android:textSize="16sp"
+        />
 
     <EditText
-        android:id="@+id/input_dept"
-        android:layout_width="0dp"
+        android:id="@+id/dba_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/ic__email"
+        android:drawablePadding="10dp"
+        android:hint="Email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#242526"
+        android:textColorHint="#242526"
+        android:textSize="16sp"
+        />
+
+
+    <EditText
+        android:id="@+id/dba_address"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_department"
         android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Department Name"
+        android:hint="Address"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -54,13 +111,11 @@
         android:textColor="#242526"
         android:textColorHint="#242526"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/input_email"
-        app:layout_constraintStart_toStartOf="@+id/input_email"
-        app:layout_constraintTop_toBottomOf="@+id/input_email" />
+         />
 
     <EditText
         android:id="@+id/input_password"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/input_bg"
@@ -79,69 +134,14 @@
         android:textColor="#242526"
         android:textColorHint="#242526"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/input_dept"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/input_dept"
-        app:layout_constraintTop_toBottomOf="@+id/input_dept" />
-
-    <EditText
-        android:id="@+id/registration_phone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_baseline_phone_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="@string/phone"
-        android:importantForAutofill="no"
-        android:inputType="phone"
-        android:minHeight="48dp"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#242526"
-        android:textColorHint="#242526"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/input_name"
-        app:layout_constraintStart_toStartOf="@+id/input_name"
-        app:layout_constraintTop_toBottomOf="@+id/input_name"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/input_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic__email"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Email (Optional)"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#242526"
-        android:textColorHint="#242526"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/registration_phone"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/registration_phone"
-        app:layout_constraintTop_toBottomOf="@+id/registration_phone"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
+       />
     <EditText
         android:id="@+id/confirm_password"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_security"
-        android:drawableRight="@drawable/ic_show"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Confirm password"
@@ -154,48 +154,35 @@
         android:textColor="#242526"
         android:textColorHint="#242526"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/input_password"
-        app:layout_constraintStart_toStartOf="@+id/input_password"
-        app:layout_constraintTop_toBottomOf="@+id/input_password"
-        tools:ignore="TouchTargetSizeCheck" />
+        />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
     <ProgressBar
-        android:id="@+id/progress_bar_r"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:id="@+id/dba_progress_bar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
         android:background="@drawable/icon"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        />
 
     <Button
-        android:id="@+id/btn_register"
-        android:layout_width="0dp"
+        android:id="@+id/dba_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="sans-serif-light"
-        android:text="Register"
+        android:text="Submit"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/confirm_password"
-        app:layout_constraintStart_toStartOf="@+id/confirm_password"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+       />
+    </LinearLayout>
 
+</LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

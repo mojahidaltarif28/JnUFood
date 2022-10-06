@@ -7,10 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +35,6 @@ import java.util.ArrayList;
  */
 public class HomeFragment extends Fragment  {
     GridView HomeGridView;
-    GridAdapter gridAdapter;
     LinearLayout progressbar;
     ArrayList<Get_Menu_Item> list;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
@@ -46,7 +48,6 @@ public class HomeFragment extends Fragment  {
     private String mParam1;
     private String mParam2;
     String mobile;
-    GridView gridView;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -112,7 +113,13 @@ public class HomeFragment extends Fragment  {
                 adapter.setOnClickEvent(new GridAdapter.OnClickEvent() {
                     @Override
                     public void onhomeclick(String name) {
-                        Toast.makeText(getActivity(),name+""+mobile,Toast.LENGTH_SHORT).show();
+                        FoodList foodList = new FoodList();
+                        Bundle bundle=new Bundle();
+                        bundle.putString("id", mobile);
+                        bundle.putString("item_name",name);
+                        foodList.setArguments(bundle);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, foodList,null).addToBackStack(null).commit();
+
                     }
                 });
                 progressbar.setVisibility(View.GONE);
@@ -123,7 +130,43 @@ public class HomeFragment extends Fragment  {
 
             }
         });
+        //search item
+//        MenuItem s=view.findViewById(R.id.menu_item_search);
+//        SearchView searchView=(SearchView)s.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                txtSearch(s);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                txtSearch(s);
+//                return false;
+//            }
+//        });
         return view;
     }
-
+    private void txtSearch(String str){
+//        databaseReference.child("food_Item").orderByChild("name").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                list.clear();
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    Get_Menu_Item get_menu_item = dataSnapshot.getValue(Get_Menu_Item.class);
+//                    list.add(get_menu_item);
+//                }
+//                GridAdapter adapter = new GridAdapter(getActivity(),list);
+//                HomeGridView.setAdapter(adapter);
+//
+//    }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//
+//        });
+    }
 }

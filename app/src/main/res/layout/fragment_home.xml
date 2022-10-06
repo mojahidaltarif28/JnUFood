@@ -7,24 +7,23 @@
     android:orientation="vertical"
     tools:context=".Fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="43dp"
         android:background="@color/orange1"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+        <SearchView
+            android:id="@+id/menu_item_search"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/search"
             android:drawableLeft="@drawable/ic_search_"
             android:fontFamily="sans-serif-medium"
-            android:hint="Search"
-            android:minHeight="48dp"
             android:padding="10dp"
+            android:minHeight="48dp"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
@@ -35,13 +34,19 @@
 
 
             />
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_cart"
+            />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/progress_bar_home"
-        android:visibility="visible"
+        android:visibility="gone"
         android:orientation="vertical">
     <ProgressBar
 

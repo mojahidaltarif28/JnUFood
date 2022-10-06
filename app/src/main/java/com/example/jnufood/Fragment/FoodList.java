@@ -2,13 +2,28 @@ package com.example.jnufood.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.jnufood.Food_List_Adapter;
+import com.example.jnufood.Get_Food_List;
+import com.example.jnufood.Get_Menu_Item;
+import com.example.jnufood.GridAdapter;
 import com.example.jnufood.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +31,11 @@ import com.example.jnufood.R;
  * create an instance of this fragment.
  */
 public class FoodList extends Fragment {
+    String mobile,item_name;
+    GridView gridView;
+    LinearLayout progressbar;
+   ArrayList<Get_Food_List> list;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +80,45 @@ public class FoodList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.fragment_food_list, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_list, container, false);
+        progressbar=view.findViewById(R.id.progress_bar_food_list);
+        progressbar.setVisibility(View.VISIBLE);
+        Bundle bundle = this.getArguments();
+        if (getArguments().getString("id") != null ||getArguments().getString("item_name")!=null) {
+            mobile = bundle.getString("id");
+            item_name=bundle.getString("item_name");
+        }
+        Toast.makeText(getActivity(), mobile+":"+item_name, Toast.LENGTH_SHORT).show();
+
+        gridView=view.findViewById(R.id.food_list_grid_view);
+        list=new ArrayList<>();
+        databaseReference.child("food_Item").child(item_name).child("item list").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Get_Food_List get_food_list=dataSnapshot.getValue(Get_Food_List.class);
+                    list.add(get_food_list);
+                }
+                Food_List_Adapter adapter=new Food_List_Adapter(getActivity(),list);
+                gridView.setAdapter(adapter);
+                adapter.setOnCLickEventFoodList(new Food_List_Adapter.OnCLickEventFoodList() {
+                    @Override
+                    public void on_click_food_list(String name, String amount, String price, String restaurant) {
+                        Toast.makeText(getActivity(),"name:"+name,Toast.LENGTH_SHORT).show();
+                    }
+                });
+           progressbar.setVisibility(View.GONE );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        return view;
     }
 }
