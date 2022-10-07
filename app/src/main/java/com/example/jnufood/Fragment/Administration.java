@@ -1,5 +1,7 @@
 package com.example.jnufood.Fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
 
 /**
@@ -56,11 +60,23 @@ public class Administration extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_administration, container, false);
+        View view= inflater.inflate(R.layout.fragment_administration, container, false);
+        Button ad_btn=view.findViewById(R.id.ad_btn_login);
+        ad_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in=new Intent(getActivity(), MainActivity.class);
+                in.putExtra("login_code","-50");
+                in.putExtra("mobile","01717268128");
+                in.putExtra("type","Admin");
+                startActivity(in);
+            }
+        });
+        return view;
     }
 }

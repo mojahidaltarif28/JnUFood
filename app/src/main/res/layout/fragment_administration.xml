@@ -1,14 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#21FFC107"
+    android:padding="10dp"
     tools:context=".Fragment.Administration">
-
-    <!-- TODO: Update blank fragment layout -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/icon" />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Administration fragment" />
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:layout_gravity="center"
+        android:text="Administration Log in"
+        android:textColor="@color/orange"
+        android:textSize="26sp"
+     />
 
-</FrameLayout>
+
+    <EditText
+        android:id="@+id/ad_login_phone"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:layout_marginTop="40dp"
+        android:hint="@string/phone"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#242526"
+        android:textColorHint="#242526"
+        android:textSize="16sp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/ad_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/ic_security"
+        android:drawableRight="@drawable/ic_show"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#242526"
+        android:textColorHint="#242526"
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/ad_incorrect_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/wrong_bg"
+        android:paddingLeft="25dp"
+        android:layout_gravity="center"
+        android:paddingRight="25dp"
+        android:text="Incorrect mobile number or password"
+        android:textColor="#FF0000"
+        android:textSize="13dp"
+        android:visibility="gone"
+         />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+    <Button
+        android:id="@+id/ad_btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-light"
+        android:text="Sign In"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+      />
+
+    <ProgressBar
+        android:id="@+id/login_progressbar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/icon"
+        android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

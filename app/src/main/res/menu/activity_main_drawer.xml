@@ -19,19 +19,19 @@
         <item
             android:id="@+id/my_Account"
             android:icon="@drawable/ic_my_account"
-            android:visible="false"
-            android:title="My Account" />
+            android:title="My Account"
+            android:visible="false" />
 
         <item
             android:id="@+id/your_Order"
             android:icon="@drawable/ic_cart"
-            android:visible="false"
-            android:title="@string/your_order" />
+            android:title="@string/your_order"
+            android:visible="false" />
         <item
             android:id="@+id/history"
             android:icon="@drawable/ic_history"
-            android:visible="false"
-            android:title="@string/history" />
+            android:title="@string/history"
+            android:visible="false" />
         <item
             android:id="@+id/nav_applyForDeliveryBoy"
             android:icon="@drawable/ic_find"
@@ -40,8 +40,6 @@
             android:id="@+id/nav_administration"
             android:icon="@drawable/ic_admin"
             android:title="@string/administraion" />
-
-
 
         <item
             android:id="@+id/contact_us"
@@ -56,8 +54,8 @@
                 android:title="Terms and conditions" />
             <item
                 android:id="@+id/nav_logout"
-                android:visible="false"
-                android:title="@string/log_out" />
+                android:title="@string/log_out"
+                android:visible="false" />
         </menu>
     </item>
 </menu>

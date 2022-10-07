@@ -39,9 +39,11 @@ OnCLickEventFoodList onCLickEventFoodList;
         TextView amount=list_item_view.findViewById(R.id.grid_item_amount);
         TextView price=list_item_view.findViewById(R.id.grid_item_price);
         ImageView photo=list_item_view.findViewById(R.id.grid_image_food_list);
+        TextView restaurant=list_item_view.findViewById(R.id.restaurant);
         name.setText(get_food_list.getName());
         amount.setText(get_food_list.getAmount());
         price.setText(get_food_list.getPrice());
+        restaurant.setText(get_food_list.getRestaurant());
         Picasso.get().load(get_food_list.getPhoto()).into(photo);
         list_item_view.setOnClickListener(new View.OnClickListener() {
             @Override

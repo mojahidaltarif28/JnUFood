@@ -56,20 +56,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         Bundle bundle = getIntent().getExtras();
+        Bundle bundle1 = new Bundle();
         if (savedInstanceState == null) {
             HomeFragment homeFragment=new HomeFragment();
             if (bundle != null) {
-                if (bundle.getString("login_code") != null) {
+                if (bundle.getString("login_code") != null && bundle.getString("type")!=null) {
                     String mobile = bundle.getString("mobile");
-                    Bundle bundle1 = new Bundle();
-
+                    String type=bundle.getString("type");
                     bundle1.putString("otp_id", mobile);
+                    bundle1.putString("type",type);
                     homeFragment.setArguments(bundle1);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
                 }
             }else {
-                Bundle bundle1 = new Bundle();
+
                 bundle1.putString("otp_id","");
+                bundle1.putString("type","Customer");
                 homeFragment.setArguments(bundle1);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
             }
@@ -92,9 +94,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
                     navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
-                } else {
 
+                }
+                else if(login_value.equals("-50")){
                     Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                    navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.history).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.your_Order).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
+                }
+                else {
+
+                    Toast.makeText(this, "Logout:"+mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(true);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);
@@ -150,9 +164,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (bundle != null) {
                     if (bundle.getString("login_code") != null) {
                         String mobile = bundle.getString("mobile");
+                        String type=bundle.getString("type");
                         Bundle bundle1 = new Bundle();
 
                         bundle1.putString("otp_id", mobile);
+                        bundle1.putString("type",type);
                         homeFragment.setArguments(bundle1);
                         String ROOT_FRAGMENT_TAG="HomeFragment";
                         FragmentManager fm=getSupportFragmentManager();
@@ -163,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }else {
                     Bundle bundle1 = new Bundle();
                     bundle1.putString("otp_id","");
+                    bundle1.putString("type","Customer");
                     homeFragment.setArguments(bundle1);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
                 }
@@ -216,8 +233,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (bundle != null) {
                     if (bundle.getString("login_code") != null) {
                         String mobile = bundle.getString("mobile");
+                        String type=bundle.getString("type");
                         Bundle bundle1 = new Bundle();
                         Logout logout = new Logout();
+                        bundle1.putString("type",type);
                         bundle1.putString("otp_id", mobile);
                         logout.setArguments(bundle1);
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logout,null).addToBackStack(null).commit();

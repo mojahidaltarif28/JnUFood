@@ -8,67 +8,89 @@
     tools:context=".Fragment.HomeFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:background="@color/orange1"
-        android:orientation="horizontal">
-
-        <SearchView
-            android:id="@+id/menu_item_search"
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/search"
-            android:drawableLeft="@drawable/ic_search_"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:minHeight="48dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="#242526"
-            android:textColorHint="#242526"
-            android:textSize="16sp"
-
-
-            />
-        <TextView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_cart"
-            />
-
-    </LinearLayout>
-    <LinearLayout
+        android:id="@+id/home_customer_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/progress_bar_home"
+        android:orientation="vertical"
         android:visibility="gone"
-        android:orientation="vertical">
-    <ProgressBar
+        >
 
-        android:layout_marginTop="130dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:background="@drawable/icon"
-         />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="@color/orange1"
+            android:orientation="horizontal">
 
+            <SearchView
+                android:id="@+id/menu_item_search"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/search"
+                android:drawableLeft="@drawable/ic_search_"
+                android:fontFamily="sans-serif-medium"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="#242526"
+                android:textColorHint="#242526"
+                android:textSize="16sp"
+
+
+                />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ic_cart" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/progress_bar_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="130dp"
+                android:background="@drawable/icon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <GridView
+                android:id="@+id/home_grid_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="3"
+
+                />
+        </LinearLayout>
     </LinearLayout>
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
-      <GridView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/home_grid_view"
-          android:numColumns="3"
-
-          />
-  </LinearLayout>
-
+    <LinearLayout
+        android:id="@+id/home_admin_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Admin Home"
+            />
+    </LinearLayout>
 </LinearLayout>

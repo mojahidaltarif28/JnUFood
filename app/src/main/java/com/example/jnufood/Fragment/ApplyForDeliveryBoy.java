@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.jnufood.R;
 
@@ -60,7 +62,18 @@ public class ApplyForDeliveryBoy extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.fragment_apply_for_delivery_boy, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_apply_for_delivery_boy, container, false);
+        LinearLayout dba_form=view.findViewById(R.id.dba_app_form);
+        LinearLayout dba_msg=view.findViewById(R.id.dba_success_msg);
+        Button dba_submit_btn=view.findViewById(R.id.dba_btn);
+        dba_submit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dba_form.setVisibility(View.GONE);
+                dba_msg.setVisibility(View.VISIBLE);
+            }
+        });
+        return view;
     }
 }

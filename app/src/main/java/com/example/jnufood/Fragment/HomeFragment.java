@@ -33,7 +33,7 @@ import java.util.ArrayList;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment  {
+public class HomeFragment extends Fragment {
     GridView HomeGridView;
     LinearLayout progressbar;
     ArrayList<Get_Menu_Item> list;
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment  {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String mobile;
+    String mobile, type;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -92,11 +92,16 @@ public class HomeFragment extends Fragment  {
         progressbar = view.findViewById(R.id.progress_bar_home);
         progressbar.setVisibility(View.VISIBLE);
         Bundle bundle = this.getArguments();
-        if (getArguments().getString("otp_id") != null) {
-            mobile = bundle.getString("otp_id");
-        }
-        Toast.makeText(getActivity(), "login:" + mobile, Toast.LENGTH_SHORT).show();
+        mobile = bundle.getString("otp_id");
+        type = bundle.getString("type");
+
+        LinearLayout customer_home_show = view.findViewById(R.id.home_customer_view);
+        LinearLayout Admin_home_show = view.findViewById(R.id.home_admin_view);
+        Toast.makeText(getActivity(), "login:" + mobile + " type:" + type, Toast.LENGTH_SHORT).show();
 //       gridview part
+        if(type.equals("Customer")){
+            Admin_home_show.setVisibility(View.GONE);
+            customer_home_show.setVisibility(View.VISIBLE);
         HomeGridView = view.findViewById(R.id.home_grid_view);
         list = new ArrayList<>();
         databaseReference.child("food_Item").addValueEventListener(new ValueEventListener() {
@@ -108,17 +113,17 @@ public class HomeFragment extends Fragment  {
 
                     list.add(get_menu_item);
                 }
-                GridAdapter adapter = new GridAdapter(getActivity(),list);
+                GridAdapter adapter = new GridAdapter(getActivity(), list);
                 HomeGridView.setAdapter(adapter);
                 adapter.setOnClickEvent(new GridAdapter.OnClickEvent() {
                     @Override
                     public void onhomeclick(String name) {
                         FoodList foodList = new FoodList();
-                        Bundle bundle=new Bundle();
+                        Bundle bundle = new Bundle();
                         bundle.putString("id", mobile);
-                        bundle.putString("item_name",name);
+                        bundle.putString("item_name", name);
                         foodList.setArguments(bundle);
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, foodList,null).addToBackStack(null).commit();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, foodList, null).addToBackStack(null).commit();
 
                     }
                 });
@@ -130,6 +135,14 @@ public class HomeFragment extends Fragment  {
 
             }
         });
+
+        } else if (type.equals("Admin")) {
+            Admin_home_show.setVisibility(View.VISIBLE);
+            customer_home_show.setVisibility(View.GONE);
+        } else {
+            Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
+        }
+
         //search item
 //        MenuItem s=view.findViewById(R.id.menu_item_search);
 //        SearchView searchView=(SearchView)s.getActionView();
@@ -148,7 +161,8 @@ public class HomeFragment extends Fragment  {
 //        });
         return view;
     }
-    private void txtSearch(String str){
+
+    private void txtSearch(String str) {
 //        databaseReference.child("food_Item").orderByChild("name").addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {

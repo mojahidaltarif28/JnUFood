@@ -214,6 +214,7 @@ public class OTP_Verify extends Fragment  {
                                                        Intent in=new Intent(getActivity(), MainActivity.class);
                                                        in.putExtra("login_code","-505");
                                                        in.putExtra("mobile",phone);
+                                                       in.putExtra("type","Customer");
                                                        startActivity(in);
                                                    }
                                                }

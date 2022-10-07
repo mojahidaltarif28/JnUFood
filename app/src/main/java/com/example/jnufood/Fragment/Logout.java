@@ -76,10 +76,9 @@ public class Logout extends Fragment {
     TextView logout_code=view.findViewById(R.id.logout_code);
     Bundle bundle=this.getArguments();
     String mobile;
-    if(getArguments().getString("otp_id")!=null){
         mobile = bundle.getString("otp_id");
         logout_code.setText(mobile);
-    }
+        String type=bundle.getString("type");
         builder=new AlertDialog.Builder(getActivity());
        builder.setTitle("Alert!!")
                .setMessage("Do you want to Logged out")
@@ -90,8 +89,9 @@ public class Logout extends Fragment {
                        getActivity().finish();
                        Toast.makeText(getActivity(),"Successfully Logged Out",Toast.LENGTH_SHORT).show();
                        Intent in=new Intent(getActivity(), MainActivity.class);
-                       in.putExtra("login_code","-50");
+                       in.putExtra("login_code","-51");
                        in.putExtra("mobile","");
+                       in.putExtra("type","Customer");
                        startActivity(in);
                    }
                })
@@ -102,6 +102,7 @@ public class Logout extends Fragment {
                        String logout_code_m=logout_code.getText().toString();
                        Bundle bundle1=new Bundle();
                        bundle1.putString("otp_id",logout_code_m);
+                       bundle1.putString("type",type);
                       HomeFragment homeFragment=new HomeFragment();
                        homeFragment.setArguments(bundle1);
                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,homeFragment).commit();
