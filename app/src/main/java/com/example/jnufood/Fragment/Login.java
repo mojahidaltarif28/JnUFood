@@ -91,6 +91,7 @@ public class Login extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         TextView btn = view.findViewById(R.id.signup);
+        TextView forgot_password=view.findViewById(R.id.forgot_password);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,20 +104,39 @@ public class Login extends Fragment {
          login_password = view.findViewById(R.id.login_password);
          login_btn = view.findViewById(R.id.btn_login);
          incorrect_pass=view.findViewById(R.id.incorrect_password);
+         TextView dont_ac_txt=view.findViewById(R.id.dont_ac_txt);
        final ProgressBar progressBar=view.findViewById(R.id.login_progressbar);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                incorrect_pass.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
+                btn.setVisibility(View.GONE);
+                dont_ac_txt.setVisibility(View.GONE);
+                forgot_password.setVisibility(View.GONE);
                 String login_phone_s=login_phone.getText().toString();
                 String login_password_s=login_password.getText().toString();
                 if(login_phone_s.isEmpty()){
-                    showError(login_phone,"please enter your phone number");
+                    showError(login_phone,"please enter your mobile number");
+                    incorrect_pass.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
+                    btn.setVisibility(View.VISIBLE);
+                    dont_ac_txt.setVisibility(View.VISIBLE);
+                    forgot_password.setVisibility(View.VISIBLE);
                 }
                 else if(login_phone_s.length()!=11){
-                    incorrect_pass.setVisibility(View.VISIBLE);
+                    showError(login_phone,"Mobile number must be 11 digit");
+                    progressBar.setVisibility(View.GONE);
+                    btn.setVisibility(View.VISIBLE);
+                    dont_ac_txt.setVisibility(View.VISIBLE);
+                    forgot_password.setVisibility(View.VISIBLE);
                 }
                 else if(login_password_s.isEmpty()||login_password_s.length()<6){
                    incorrect_pass.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+                    btn.setVisibility(View.VISIBLE);
+                    dont_ac_txt.setVisibility(View.VISIBLE);
+                    forgot_password.setVisibility(View.VISIBLE);
                 }
                 else{
                     databaseReference.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -128,6 +148,8 @@ public class Login extends Fragment {
                                     incorrect_pass.setVisibility(View.GONE);
                                     progressBar.setVisibility(View.VISIBLE);
                                     btn.setVisibility(View.GONE);
+                                    dont_ac_txt.setVisibility(View.GONE);
+                                    forgot_password.setVisibility(View.GONE);
                                     getActivity().finish();
                                     Toast.makeText(getActivity(),"Successfully Logged In",Toast.LENGTH_SHORT).show();
                                     Intent in=new Intent(getActivity(), MainActivity.class);
@@ -140,10 +162,18 @@ public class Login extends Fragment {
                                 }
                                 else{
                                     incorrect_pass.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.GONE);
+                                    btn.setVisibility(View.VISIBLE);
+                                    dont_ac_txt.setVisibility(View.VISIBLE);
+                                    forgot_password.setVisibility(View.VISIBLE);
                                 }
                             }
                             else {
                                incorrect_pass.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+                                btn.setVisibility(View.VISIBLE);
+                                dont_ac_txt.setVisibility(View.VISIBLE);
+                                forgot_password.setVisibility(View.VISIBLE);
                             }
                         }
 
@@ -187,7 +217,7 @@ public class Login extends Fragment {
             }
         });
 
-        TextView forgot_password=view.findViewById(R.id.forgot_password);
+
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

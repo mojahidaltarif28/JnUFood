@@ -9,10 +9,17 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 
+import com.example.jnufood.Fragment.Add_Admin;
+import com.example.jnufood.Fragment.Add_Menu_Item;
+import com.example.jnufood.Fragment.Admin_Account;
 import com.example.jnufood.Fragment.Administration;
 import com.example.jnufood.Fragment.ApplyForDeliveryBoy;
 import com.example.jnufood.Fragment.Contact_Us;
+import com.example.jnufood.Fragment.Customer_List;
+import com.example.jnufood.Fragment.Delivery_Boy_Account;
+import com.example.jnufood.Fragment.Delivery_Boy_List;
 import com.example.jnufood.Fragment.History;
+import com.example.jnufood.Fragment.History_Delivery_Boy;
 import com.example.jnufood.Fragment.HomeFragment;
 import com.example.jnufood.Fragment.Login;
 import com.example.jnufood.Fragment.Logout;
@@ -86,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String login_value = bundle.getString("login_code");
                 String mobile = bundle.getString("mobile");
                 if (login_value.equals("-505")) {
+                    //customer
                     Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(true);
@@ -95,8 +103,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
 
+                    navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.customer_List).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.add_Admin).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(false);
+
+                    navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(false);
+
                 }
                 else if(login_value.equals("-50")){
+                    //admin
                     Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
@@ -105,6 +123,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
                     navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
+
+                    navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.customer_List).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.add_Admin).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(false);
+
+                }
+                else if(login_value.equals("-100")){
+                    //delivery boy
+                    Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                    navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.history).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.your_Order).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
+
+                    navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.customer_List).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.add_Admin).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(false);
+
+                    navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(true);
+
                 }
                 else {
 
@@ -245,6 +293,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                    break;
             case R.id.contact_us:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Contact_Us(),null).addToBackStack(null).commit();
+                break;
+
+            case R.id.add_Menu_Item:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Add_Menu_Item(),null).addToBackStack(null).commit();
+                break;
+            case R.id.customer_List:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Customer_List(),null).addToBackStack(null).commit();
+                break;
+            case R.id.delivery_Boy_List:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Delivery_Boy_List(),null).addToBackStack(null).commit();
+                break;
+            case R.id.add_Admin:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Add_Admin(),null).addToBackStack(null).commit();
+                break;
+            case R.id.admin_Account:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Admin_Account(),null).addToBackStack(null).commit();
+                break;
+            case R.id.history_Delivery_Boy:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new History_Delivery_Boy(),null).addToBackStack(null).commit();
+                break;
+            case R.id.delivery_Boy_Account:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Delivery_Boy_Account(),null).addToBackStack(null).commit();
                 break;
 
         }

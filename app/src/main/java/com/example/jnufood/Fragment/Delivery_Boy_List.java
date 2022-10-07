@@ -12,10 +12,10 @@ import com.example.jnufood.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DeliveyBoy#newInstance} factory method to
+ * Use the {@link Delivery_Boy_List#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DeliveyBoy extends Fragment {
+public class Delivery_Boy_List extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class DeliveyBoy extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DeliveyBoy() {
+    public Delivery_Boy_List() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class DeliveyBoy extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DeliveyBoy.
+     * @return A new instance of fragment Delivery_Boy_List.
      */
     // TODO: Rename and change types and number of parameters
-    public static DeliveyBoy newInstance(String param1, String param2) {
-        DeliveyBoy fragment = new DeliveyBoy();
+    public static Delivery_Boy_List newInstance(String param1, String param2) {
+        Delivery_Boy_List fragment = new Delivery_Boy_List();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class DeliveyBoy extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delivey_boy, container, false);
+        return inflater.inflate(R.layout.fragment_delivery__boy__list, container, false);
     }
 }

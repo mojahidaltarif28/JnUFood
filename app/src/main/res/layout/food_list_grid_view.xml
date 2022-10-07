@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:text="Net:"
                     android:textAlignment="center"
-                    android:textColor="#b1fc03"
+                    android:textColor="@color/green_yellow"
                     android:textSize="13sp" />
 
                 <TextView

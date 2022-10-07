@@ -106,7 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/dont_ac_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"

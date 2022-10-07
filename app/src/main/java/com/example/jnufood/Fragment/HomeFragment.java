@@ -97,10 +97,12 @@ public class HomeFragment extends Fragment {
 
         LinearLayout customer_home_show = view.findViewById(R.id.home_customer_view);
         LinearLayout Admin_home_show = view.findViewById(R.id.home_admin_view);
+        LinearLayout db_home_show=view.findViewById(R.id.home_db_view);
         Toast.makeText(getActivity(), "login:" + mobile + " type:" + type, Toast.LENGTH_SHORT).show();
 //       gridview part
         if(type.equals("Customer")){
             Admin_home_show.setVisibility(View.GONE);
+            db_home_show.setVisibility(View.GONE);
             customer_home_show.setVisibility(View.VISIBLE);
         HomeGridView = view.findViewById(R.id.home_grid_view);
         list = new ArrayList<>();
@@ -137,9 +139,17 @@ public class HomeFragment extends Fragment {
         });
 
         } else if (type.equals("Admin")) {
-            Admin_home_show.setVisibility(View.VISIBLE);
+            db_home_show.setVisibility(View.GONE);
             customer_home_show.setVisibility(View.GONE);
-        } else {
+            Admin_home_show.setVisibility(View.VISIBLE);
+
+        }else if(type.equals("Delivery")){
+            customer_home_show.setVisibility(View.GONE);
+            Admin_home_show.setVisibility(View.GONE);
+            db_home_show.setVisibility(View.VISIBLE);
+        }
+
+        else{
             Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
         }
 

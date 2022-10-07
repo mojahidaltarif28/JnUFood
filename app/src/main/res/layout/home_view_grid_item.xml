@@ -26,7 +26,7 @@
             android:fontFamily="casual"
             android:text="Fast Food"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/green_yellow"
             android:textSize="16sp" />
     </LinearLayout>
 

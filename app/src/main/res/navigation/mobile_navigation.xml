@@ -70,5 +70,55 @@
         android:name="com.example.jnufood.Fragment.Forgot_password_change_password"
         android:label="fragment_forgot_password_change_password"
         tools:layout="@layout/fragment_forgot_password_change_password" />
+    <fragment
+        android:id="@+id/add_Menu_Item"
+        android:name="com.example.jnufood.Fragment.Add_Menu_Item"
+        android:label="fragment_add__menu__item"
+        tools:layout="@layout/fragment_add__menu__item" />
+    <fragment
+        android:id="@+id/admin_Account"
+        android:name="com.example.jnufood.Fragment.Admin_Account"
+        android:label="fragment_admin__account"
+        tools:layout="@layout/fragment_admin__account" />
+    <fragment
+        android:id="@+id/application_Admin"
+        android:name="com.example.jnufood.Fragment.Application_Admin"
+        android:label="fragment_application__admin"
+        tools:layout="@layout/fragment_application__admin" />
+    <fragment
+        android:id="@+id/customer_List"
+        android:name="com.example.jnufood.Fragment.Customer_List"
+        android:label="fragment_customer__list"
+        tools:layout="@layout/fragment_customer__list" />
+    <fragment
+        android:id="@+id/delivery_Boy_List"
+        android:name="com.example.jnufood.Fragment.Delivery_Boy_List"
+        android:label="fragment_delivery__boy__list"
+        tools:layout="@layout/fragment_delivery__boy__list" />
+    <fragment
+        android:id="@+id/delivery_Boy_Account"
+        android:name="com.example.jnufood.Fragment.Delivery_Boy_Account"
+        android:label="fragment_delivery__boy__account"
+        tools:layout="@layout/fragment_delivery__boy__account" />
+    <fragment
+        android:id="@+id/history_Delivery_Boy"
+        android:name="com.example.jnufood.Fragment.History_Delivery_Boy"
+        android:label="fragment_history__delivery__boy"
+        tools:layout="@layout/fragment_history__delivery__boy" />
+    <fragment
+        android:id="@+id/order_List"
+        android:name="com.example.jnufood.Fragment.Order_List"
+        android:label="fragment_order__list"
+        tools:layout="@layout/fragment_order__list" />
+    <fragment
+        android:id="@+id/deliveyBoy"
+        android:name="com.example.jnufood.Fragment.DeliveyBoy"
+        android:label="fragment_delivey_boy"
+        tools:layout="@layout/fragment_delivey_boy" />
+    <fragment
+        android:id="@+id/add_Admin"
+        android:name="com.example.jnufood.Fragment.Add_Admin"
+        android:label="fragment_add__admin"
+        tools:layout="@layout/fragment_add__admin" />
 
 </navigation>
