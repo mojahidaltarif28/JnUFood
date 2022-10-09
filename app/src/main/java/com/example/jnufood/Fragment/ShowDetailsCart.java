@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
  */
 public class ShowDetailsCart extends Fragment {
     String title, net, price, restaurant, image;
+    private int number_of_item=1;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,6 +76,7 @@ public class ShowDetailsCart extends Fragment {
         title = bundle.getString("name");
         net = bundle.getString("net");
         price = bundle.getString("price");
+        int price_int=Integer.parseInt(price);
         restaurant = bundle.getString("restaurant");
         image = bundle.getString("image");
         ImageView image_t = view.findViewById(R.id.cart_details_image);
@@ -87,10 +89,37 @@ public class ShowDetailsCart extends Fragment {
         Picasso.get().load(image).into(image_t);
         title_t.setText(title);
         price_t.setText(price);
-        total_item.setText("1");
+        total_item.setText(String.valueOf(number_of_item));
         net_t.setText(net);
         restaurant_t.setText(restaurant);
         total_price.setText(price);
+
+        TextView plusbtn,minusbtn;
+        plusbtn=view.findViewById(R.id.plus_item);
+        minusbtn=view.findViewById(R.id.minus_item);
+        plusbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(number_of_item<99){
+                number_of_item=number_of_item+1;
+                }else {
+                    Toast.makeText(getActivity(), "maximum order of item is 99 ", Toast.LENGTH_SHORT).show();
+                }
+                 total_item.setText(String.valueOf(number_of_item));
+                 total_price.setText(String.valueOf(number_of_item*price_int));
+            }
+        });
+        minusbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(number_of_item>1){
+                    number_of_item=number_of_item-1;
+                }
+                total_item.setText(String.valueOf(number_of_item));
+                total_price.setText(String.valueOf(number_of_item*price_int));
+            }
+        });
+
         TextView add_cart_btn = view.findViewById(R.id.details_cart_btn);
         add_cart_btn.setOnClickListener(new View.OnClickListener() {
             @Override

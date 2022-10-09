@@ -3,12 +3,18 @@ package com.example.jnufood.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.jnufood.Get_Menu_Item_Recycle_Adapter;
+import com.example.jnufood.Get_Menu_Item_Recycle_view;
 import com.example.jnufood.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +23,8 @@ import com.example.jnufood.R;
  */
 public class Add_Menu_Item extends Fragment {
 
+    RecyclerView recyclerView;
+    Get_Menu_Item_Recycle_Adapter get_menu_item_recycle_adapter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +69,29 @@ public class Add_Menu_Item extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add__menu__item, container, false);
+        View view=inflater.inflate(R.layout.fragment_add__menu__item, container, false);
+        recyclerView=(RecyclerView) view.findViewById(R.id.add_menu_item_recycle_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        FirebaseRecyclerOptions<Get_Menu_Item_Recycle_view> options =
+                new FirebaseRecyclerOptions.Builder<Get_Menu_Item_Recycle_view>()
+                        .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("food_Item"), Get_Menu_Item_Recycle_view.class)
+                        .build();
+
+        get_menu_item_recycle_adapter=new Get_Menu_Item_Recycle_Adapter(options);
+        recyclerView.setAdapter(get_menu_item_recycle_adapter);
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        get_menu_item_recycle_adapter.startListening();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        get_menu_item_recycle_adapter.stopListening();
     }
 }

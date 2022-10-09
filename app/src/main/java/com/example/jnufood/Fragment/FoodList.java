@@ -111,7 +111,8 @@ public class FoodList extends Fragment {
                     @Override
                     public void on_click_food_list(String name, String amount, String price, String restaurant, String image) {
                         ShowDetailsCart showDetailsCart = new ShowDetailsCart();
-                        if(mobile.length()<11){
+                        if(mobile.equals("")){
+                            Toast.makeText(getActivity(), "Please first Login", Toast.LENGTH_SHORT).show();
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login(),null).addToBackStack(null).commit();
                         }else {
                             Bundle bundle1 = new Bundle();
