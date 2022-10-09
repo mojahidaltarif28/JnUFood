@@ -111,14 +111,19 @@
         android:label="fragment_order__list"
         tools:layout="@layout/fragment_order__list" />
     <fragment
-        android:id="@+id/deliveyBoy"
-        android:name="com.example.jnufood.Fragment.DeliveyBoy"
-        android:label="fragment_delivey_boy"
-        tools:layout="@layout/fragment_delivey_boy" />
-    <fragment
         android:id="@+id/add_Admin"
         android:name="com.example.jnufood.Fragment.Add_Admin"
         android:label="fragment_add__admin"
         tools:layout="@layout/fragment_add__admin" />
+    <fragment
+        android:id="@+id/foodList"
+        android:name="com.example.jnufood.Fragment.FoodList"
+        android:label="fragment_food_list"
+        tools:layout="@layout/fragment_food_list" />
+    <fragment
+        android:id="@+id/showDetailsCart"
+        android:name="com.example.jnufood.Fragment.ShowDetailsCart"
+        android:label="fragment_show_details_cart"
+        tools:layout="@layout/fragment_show_details_cart" />
 
 </navigation>

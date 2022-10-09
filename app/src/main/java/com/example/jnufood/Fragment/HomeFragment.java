@@ -88,9 +88,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         // Inflate the layout for this fragment
-
+        LinearLayout search_bar_layout=view.findViewById(R.id.search_bar_layout);
         progressbar = view.findViewById(R.id.progress_bar_home);
         progressbar.setVisibility(View.VISIBLE);
+        search_bar_layout.setVisibility(View.GONE);
         Bundle bundle = this.getArguments();
         mobile = bundle.getString("otp_id");
         type = bundle.getString("type");
@@ -129,6 +130,7 @@ public class HomeFragment extends Fragment {
 
                     }
                 });
+                search_bar_layout.setVisibility(View.VISIBLE);
                 progressbar.setVisibility(View.GONE);
             }
 

@@ -48,7 +48,7 @@ OnCLickEventFoodList onCLickEventFoodList;
         list_item_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onCLickEventFoodList.on_click_food_list(get_food_list.getName(), get_food_list.getAmount(), get_food_list.getPrice(), get_food_list.getRestaurant());
+                onCLickEventFoodList.on_click_food_list(get_food_list.getName(), get_food_list.getAmount(), get_food_list.getPrice(), get_food_list.getRestaurant(),get_food_list.getPhoto());
             }
         });
 
@@ -56,6 +56,6 @@ OnCLickEventFoodList onCLickEventFoodList;
 
     }
     public interface OnCLickEventFoodList{
-        void on_click_food_list(String name,String amount,String price,String restaurant);
+        void on_click_food_list(String name,String amount,String price,String restaurant,String image);
     }
 }

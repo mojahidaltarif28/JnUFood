@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,38 +8,64 @@
     android:orientation="vertical"
     tools:context=".Fragment.FoodList">
     <LinearLayout
+        android:id="@+id/search_bar_food_list"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="53dp"
         android:background="@color/orange1"
         android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/search"
-            android:drawableLeft="@drawable/ic_search_"
-            android:fontFamily="sans-serif-medium"
-            android:hint="Search"
-            android:padding="10dp"
-            android:minHeight="48dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="#242526"
-            android:textColorHint="#242526"
-            android:textSize="16sp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
+            <EditText
+                android:id="@+id/food_list_search"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/search"
+                android:drawableLeft="@drawable/ic_search_"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Search "
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="#242526"
+                android:textColorHint="#242526"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/view_cart"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
-            />
-        <TextView
-            android:layout_marginTop="-10dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_cart"
-            />
+            <TextView
+                android:id="@+id/view_cart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/ic_cart"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cart_counter"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/notification_count"
+                android:paddingTop="3dp"
+                android:text="10"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/view_cart"
+                app:layout_constraintEnd_toEndOf="@+id/view_cart"
+                app:layout_constraintTop_toTopOf="@+id/view_cart" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -58,7 +85,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <GridView
             android:layout_width="match_parent"
@@ -67,5 +94,11 @@
             android:numColumns="3"
 
             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical">
+
     </LinearLayout>
 </LinearLayout>

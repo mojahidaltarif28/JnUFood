@@ -1,5 +1,6 @@
 package com.example.jnufood.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,10 +32,10 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class FoodList extends Fragment {
-    String mobile,item_name;
+    String mobile, item_name;
     GridView gridView;
     LinearLayout progressbar;
-   ArrayList<Get_Food_List> list;
+    ArrayList<Get_Food_List> list;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
 
     // TODO: Rename parameter arguments, choose names that match
@@ -77,39 +78,56 @@ public class FoodList extends Fragment {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_food_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_food_list, container, false);
         // Inflate the layout for this fragment
-        progressbar=view.findViewById(R.id.progress_bar_food_list);
+        LinearLayout search_bar_food_list = view.findViewById(R.id.search_bar_food_list);
+        progressbar = view.findViewById(R.id.progress_bar_food_list);
         progressbar.setVisibility(View.VISIBLE);
+        search_bar_food_list.setVisibility(View.GONE);
         Bundle bundle = this.getArguments();
-        if (getArguments().getString("id") != null ||getArguments().getString("item_name")!=null) {
+        if (getArguments().getString("id") != null || getArguments().getString("item_name") != null) {
             mobile = bundle.getString("id");
-            item_name=bundle.getString("item_name");
+            item_name = bundle.getString("item_name");
         }
-        Toast.makeText(getActivity(), mobile+":"+item_name, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), mobile + ":" + item_name, Toast.LENGTH_SHORT).show();
 
-        gridView=view.findViewById(R.id.food_list_grid_view);
-        list=new ArrayList<>();
+        gridView = view.findViewById(R.id.food_list_grid_view);
+        list = new ArrayList<>();
         databaseReference.child("food_Item").child(item_name).child("item list").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Get_Food_List get_food_list=dataSnapshot.getValue(Get_Food_List.class);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Get_Food_List get_food_list = dataSnapshot.getValue(Get_Food_List.class);
                     list.add(get_food_list);
                 }
-                Food_List_Adapter adapter=new Food_List_Adapter(getActivity(),list);
+                Food_List_Adapter adapter = new Food_List_Adapter(getActivity(), list);
                 gridView.setAdapter(adapter);
                 adapter.setOnCLickEventFoodList(new Food_List_Adapter.OnCLickEventFoodList() {
                     @Override
-                    public void on_click_food_list(String name, String amount, String price, String restaurant) {
-                        Toast.makeText(getActivity(),"name:"+name,Toast.LENGTH_SHORT).show();
+                    public void on_click_food_list(String name, String amount, String price, String restaurant, String image) {
+                        ShowDetailsCart showDetailsCart = new ShowDetailsCart();
+                        if(mobile.length()<11){
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login(),null).addToBackStack(null).commit();
+                        }else {
+                            Bundle bundle1 = new Bundle();
+                            bundle1.putString("name", name);
+                            bundle1.putString("net", amount);
+                            bundle1.putString("price", price);
+                            bundle1.putString("restaurant", restaurant);
+                            bundle1.putString("image", image);
+                            showDetailsCart.setArguments(bundle1);
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, showDetailsCart, null).addToBackStack(null).commit();
+                        }
+
                     }
                 });
-           progressbar.setVisibility(View.GONE );
+                search_bar_food_list.setVisibility(View.VISIBLE);
+                progressbar.setVisibility(View.GONE);
             }
 
             @Override
