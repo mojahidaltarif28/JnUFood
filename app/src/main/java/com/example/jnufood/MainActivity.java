@@ -296,7 +296,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.add_Menu_Item:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Add_Menu_Item(),null).addToBackStack(null).commit();
+                String mobile = bundle.getString("mobile");
+                Bundle bundle1 = new Bundle();
+                Add_Menu_Item add_menu_item=new Add_Menu_Item();
+                bundle1.putString("otp_id", mobile);
+                add_menu_item.setArguments(bundle1);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, add_menu_item,null).addToBackStack(null).commit();
                 break;
             case R.id.customer_List:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Customer_List(),null).addToBackStack(null).commit();

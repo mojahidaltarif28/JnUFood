@@ -137,7 +137,7 @@
                 android:textColorHint="#242526"
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/dba_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                 android:textColorHint="#242526"
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/dba_nid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

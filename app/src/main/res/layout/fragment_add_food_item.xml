@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color"
     android:orientation="vertical"
-    tools:context=".Fragment.Add_Menu_Item">
+    tools:context=".Fragment.AddFoodItem">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:id="@+id/search_bar_add_bar"
+        android:id="@+id/search_bar_add_bar_food_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/orange1"
@@ -22,21 +21,22 @@
             android:layout_height="match_parent">
 
             <SearchView
-                android:id="@+id/search_menu_item_ad"
+                android:id="@+id/search_food_item_ad"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/add_menu_item_btn_ad"
+                app:layout_constraintEnd_toStartOf="@+id/add_food_item_btn_ad"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/add_menu_item_btn_ad"
+                android:id="@+id/add_food_item_btn_ad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:background="@drawable/btn_bg"
                 android:padding="10dp"
                 android:text="ADD"
+                android:layout_marginRight="16dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -51,10 +51,10 @@
         android:id="@+id/menu_item_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/add_menu_item_recycle_view"
+            android:id="@+id/add_food_item_recycle_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -66,25 +66,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
-            android:id="@+id/arrow_back_btn"
+            android:id="@+id/arrow_back_btn_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_arrow_back" />
-
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/add_menu_item_iv"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp"
+            android:id="@+id/add_food_item_iv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:src="@drawable/fastfood" />
-
+            android:src="@drawable/fastfood"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
         <EditText
-            android:id="@+id/add_menu_item_name"
+            android:id="@+id/name_add_food_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -93,14 +91,64 @@
             android:background="@drawable/input_bg"
             android:drawableLeft="@drawable/ic_department"
             android:drawablePadding="5dp"
-            android:hint="Enter Category Name"
+            android:hint="Food Name"
             android:padding="10dp"
             android:textSize="16sp"
+            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            >
 
+            <EditText
+                android:id="@+id/price_add_food_item"
+                android:layout_width="170dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_bg"
+                android:drawableLeft="@drawable/ic_department"
+                android:drawablePadding="5dp"
+                android:hint="price"
+                android:padding="10dp"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/net_add_food_item"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/input_bg"
+                android:drawableLeft="@drawable/ic_department"
+                android:drawablePadding="5dp"
+                android:hint="Net amount"
+                android:padding="10dp"
+                android:textSize="16sp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/restaurant_add_food_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_department"
+            android:drawablePadding="5dp"
+            android:hint="Restaurant Name"
+            android:padding="10dp"
+            android:textSize="16sp"
             />
 
         <TextView
-            android:id="@+id/upload_add_menu_image"
+            android:id="@+id/upload_add_food_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -109,8 +157,8 @@
             android:background="@drawable/input_bg"
             android:drawableLeft="@drawable/ic_menu_gallery"
             android:drawablePadding="5dp"
-            android:padding="10dp"
             android:hint="Upload Image"
+            android:padding="10dp"
             android:textSize="16sp"
 
             />
@@ -121,7 +169,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/add_menu_save_btn"
+                android:id="@+id/add_food_save_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -137,7 +185,7 @@
                 />
 
             <ProgressBar
-                android:id="@+id/add_menu_item_progressbar"
+                android:id="@+id/add_food_item_progressbar"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
