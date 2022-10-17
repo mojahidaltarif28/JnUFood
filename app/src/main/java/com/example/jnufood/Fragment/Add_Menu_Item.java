@@ -207,12 +207,12 @@ public class Add_Menu_Item extends Fragment {
                                                         upload_image.setText("");
                                                         name.setText("");
                                                         Toast.makeText(getActivity(), "Successfully Saved", Toast.LENGTH_SHORT).show();
-//                                                       Intent in=new Intent(getActivity(), MainActivity.class);
-//                                                           in.putExtra("login_code","-50");
-//                                                           in.putExtra("mobile",mobile);
-//                                                           in.putExtra("type","Admin");
-//                                                           startActivity(in);
-//                                                           getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Add_Menu_Item()).commit();
+                                                       Intent in=new Intent(getActivity(), MainActivity.class);
+                                                           in.putExtra("login_code","-50");
+                                                           in.putExtra("mobile",mobile);
+                                                           in.putExtra("type","Admin");
+                                                           startActivity(in);
+                                                           getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Add_Menu_Item()).commit();
 
                                                     }
 

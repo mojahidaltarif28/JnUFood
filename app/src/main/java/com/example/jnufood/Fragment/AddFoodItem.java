@@ -123,7 +123,7 @@ public class AddFoodItem extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         FirebaseRecyclerOptions<Get_Food_Item_recycleModal> options=
                 new FirebaseRecyclerOptions.Builder<Get_Food_Item_recycleModal>()
-                        .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("food_Item").child("Fast Food").child("item list"),Get_Food_Item_recycleModal.class )
+                        .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("food_Item").child(menu_name).child("item list"),Get_Food_Item_recycleModal.class )
                         .build();
         get_food_item_recycle_adapter=new Get_Food_Item_recycle_Adapter(options);
         recyclerView.setAdapter(get_food_item_recycle_adapter);
