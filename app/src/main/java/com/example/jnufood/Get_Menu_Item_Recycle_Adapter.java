@@ -4,8 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,12 +18,11 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Get_Menu_Item_Recycle_Adapter extends FirebaseRecyclerAdapter<Get_Menu_Item_Recycle_view,Get_Menu_Item_Recycle_Adapter.myViewHolder> {
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
+    OnClickEventAdd_Menu_Item onClickEventAdd_menu_item;
+
+    public void setOnClickEvent(OnClickEventAdd_Menu_Item onClickEvent) {
+        this.onClickEventAdd_menu_item = onClickEvent;
+    }
     public Get_Menu_Item_Recycle_Adapter(@NonNull FirebaseRecyclerOptions<Get_Menu_Item_Recycle_view> options) {
         super(options);
     }
@@ -35,6 +36,12 @@ public class Get_Menu_Item_Recycle_Adapter extends FirebaseRecyclerAdapter<Get_M
                 .circleCrop()
                 .error(R.drawable.fastfood)
                 .into(holder.img);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickEventAdd_menu_item.on_menu_click(model.getName());
+            }
+        });
 
     }
 
@@ -50,11 +57,16 @@ public class Get_Menu_Item_Recycle_Adapter extends FirebaseRecyclerAdapter<Get_M
     class myViewHolder extends RecyclerView.ViewHolder{
         CircleImageView img;
         TextView name;
+        CardView cardView;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             img=(CircleImageView) itemView.findViewById(R.id.get_recycle_view_image);
             name=(TextView) itemView.findViewById(R.id.item_name_recycle_view);
+            cardView=(CardView) itemView.findViewById(R.id.card_view_add_menu_item);
         }
+    }
+    public interface OnClickEventAdd_Menu_Item{
+        void on_menu_click(String name);
     }
 }

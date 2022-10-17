@@ -19,20 +19,12 @@
             android:layout_height="match_parent"
             >
 
-            <EditText
+            <SearchView
                 android:id="@+id/food_list_search"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/search"
-                android:drawableLeft="@drawable/ic_search_"
-                android:fontFamily="sans-serif-medium"
-                android:hint="Search "
-                android:minHeight="48dp"
-                android:padding="10dp"
-                android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/view_cart"

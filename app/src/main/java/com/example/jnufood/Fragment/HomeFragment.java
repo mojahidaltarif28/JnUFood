@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment {
             customer_home_show.setVisibility(View.VISIBLE);
         HomeGridView = view.findViewById(R.id.home_grid_view);
         list = new ArrayList<>();
-        databaseReference.child("food_Item").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("food_Item1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
