@@ -121,6 +121,7 @@ public class FoodList extends Fragment {
                             bundle1.putString("price", price);
                             bundle1.putString("restaurant", restaurant);
                             bundle1.putString("image", image);
+                            bundle1.putString("mobile",mobile);
                             showDetailsCart.setArguments(bundle1);
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, showDetailsCart, null).addToBackStack(null).commit();
                         }

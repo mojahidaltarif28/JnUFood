@@ -3,12 +3,19 @@ package com.example.jnufood.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.jnufood.Get_DBA_Modal;
+import com.example.jnufood.Get_DBA_Modal_Adapter;
 import com.example.jnufood.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +23,8 @@ import com.example.jnufood.R;
  * create an instance of this fragment.
  */
 public class Application_Admin extends Fragment {
-
+    RecyclerView recyclerView;
+    Get_DBA_Modal_Adapter get_dba_modal_adapter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +69,28 @@ public class Application_Admin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_application__admin, container, false);
+       View view=inflater.inflate(R.layout.fragment_application__admin, container, false);
+
+       recyclerView=(RecyclerView) view.findViewById(R.id.admin_db_application_recycle_view);
+       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        FirebaseRecyclerOptions<Get_DBA_Modal> options=
+                new FirebaseRecyclerOptions.Builder<Get_DBA_Modal>()
+                .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("DB Application"),Get_DBA_Modal.class)
+                .build();
+        get_dba_modal_adapter=new Get_DBA_Modal_Adapter(options);
+        recyclerView.setAdapter(get_dba_modal_adapter);
+        get_dba_modal_adapter.setOnClickEvent(new Get_DBA_Modal_Adapter.OnClickEvent_DBA_admin() {
+            @Override
+            public void on_DBA_Admin_Click(String name, String mobile, String email, String profession, String address, String image, String nid) {
+                Toast.makeText(getActivity(), name+" "+mobile, Toast.LENGTH_SHORT).show();
+            }
+        });
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        get_dba_modal_adapter.startListening();
     }
 }

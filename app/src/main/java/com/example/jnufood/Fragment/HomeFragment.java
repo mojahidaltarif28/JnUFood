@@ -144,7 +144,13 @@ public class HomeFragment extends Fragment {
             db_home_show.setVisibility(View.GONE);
             customer_home_show.setVisibility(View.GONE);
             Admin_home_show.setVisibility(View.VISIBLE);
-
+            TextView application_btn=view.findViewById(R.id.application_btn);
+            application_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Application_Admin(),null).addToBackStack(null).commit();
+                }
+            });
         }else if(type.equals("Delivery")){
             customer_home_show.setVisibility(View.GONE);
             Admin_home_show.setVisibility(View.GONE);

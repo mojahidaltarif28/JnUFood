@@ -135,8 +135,8 @@
 
                 <TextView
                     android:id="@+id/application_btn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/notification"
                     android:padding="7dp"

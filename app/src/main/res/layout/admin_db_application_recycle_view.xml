@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardView_dba"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="6dp"
+    android:elevation="8dp"
+    app:cardUseCompatPadding="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        android:padding="2dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/dba_recycle_view_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_person"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/dba_name_recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/dba_recycle_view_image"
+            android:fontFamily="casual"
+            android:layout_marginTop="10dp"
+            android:text="MD Mojahid AL Tarif"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:layout_toRightOf="@+id/dba_recycle_view_image"
+            android:layout_below="@+id/dba_name_recycle_view"
+            android:paddingLeft="10dp"
+            android:text="Profession :"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/dba_recycle_view_profession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:layout_toRightOf="@+id/txt1"
+            android:layout_below="@+id/dba_name_recycle_view"
+            android:paddingLeft="5dp"
+            android:text="student"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+           />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

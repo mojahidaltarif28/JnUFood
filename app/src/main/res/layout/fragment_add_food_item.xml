@@ -62,13 +62,18 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:id="@+id/add_food_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
-        android:visibility="gone">
+       >
 
         <TextView
             android:id="@+id/arrow_back_btn_food"
@@ -105,13 +110,14 @@
 
             <EditText
                 android:id="@+id/price_add_food_item"
-                android:layout_width="170dp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/input_bg"
                 android:drawableLeft="@drawable/ic_department"
                 android:drawablePadding="5dp"
                 android:hint="price"
+                android:inputType="number"
                 android:padding="10dp"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -120,7 +126,7 @@
 
             <EditText
                 android:id="@+id/net_add_food_item"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/input_bg"
@@ -196,5 +202,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

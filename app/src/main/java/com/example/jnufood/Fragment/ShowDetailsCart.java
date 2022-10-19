@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
  * create an instance of this fragment.
  */
 public class ShowDetailsCart extends Fragment {
-    String title, net, price, restaurant, image;
+    String title, net, price, restaurant, image,mobile;
     private int number_of_item=1;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,6 +79,8 @@ public class ShowDetailsCart extends Fragment {
         int price_int=Integer.parseInt(price);
         restaurant = bundle.getString("restaurant");
         image = bundle.getString("image");
+        mobile=bundle.getString("mobile");
+
         ImageView image_t = view.findViewById(R.id.cart_details_image);
         TextView title_t = view.findViewById(R.id.title_cart);
         TextView price_t = view.findViewById(R.id.amount);
@@ -124,7 +126,7 @@ public class ShowDetailsCart extends Fragment {
         add_cart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Add to Cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Add to Cart"+mobile, Toast.LENGTH_SHORT).show();
             }
         });
 

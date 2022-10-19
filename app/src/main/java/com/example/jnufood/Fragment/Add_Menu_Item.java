@@ -52,6 +52,7 @@ public class Add_Menu_Item extends Fragment {
     ImageView image;
     ProgressBar progressBar;
     EditText name;
+    String mobile;
     LinearLayout menu_list_show, menu_list_add_show, search_bar;
     RecyclerView recyclerView;
     Get_Menu_Item_Recycle_Adapter get_menu_item_recycle_adapter;
@@ -103,7 +104,7 @@ public class Add_Menu_Item extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add__menu__item, container, false);
         Bundle bundle = this.getArguments();
-        String mobile = bundle.getString("otp_id");
+        mobile = bundle.getString("otp_id");
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.add_menu_item_recycle_view);
@@ -122,6 +123,7 @@ public class Add_Menu_Item extends Fragment {
                 AddFoodItem addFoodItem=new AddFoodItem();
                 Bundle bundle1=new Bundle();
                 bundle1.putString("item_name",name);
+                bundle1.putString("mobile",mobile);
                 addFoodItem.setArguments(bundle1);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,addFoodItem , null).addToBackStack(null).commit();
             }
@@ -271,6 +273,7 @@ public class Add_Menu_Item extends Fragment {
                 AddFoodItem addFoodItem=new AddFoodItem();
                 Bundle bundle=new Bundle();
                 bundle.putString("item_name",name);
+                bundle.putString("mobile",mobile);
                 addFoodItem.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, addFoodItem, null).addToBackStack(null).commit();
             }
