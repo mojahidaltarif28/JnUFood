@@ -130,5 +130,10 @@
         android:name="com.example.jnufood.Fragment.AddFoodItem"
         android:label="fragment_add_food_item"
         tools:layout="@layout/fragment_add_food_item" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.jnufood.Fragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 
 </navigation>

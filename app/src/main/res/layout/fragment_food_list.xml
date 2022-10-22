@@ -27,14 +27,14 @@
                 android:textColor="#242526"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/view_cart"
+                app:layout_constraintEnd_toStartOf="@+id/view_cart1"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
-                android:id="@+id/view_cart"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/view_cart1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/ic_cart"
                 android:padding="10dp"
@@ -44,19 +44,20 @@
 
             <TextView
                 android:id="@+id/cart_counter"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/notification_count"
                 android:paddingTop="3dp"
                 android:text="10"
+                android:visibility="gone"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/view_cart"
-                app:layout_constraintEnd_toEndOf="@+id/view_cart"
-                app:layout_constraintTop_toTopOf="@+id/view_cart" />
+                app:layout_constraintBottom_toBottomOf="@+id/view_cart1"
+                app:layout_constraintEnd_toEndOf="@+id/view_cart1"
+                app:layout_constraintTop_toTopOf="@+id/view_cart1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

@@ -1,9 +1,11 @@
 package com.example.jnufood.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,7 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jnufood.MainActivity;
 import com.example.jnufood.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -25,6 +33,7 @@ import com.squareup.picasso.Picasso;
 public class ShowDetailsCart extends Fragment {
     String title, net, price, restaurant, image,mobile;
     private int number_of_item=1;
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -56,7 +65,7 @@ public class ShowDetailsCart extends Fragment {
         return fragment;
     }
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +74,7 @@ public class ShowDetailsCart extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -121,12 +130,35 @@ public class ShowDetailsCart extends Fragment {
                 total_price.setText(String.valueOf(number_of_item*price_int));
             }
         });
-
-        TextView add_cart_btn = view.findViewById(R.id.details_cart_btn);
+        TextView add_cart_btn = view.findViewById(R.id.add_to_cart_btn);
         add_cart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Add to Cart"+mobile, Toast.LENGTH_SHORT).show();
+                databaseReference.child("Cart_List").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.child(mobile).hasChild(title)){
+                            Toast.makeText(getActivity(),"Already Added Your Cart",Toast.LENGTH_SHORT).show();
+
+                        }
+                        else {
+                            databaseReference.child("Cart_List").child(mobile).child(title).child("Name").setValue(title);
+                            databaseReference.child("Cart_List").child(mobile).child(title).child("price").setValue(price);
+                            databaseReference.child("Cart_List").child(mobile).child(title).child("net").setValue(net);
+                            databaseReference.child("Cart_List").child(mobile).child(title).child("mobile").setValue(mobile);
+                            databaseReference.child("Cart_List").child(mobile).child(title).child("photo").setValue(image);
+                            databaseReference.child("Cart_List").child(mobile).child(title).child("total_item").setValue(total_item.getText().toString());
+                            databaseReference.child("Cart_List").child(mobile).child(title).child("total_price").setValue(total_price.getText().toString());
+                            Toast.makeText(getActivity(),"Added to Your Cart",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getActivity(),"Added Failed",Toast.LENGTH_SHORT).show();
+
+                    }
+                });
             }
         });
 

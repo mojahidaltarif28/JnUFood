@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jnufood.Food_List_Adapter;
@@ -137,7 +138,45 @@ public class FoodList extends Fragment {
 
             }
         });
+        TextView view_cart1=view.findViewById(R.id.view_cart1);
+        view_cart1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    if(mobile.length()<11){
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login(),null).addToBackStack(null).commit();
+                        Toast.makeText(getActivity(),"Please Login",Toast.LENGTH_SHORT).show();
+                    }else{
+                        CartFragment mycart=new CartFragment();
+                        Bundle bundle1=new Bundle();
+                        bundle1.putString("mobile",mobile);
+                        mycart.setArguments(bundle1);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,mycart,null).addToBackStack(null).commit();
+                    }
+            }
+        });
+        TextView item_couter=view.findViewById(R.id.cart_counter);
+        if(mobile.length()==11) {
+            databaseReference.child("Cart_List").child(mobile).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int i = 0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        i = i + 1;
+                    }
+                    if(i==0){
+                        item_couter.setVisibility(View.GONE);
+                    }else {
+                        item_couter.setVisibility(View.VISIBLE);
+                        item_couter.setText(String.valueOf(i));}
 
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
 
         return view;
     }

@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_color"
-        android:padding="2dp"
-        >
+        android:padding="2dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/food_list_recycle_view_image"
@@ -32,23 +31,23 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/food_list_recycle_view_image"
             android:fontFamily="casual"
-            android:text="Coka Cola"
             android:paddingLeft="10dp"
+            android:text="Coka Cola"
             android:textColor="@color/orange1"
             android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:layout_toStartOf="@+id/price_recycle_view"
             android:fontFamily="casual"
             android:paddingLeft="10dp"
             android:text="৳"
             android:textColor="@color/orange1"
             android:textSize="32sp"
-            android:layout_marginTop="20dp"
             android:textStyle="bold" />
 
         <TextView
@@ -57,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:fontFamily="casual"
             android:paddingLeft="3dp"
             android:text="150"
@@ -70,44 +69,47 @@
             android:id="@+id/net_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="casual"
-           android:layout_toRightOf="@+id/food_list_recycle_view_image"
             android:layout_below="@+id/name_recycle_view"
+            android:layout_toRightOf="@+id/food_list_recycle_view_image"
+            android:fontFamily="casual"
             android:paddingLeft="10dp"
             android:text="Net:"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/net_recycle_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="casual"
-            android:layout_toRightOf="@+id/net_txt"
             android:layout_below="@+id/name_recycle_view"
+            android:layout_toRightOf="@+id/net_txt"
+            android:fontFamily="casual"
             android:paddingLeft="3dp"
             android:text="200ml"
             android:textColor="@color/black"
             android:textSize="14sp" />
+
         <TextView
             android:id="@+id/txt_res"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="casual"
-            android:layout_toRightOf="@+id/food_list_recycle_view_image"
             android:layout_below="@+id/net_txt"
+            android:layout_toRightOf="@+id/food_list_recycle_view_image"
+            android:fontFamily="casual"
             android:paddingLeft="10dp"
             android:text="Restaurant:"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/restaurant_recycle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="casual"
-            android:layout_toRightOf="@+id/txt_res"
             android:layout_below="@+id/net_txt"
+            android:layout_toRightOf="@+id/txt_res"
+            android:fontFamily="casual"
             android:paddingLeft="3dp"
             android:text="cafe login cafe login cafe login"
             android:textColor="@color/black"

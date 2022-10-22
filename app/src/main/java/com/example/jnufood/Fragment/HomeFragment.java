@@ -139,6 +139,46 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        TextView viewcart=view.findViewById(R.id.view_cart);
+        viewcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mobile.length()<11){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login(),null).addToBackStack(null).commit();
+                    Toast.makeText(getActivity(),"Please Login",Toast.LENGTH_SHORT).show();
+                }else{
+                    CartFragment mycart=new CartFragment();
+                    Bundle bundle1=new Bundle();
+                    bundle1.putString("mobile",mobile);
+                    mycart.setArguments(bundle1);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,mycart,null).addToBackStack(null).commit();
+                }
+            }
+        });
+
+        TextView item_couter=view.findViewById(R.id.cart_counter1);
+        if(mobile.length()==11) {
+            databaseReference.child("Cart_List").child(mobile).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int i = 0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        i = i + 1;
+                    }
+                    if(i==0){
+                        item_couter.setVisibility(View.GONE);
+                    }else {
+                    item_couter.setVisibility(View.VISIBLE);
+                    item_couter.setText(String.valueOf(i));}
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
 
         } else if (type.equals("Admin")) {
             db_home_show.setVisibility(View.GONE);
@@ -149,6 +189,27 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Application_Admin(),null).addToBackStack(null).commit();
+                }
+            });
+            TextView app_counter=view.findViewById(R.id.aplication_counter);
+            databaseReference.child("DB Application").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int i = 0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        i = i + 1;
+                    }
+                    if(i==0){
+                       app_counter.setVisibility(View.GONE);
+                    }else {
+                        app_counter.setVisibility(View.VISIBLE);
+                       app_counter.setText(String.valueOf(i));}
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
                 }
             });
         }else if(type.equals("Delivery")){
