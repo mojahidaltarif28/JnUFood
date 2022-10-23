@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class My_Cart_Adapter extends FirebaseRecyclerAdapter<Get_My_Cart_Modal,My_Cart_Adapter.myViewHolder> {
-
+OnClickEventMyCart onClickEventMyCart;
+    public  void setOnclickEvent(OnClickEventMyCart onClickEventMyCart){
+        this.onClickEventMyCart=onClickEventMyCart;
+    }
     public My_Cart_Adapter(@NonNull FirebaseRecyclerOptions<Get_My_Cart_Modal> options) {
         super(options);
     }
@@ -37,17 +40,24 @@ public class My_Cart_Adapter extends FirebaseRecyclerAdapter<Get_My_Cart_Modal,M
                 .into(holder.img);
         holder.price.setText(model.getPrice());
         holder.total_item.setText(model.getTotal_item());
-
         holder.total_price.setText(model.getTotal_price());
-        String item_no=holder.total_item.getText().toString();
+        //onClickEventMyCart.total_price(model.getTotal_price());
         holder.plusbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(item_no)>0){
-                    int numofitem = Integer.parseInt(model.getTotal_item());
-                    numofitem = numofitem +1;
-                    holder.total_item.setText(String.valueOf(numofitem));
-                }
+                onClickEventMyCart.plusbtn(model.getName(),model.getTotal_item(),model.getPrice());
+            }
+        });
+        holder.minusbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickEventMyCart.minusbtn(model.getName(),model.getTotal_item(),model.getPrice());
+            }
+        });
+        holder.delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickEventMyCart.delete(model.getName(),model.getTotal_price());
             }
         });
     }
@@ -76,5 +86,11 @@ public class My_Cart_Adapter extends FirebaseRecyclerAdapter<Get_My_Cart_Modal,M
             minusbtn=itemView.findViewById(R.id.minus_item_mycart);
             delete_btn=itemView.findViewById(R.id.delete_btn_cart_view);
             }
+    }
+    public interface OnClickEventMyCart{
+        void plusbtn(String name,String total_item,String price);
+        void minusbtn(String name,String total_item,String price);
+        void delete(String name,String total_price_d);
+
     }
 }

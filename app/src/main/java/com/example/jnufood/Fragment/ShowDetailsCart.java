@@ -141,14 +141,29 @@ public class ShowDetailsCart extends Fragment {
                             Toast.makeText(getActivity(),"Already Added Your Cart",Toast.LENGTH_SHORT).show();
 
                         }
+                        else if(snapshot.child(mobile).hasChild("Total")){
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("Name").setValue(title);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("price").setValue(price);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("net").setValue(net);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("mobile").setValue(mobile);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("photo").setValue(image);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("total_item").setValue(total_item.getText().toString());
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("total_price").setValue(total_price.getText().toString());
+                            final String total = snapshot.child(mobile).child("Total").getValue(String.class);
+                            final int t;
+                            t=Integer.parseInt(total)+Integer.parseInt(total_price.getText().toString());
+                            databaseReference.child("Cart_List").child(mobile).child("Total").setValue(String.valueOf(t));
+                            Toast.makeText(getActivity(),"Added to Your Cart",Toast.LENGTH_SHORT).show();
+                        }
                         else {
-                            databaseReference.child("Cart_List").child(mobile).child(title).child("Name").setValue(title);
-                            databaseReference.child("Cart_List").child(mobile).child(title).child("price").setValue(price);
-                            databaseReference.child("Cart_List").child(mobile).child(title).child("net").setValue(net);
-                            databaseReference.child("Cart_List").child(mobile).child(title).child("mobile").setValue(mobile);
-                            databaseReference.child("Cart_List").child(mobile).child(title).child("photo").setValue(image);
-                            databaseReference.child("Cart_List").child(mobile).child(title).child("total_item").setValue(total_item.getText().toString());
-                            databaseReference.child("Cart_List").child(mobile).child(title).child("total_price").setValue(total_price.getText().toString());
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("Name").setValue(title);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("price").setValue(price);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("net").setValue(net);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("mobile").setValue(mobile);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("photo").setValue(image);
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("total_item").setValue(total_item.getText().toString());
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("total_price").setValue(total_price.getText().toString());
+                            databaseReference.child("Cart_List").child(mobile).child("Total").setValue(total_price.getText().toString());
                             Toast.makeText(getActivity(),"Added to Your Cart",Toast.LENGTH_SHORT).show();
                         }
                     }

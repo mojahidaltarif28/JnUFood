@@ -156,12 +156,12 @@ public class FoodList extends Fragment {
         });
         TextView item_couter=view.findViewById(R.id.cart_counter);
         if(mobile.length()==11) {
-            databaseReference.child("Cart_List").child(mobile).addValueEventListener(new ValueEventListener() {
+            databaseReference.child("Cart_List").child(mobile).child("list").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     int i = 0;
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        i = i + 1;
+                    if(snapshot.exists()){
+                        i=(int) snapshot.getChildrenCount();
                     }
                     if(i==0){
                         item_couter.setVisibility(View.GONE);
