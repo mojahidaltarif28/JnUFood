@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,8 +95,6 @@ public class FoodList extends Fragment {
             mobile = bundle.getString("id");
             item_name = bundle.getString("item_name");
         }
-        Toast.makeText(getActivity(), mobile + ":" + item_name, Toast.LENGTH_SHORT).show();
-
         gridView = view.findViewById(R.id.food_list_grid_view);
         list = new ArrayList<>();
         databaseReference.child("food_Item").child(item_name).child("item list").addValueEventListener(new ValueEventListener() {
@@ -177,7 +176,63 @@ public class FoodList extends Fragment {
                 }
             });
         }
+        SearchView searchView = view.findViewById(R.id.food_list_search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                txtSearch(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                txtSearch(s);
+                return false;
+            }
+        });
 
         return view;
+    }
+
+    private void txtSearch(String str) {
+        list = new ArrayList<>();
+        databaseReference.child("food_Item").child(item_name).child("item list").orderByChild("name").startAt(str).endAt(str + "~").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Get_Food_List get_food_list = dataSnapshot.getValue(Get_Food_List.class);
+                    list.add(get_food_list);
+                }
+                Food_List_Adapter adapter = new Food_List_Adapter(getActivity(), list);
+                gridView.setAdapter(adapter);
+                adapter.setOnCLickEventFoodList(new Food_List_Adapter.OnCLickEventFoodList() {
+                    @Override
+                    public void on_click_food_list(String name, String amount, String price, String restaurant, String image) {
+                        ShowDetailsCart showDetailsCart = new ShowDetailsCart();
+                        if(mobile.equals("")){
+                            Toast.makeText(getActivity(), "Please first Login", Toast.LENGTH_SHORT).show();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login(),null).addToBackStack(null).commit();
+                        }else {
+                            Bundle bundle1 = new Bundle();
+                            bundle1.putString("name", name);
+                            bundle1.putString("net", amount);
+                            bundle1.putString("price", price);
+                            bundle1.putString("restaurant", restaurant);
+                            bundle1.putString("image", image);
+                            bundle1.putString("mobile",mobile);
+                            showDetailsCart.setArguments(bundle1);
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, showDetailsCart, null).addToBackStack(null).commit();
+                        }
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

@@ -1,66 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
-    tools:context=".Fragment.CartFragment">
+    android:orientation="vertical"
+    tools:context=".Fragment.CheckOutFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bg_color"
+            android:background="@color/orange1"
             android:fontFamily="casual"
-            android:text="My Cart"
+            android:paddingBottom="4dp"
+            android:text="Check Out"
             android:textAlignment="center"
-            android:textColor="@color/orange"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="@color/green_yellow"
+            android:textSize="22sp" />
     </LinearLayout>
 
-
     <LinearLayout
-        android:id="@+id/my_cart_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view_my_cart"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="380dp"
-            android:layout_marginStart="16sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16sp"
-            android:layout_marginBottom="10dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="Name"
+            android:textColor="@color/orange1"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/checkout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/checkout_bg"
+            android:padding="10dp"
+            android:textColor="@color/orange1"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="Mobile "
+            android:textColor="@color/orange1"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/checkout_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/checkout_bg"
+            android:padding="10dp"
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/checkoutshow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="Delivery Destination"
+            android:textColor="@color/orange1"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/checkout_destination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/checkout_bg"
+            android:padding="10dp"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
+        android:visibility="visible"
         >
 
         <LinearLayout
@@ -69,9 +133,7 @@
             android:layout_margin="16dp"
             android:background="@color/bg_color"
             android:elevation="8dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="6dp"
-            app:cardUseCompatPadding="true">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,10 +166,9 @@
                     />
 
                 <TextView
-                    android:id="@+id/itemtotal"
+                    android:id="@+id/itemtotal_checkout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500"
                     android:textColor="@color/orange1"
                     android:textSize="18sp"
 
@@ -140,17 +201,15 @@
                     android:layout_height="wrap_content"
                     android:text="৳"
                     android:textColor="@color/orange1"
-                    android:textSize="18sp"
-                     />
+                    android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/delivery_services"
+                    android:id="@+id/delivery_services_checkout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10"
                     android:textColor="@color/orange1"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <View
@@ -176,10 +235,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total:"
+                    android:text="Payable Amount:"
                     android:textColor="@color/orange"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
+                    android:textSize="22sp"
 
                     />
 
@@ -189,49 +247,38 @@
                     android:text="৳"
                     android:textColor="@color/orange1"
                     android:textSize="25sp"
-                    android:textStyle="bold"
-
                     />
 
                 <TextView
-                    android:id="@+id/total_checkout_amount"
+                    android:id="@+id/payable_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
                     android:textColor="@color/orange1"
                     android:textSize="25sp"
-                    android:textStyle="bold"
-
                     />
             </LinearLayout>
         </LinearLayout>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <TextView
-                android:id="@+id/check_out_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/btn_bg"
-                android:padding="10dp"
-                android:text="Check out"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/checkout_proceed_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/btn_bg"
+            android:padding="10dp"
+            android:text="Proceed"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+</LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>

@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String mobile = bundle.getString("mobile");
                 if (login_value.equals("-505")) {
                     //customer
-                    Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(true);
                     navigationView.getMenu().findItem(R.id.history).setVisible(true);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else if(login_value.equals("-50")){
                     //admin
-                    Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else if(login_value.equals("-100")){
                     //delivery boy
-                    Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else {
 
-                    Toast.makeText(this, "Logout:"+mobile, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(this, "Logout:"+mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(true);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);

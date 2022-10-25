@@ -39,7 +39,7 @@ public class CartFragment extends Fragment {
     RecyclerView recyclerView;
     My_Cart_Adapter my_cart_adapter;
     LinearLayout checkoutshow;
-    TextView total_price, delivery_charge, checkout_amount;
+    TextView total_price, delivery_charge, checkout_amount,check_out_btn;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,7 +80,8 @@ public class CartFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-@SuppressLint("MissingInflatedId")
+
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -88,7 +89,8 @@ public class CartFragment extends Fragment {
         total_price = view.findViewById(R.id.itemtotal);
         delivery_charge = view.findViewById(R.id.delivery_services);
         checkout_amount = view.findViewById(R.id.total_checkout_amount);
-        checkoutshow=view.findViewById(R.id.checkoutshow);
+        checkoutshow = view.findViewById(R.id.checkoutshow);
+        check_out_btn=view.findViewById(R.id.check_out_btn);
         Bundle bundle = this.getArguments();
         mobile = bundle.getString("mobile");
         recyclerView = (RecyclerView) view.findViewById(R.id.recycle_view_my_cart);
@@ -112,19 +114,19 @@ public class CartFragment extends Fragment {
                             databaseReference.child("Cart_List").child(mobile).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.hasChild("Total")){
+                                    if (snapshot.hasChild("Total")) {
                                         final String total_tk = snapshot.child("Total").getValue(String.class);
-                                       int total_plus=Integer.parseInt(total_tk)+Integer.parseInt(price);
-
-                                        int checkout=total_plus+10;
+                                        int total_plus = Integer.parseInt(total_tk) + Integer.parseInt(price);
+                                        int checkout = total_plus + 10;
+                                        total_price.setText(String.valueOf(total_plus));
+                                        checkout_amount.setText(String.valueOf(checkout));
 
                                         HashMap hashMapP = new HashMap();
                                         hashMapP.put("Total", String.valueOf(total_plus));
                                         databaseReference.child("Cart_List").child(mobile).updateChildren(hashMapP).addOnSuccessListener(new OnSuccessListener() {
                                             @Override
                                             public void onSuccess(Object o) {
-                                                total_price.setText(String.valueOf(total_plus));
-                                                checkout_amount.setText(String.valueOf(checkout));
+
                                             }
                                         });
 
@@ -157,11 +159,11 @@ public class CartFragment extends Fragment {
                             databaseReference.child("Cart_List").child(mobile).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.hasChild("Total")){
+                                    if (snapshot.hasChild("Total")) {
                                         final String total_tk = snapshot.child("Total").getValue(String.class);
-                                        int total_minus=Integer.parseInt(total_tk)-Integer.parseInt(price);
+                                        int total_minus = Integer.parseInt(total_tk) - Integer.parseInt(price);
 
-                                        int checkout=total_minus+10;
+                                        int checkout = total_minus + 10;
 
                                         HashMap hashMapM = new HashMap();
                                         hashMapM.put("Total", String.valueOf(total_minus));
@@ -189,18 +191,18 @@ public class CartFragment extends Fragment {
             }
 
             @Override
-            public void delete(String name,String total_price_d) {
+            public void delete(String name, String total_price_d) {
                 databaseReference.child("Cart_List").child(mobile).child("list").child(name).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         databaseReference.child("Cart_List").child(mobile).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.hasChild("Total")){
+                                if (snapshot.hasChild("Total")) {
                                     final String total_tk = snapshot.child("Total").getValue(String.class);
-                                    int total_minus=Integer.parseInt(total_tk)-Integer.parseInt(total_price_d);
+                                    int total_minus = Integer.parseInt(total_tk) - Integer.parseInt(total_price_d);
 
-                                    int checkout=total_minus+10;
+                                    int checkout = total_minus + 10;
 
                                     HashMap hashMapM = new HashMap();
                                     hashMapM.put("Total", String.valueOf(total_minus));
@@ -209,9 +211,9 @@ public class CartFragment extends Fragment {
                                         public void onSuccess(Object o) {
                                             total_price.setText(String.valueOf(total_minus));
                                             checkout_amount.setText(String.valueOf(checkout));
-                                            if(total_minus==0){
+                                            if (total_minus == 0) {
                                                 checkoutshow.setVisibility(View.GONE);
-                                            }else {
+                                            } else {
                                                 checkoutshow.setVisibility(View.VISIBLE);
                                             }
                                         }
@@ -230,8 +232,20 @@ public class CartFragment extends Fragment {
             }
 
         });
-          sum_set();
 
+        sum_set();
+        check_out_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckOutFragment checkOutFragment=new CheckOutFragment();
+                Bundle bundle1=new Bundle();
+                bundle1.putString("mobile",mobile);
+                bundle1.putString("total_item",total_price.getText().toString());
+                bundle1.putString("pay_amount",checkout_amount.getText().toString());
+                checkOutFragment.setArguments(bundle1);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,checkOutFragment,null).addToBackStack(null).commit();
+            }
+        });
         return view;
     }
 
@@ -239,14 +253,14 @@ public class CartFragment extends Fragment {
         databaseReference.child("Cart_List").child(mobile).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild("Total")){
+                if (snapshot.hasChild("Total")) {
                     final String total_tk = snapshot.child("Total").getValue(String.class);
                     total_price.setText(total_tk);
-                    int checkout=Integer.parseInt(total_tk)+10;
+                    int checkout = Integer.parseInt(total_tk) + 10;
                     checkout_amount.setText(String.valueOf(checkout));
-                    if(total_tk==null || Integer.parseInt(total_tk)==0){
+                    if (total_tk == null || Integer.parseInt(total_tk) == 0) {
                         checkoutshow.setVisibility(View.GONE);
-                    }else {
+                    } else {
                         checkoutshow.setVisibility(View.VISIBLE);
                     }
                 }
