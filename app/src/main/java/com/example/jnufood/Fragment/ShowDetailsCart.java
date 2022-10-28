@@ -137,7 +137,7 @@ public class ShowDetailsCart extends Fragment {
                 databaseReference.child("Cart_List").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.child(mobile).hasChild(title)){
+                        if(snapshot.child(mobile).child("list").hasChild(title)){
                             Toast.makeText(getActivity(),"Already Added Your Cart",Toast.LENGTH_SHORT).show();
 
                         }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,8 +39,10 @@ public class CartFragment extends Fragment {
     String mobile;
     RecyclerView recyclerView;
     My_Cart_Adapter my_cart_adapter;
-    LinearLayout checkoutshow;
-    TextView total_price, delivery_charge, checkout_amount,check_out_btn;
+    String name,email;
+    EditText check_mobile, delivery_address;
+    LinearLayout checkoutshow,checkshowall,proceed_show,empty_show;
+    TextView total_price, delivery_charge, checkout_amount,check_out_btn,back_btn,total_price_p, payable_amount, proceed_btn, check_name;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,6 +94,10 @@ public class CartFragment extends Fragment {
         checkout_amount = view.findViewById(R.id.total_checkout_amount);
         checkoutshow = view.findViewById(R.id.checkoutshow);
         check_out_btn=view.findViewById(R.id.check_out_btn);
+        proceed_show=view.findViewById(R.id.check_out_proceed);
+        checkshowall=view.findViewById(R.id.my_cart_show_all);
+        empty_show=view.findViewById(R.id.empty_cart);
+        back_btn=view.findViewById(R.id.back_btn_mycart);
         Bundle bundle = this.getArguments();
         mobile = bundle.getString("mobile");
         recyclerView = (RecyclerView) view.findViewById(R.id.recycle_view_my_cart);
@@ -120,6 +127,8 @@ public class CartFragment extends Fragment {
                                         int checkout = total_plus + 10;
                                         total_price.setText(String.valueOf(total_plus));
                                         checkout_amount.setText(String.valueOf(checkout));
+                                        total_price_p.setText(total_tk);
+                                        payable_amount.setText(String.valueOf(checkout));
 
                                         HashMap hashMapP = new HashMap();
                                         hashMapP.put("Total", String.valueOf(total_plus));
@@ -172,6 +181,9 @@ public class CartFragment extends Fragment {
                                             public void onSuccess(Object o) {
                                                 total_price.setText(String.valueOf(total_minus));
                                                 checkout_amount.setText(String.valueOf(checkout));
+                                                total_price_p.setText(String.valueOf(total_minus));
+                                                payable_amount.setText(String.valueOf(checkout));
+
                                             }
                                         });
 
@@ -211,7 +223,11 @@ public class CartFragment extends Fragment {
                                         public void onSuccess(Object o) {
                                             total_price.setText(String.valueOf(total_minus));
                                             checkout_amount.setText(String.valueOf(checkout));
+                                            total_price_p.setText(String.valueOf(total_minus));
+                                            payable_amount.setText(String.valueOf(checkout));
+
                                             if (total_minus == 0) {
+                                                empty_show.setVisibility(View.VISIBLE);
                                                 checkoutshow.setVisibility(View.GONE);
                                             } else {
                                                 checkoutshow.setVisibility(View.VISIBLE);
@@ -237,13 +253,76 @@ public class CartFragment extends Fragment {
         check_out_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckOutFragment checkOutFragment=new CheckOutFragment();
-                Bundle bundle1=new Bundle();
-                bundle1.putString("mobile",mobile);
-                bundle1.putString("total_item",total_price.getText().toString());
-                bundle1.putString("pay_amount",checkout_amount.getText().toString());
-                checkOutFragment.setArguments(bundle1);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,checkOutFragment,null).addToBackStack(null).commit();
+                databaseReference.child("Order_Table").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChild(mobile)){
+                            Toast.makeText(getActivity(),"Please Complete Your First Order",Toast.LENGTH_SHORT).show();
+                        }else{
+                            proceed_show.setVisibility(View.VISIBLE);
+                            checkshowall.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+                 }
+        });
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkshowall.setVisibility(View.VISIBLE);
+                proceed_show.setVisibility(View.GONE);
+            }
+        });
+
+        check_name = view.findViewById(R.id.checkout_name);
+        check_mobile=view.findViewById(R.id.checkout_mobile);
+        delivery_address=view.findViewById(R.id.checkout_destination);
+        total_price_p=view.findViewById(R.id.itemtotal_checkout);
+        payable_amount=view.findViewById(R.id.payable_amount);
+        proceed_btn=view.findViewById(R.id.checkout_proceed_btn);
+        databaseReference.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild(mobile)) {
+                    name = snapshot.child(mobile).child("Name").getValue(String.class);
+                    email=snapshot.child(mobile).child("Name").getValue(String.class);
+                    final String dept = snapshot.child(mobile).child("Department").getValue(String.class);
+                    check_name.setText(name);
+                    delivery_address.setText(dept+" Department,Jagannath University");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        check_mobile.setText(mobile);
+        proceed_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check_mobile.getText().toString().length()==11) {
+                    SSLComerz sslComerz=new SSLComerz();
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putString("name", name);
+                    bundle1.putString("email", email);
+                    bundle1.putString("address", delivery_address.getText().toString());
+                    bundle1.putString("de_mobile", check_mobile.getText().toString());
+                    bundle1.putString("amount", payable_amount.getText().toString());
+                    bundle1.putString("mobile",mobile);
+                    sslComerz.setArguments(bundle1);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,sslComerz,null).addToBackStack(null).commit();
+
+                }else{
+                    Toast.makeText(getActivity(), "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;
@@ -258,11 +337,18 @@ public class CartFragment extends Fragment {
                     total_price.setText(total_tk);
                     int checkout = Integer.parseInt(total_tk) + 10;
                     checkout_amount.setText(String.valueOf(checkout));
+                    total_price_p.setText(total_tk);
+                    payable_amount.setText(String.valueOf(checkout));
                     if (total_tk == null || Integer.parseInt(total_tk) == 0) {
                         checkoutshow.setVisibility(View.GONE);
+                        empty_show.setVisibility(View.VISIBLE);
                     } else {
+                        empty_show.setVisibility(View.GONE);
                         checkoutshow.setVisibility(View.VISIBLE);
                     }
+                }else{
+                    checkoutshow.setVisibility(View.GONE);
+                    empty_show.setVisibility(View.VISIBLE);
                 }
             }
 
