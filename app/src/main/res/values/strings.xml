@@ -33,5 +33,6 @@
     <string name="administraion">Administraion</string>
     <string name="my_account">My Account</string>
     <string name="log_out">Log out</string>
+    <string name="my_order">My Order</string>
 
 </resources>

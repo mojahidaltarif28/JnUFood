@@ -98,8 +98,8 @@ public class SSLComerz extends Fragment implements SSLCTransactionResponseListen
         email = bundle.getString("email");
 
 
-        final SSLCommerzInitialization sslCommerzInitialization = new SSLCommerzInitialization("jnufo6356baa181be6", "jnufo6356baa181be6@ssl", Double.parseDouble(total_check_amount), SSLCCurrencyType.BDT, "123456789098765", "yourProductType", SSLCSdkType.TESTBOX);
-        final SSLCCustomerInfoInitializer customerInfoInitializer = new SSLCCustomerInfoInitializer("" + name, "" + email, "" + address, "dhaka", "1214", "Bangladesh", "" + de_mobile);
+        final SSLCommerzInitialization sslCommerzInitialization = new SSLCommerzInitialization("jnufo6356baa181be6", "jnufo6356baa181be6@ssl", Double.parseDouble(total_check_amount), SSLCCurrencyType.BDT, "123456789098765 ", "Food", SSLCSdkType.TESTBOX);
+        final SSLCCustomerInfoInitializer customerInfoInitializer = new SSLCCustomerInfoInitializer( name,  email,  address, "dhaka", "1214", "Bangladesh",  de_mobile);
         IntegrateSSLCommerz
                 .getInstance(getActivity())
                 .addSSLCommerzInitialization(sslCommerzInitialization)
@@ -151,6 +151,8 @@ public class SSLComerz extends Fragment implements SSLCTransactionResponseListen
                     total_item = get_my_cart_modal.getTotal_item();
                     total_price = get_my_cart_modal.getTotal_price();
                     databaseReference.child("Order_Table").child(mobile).child("status").setValue("paid");
+                    databaseReference.child("Order_Table").child(mobile).child("delivery address").setValue(address);
+                    databaseReference.child("Order_Table").child(mobile).child("delivery mobile").setValue(de_mobile);
                     databaseReference.child("Order_Table").child(mobile).child("payment amount").setValue(total_check_amount);
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("Name").setValue(Name);
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("price").setValue(price);
