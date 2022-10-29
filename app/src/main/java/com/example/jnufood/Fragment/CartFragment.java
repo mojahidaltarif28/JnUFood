@@ -40,6 +40,7 @@ public class CartFragment extends Fragment {
     RecyclerView recyclerView;
     My_Cart_Adapter my_cart_adapter;
     String name,email;
+    int i12=-5;
     EditText check_mobile, delivery_address;
     LinearLayout checkoutshow,checkshowall,proceed_show,empty_show;
     TextView total_price, delivery_charge, checkout_amount,check_out_btn,back_btn,total_price_p, payable_amount, proceed_btn, check_name;
@@ -253,12 +254,14 @@ public class CartFragment extends Fragment {
         check_out_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.child("Order_Table").addValueEventListener(new ValueEventListener() {
+
+                databaseReference.child("Order_Table").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild(mobile)){
-                            Toast.makeText(getActivity(),"Please Complete Your First Order",Toast.LENGTH_SHORT).show();
-                        }else{
+                        if (snapshot.hasChild(mobile)) {
+                            Toast.makeText(getActivity(),"Please Complete Your first Order!!",Toast.LENGTH_SHORT).show();
+                        }
+                        else{
                             proceed_show.setVisibility(View.VISIBLE);
                             checkshowall.setVisibility(View.GONE);
                         }
@@ -270,8 +273,7 @@ public class CartFragment extends Fragment {
                     }
                 });
 
-
-                 }
+            }
         });
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override

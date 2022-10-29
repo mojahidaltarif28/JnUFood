@@ -140,5 +140,10 @@
         android:name="com.example.jnufood.Fragment.CheckOutFragment"
         android:label="fragment_check_out"
         tools:layout="@layout/fragment_check_out" />
+    <fragment
+        android:id="@+id/history_View"
+        android:name="com.example.jnufood.Fragment.History_View"
+        android:label="fragment_history__view"
+        tools:layout="@layout/fragment_history__view" />
 
 </navigation>

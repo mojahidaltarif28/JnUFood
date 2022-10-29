@@ -3,16 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     tools:context=".Fragment.History">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/home_m"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="tarif"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="34dp" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textAlignment="center"
+           android:textColor="@color/green_yellow"
+           android:textSize="25sp"
+           android:text="Purchase History"
+           android:background="@color/orange1"
+           android:fontFamily="casual"
+           android:paddingBottom="5dp"
+           />
+       <TextView
+           android:id="@+id/empty_history"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textAlignment="center"
+           android:textSize="25sp"
+           android:layout_marginTop="120dp"
+           android:text="You have not \npurchased any food"
+           android:fontFamily="casual"
+           android:visibility="gone"
+           android:paddingBottom="5dp"
+           />
+       <LinearLayout
+           android:id="@+id/my_history_show"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+         >
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/recycle_view_my_history"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@color/bg_color"
+               android:layout_marginStart="16sp"
+               android:layout_marginTop="10dp"
+               android:layout_marginEnd="16sp"
+               android:layout_marginBottom="10dp" />
+       </LinearLayout>
+
+   </LinearLayout>
 
 </FrameLayout>

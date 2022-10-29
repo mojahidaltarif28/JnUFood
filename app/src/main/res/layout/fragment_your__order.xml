@@ -170,7 +170,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout7"
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_height="360dp"
                 android:layout_margin="10dp"
                 android:orientation="vertical"
                 android:background="@drawable/order_bg"
@@ -181,7 +181,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle_view_my_order"
                     android:layout_width="match_parent"
-                    android:layout_height="245dp"
+                    android:layout_height="345dp"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
 
