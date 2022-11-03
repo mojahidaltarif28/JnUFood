@@ -3,6 +3,9 @@ package com.example.jnufood;
 public class Get_Menu_Item {
     private String name;
     private String photo;
+    private String restaurant;
+
+
 
     public Get_Menu_Item() {
         // empty constructor required for firebase.
@@ -26,5 +29,12 @@ public class Get_Menu_Item {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+    public String getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(String restaurant) {
+        this.restaurant = restaurant;
     }
 }

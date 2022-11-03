@@ -99,15 +99,17 @@ public class HomeFragment extends Fragment {
         LinearLayout customer_home_show = view.findViewById(R.id.home_customer_view);
         LinearLayout Admin_home_show = view.findViewById(R.id.home_admin_view);
         LinearLayout db_home_show = view.findViewById(R.id.home_db_view);
+        LinearLayout restaurant_home_show = view.findViewById(R.id.home_restaurant_view);
         // Toast.makeText(getActivity(), "login:" + mobile + " type:" + type, Toast.LENGTH_SHORT).show();
 //       gridview part
         if (type.equals("Customer")) {
             Admin_home_show.setVisibility(View.GONE);
             db_home_show.setVisibility(View.GONE);
             customer_home_show.setVisibility(View.VISIBLE);
+            restaurant_home_show.setVisibility(View.GONE);
             HomeGridView = view.findViewById(R.id.home_grid_view);
             list = new ArrayList<>();
-            databaseReference.child("food_Item").addValueEventListener(new ValueEventListener() {
+            databaseReference.child("food_Item1").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     list.clear();
@@ -185,27 +187,46 @@ public class HomeFragment extends Fragment {
             db_home_show.setVisibility(View.GONE);
             customer_home_show.setVisibility(View.GONE);
             Admin_home_show.setVisibility(View.VISIBLE);
+            restaurant_home_show.setVisibility(View.GONE);
             TextView application_btn = view.findViewById(R.id.application_btn);
             application_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Application_Admin(), null).addToBackStack(null).commit();
+                    Application_Admin application_admin=new Application_Admin();
+                    Bundle bundle1=new Bundle();
+                    bundle1.putString("mobile",mobile);
+                    application_admin.setArguments(bundle1);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, application_admin, null).addToBackStack(null).commit();
                 }
             });
             TextView app_counter = view.findViewById(R.id.aplication_counter);
             databaseReference.child("DB Application").addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int i = 0;
-                    if (snapshot.exists()) {
-                        i = (int) snapshot.getChildrenCount() - 1;
-                    }
-                    if (i == 0) {
-                        app_counter.setVisibility(View.GONE);
-                    } else {
-                        app_counter.setVisibility(View.VISIBLE);
-                        app_counter.setText(String.valueOf(i));
-                    }
+                public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                    databaseReference.child("Restaurant_Application").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                            int i = 0,j=0;
+                            if (snapshot1.exists()) {
+                                i = (int) snapshot1.getChildrenCount() ;
+                            }
+                            if(snapshot2.exists()){
+                                j = (int) snapshot2.getChildrenCount() ;
+                            }
+                            if (i == 0&&j==0) {
+                                app_counter.setVisibility(View.GONE);
+                            } else {
+                                app_counter.setVisibility(View.VISIBLE);
+                                app_counter.setText(String.valueOf(i+j));
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
 
                 }
 
@@ -214,11 +235,20 @@ public class HomeFragment extends Fragment {
 
                 }
             });
+
         } else if (type.equals("Delivery")) {
             customer_home_show.setVisibility(View.GONE);
             Admin_home_show.setVisibility(View.GONE);
             db_home_show.setVisibility(View.VISIBLE);
-        } else {
+            restaurant_home_show.setVisibility(View.GONE);
+        }
+        else if(type.equals("Restaurant")){
+            customer_home_show.setVisibility(View.GONE);
+            Admin_home_show.setVisibility(View.GONE);
+            customer_home_show.setVisibility(View.GONE);
+            restaurant_home_show.setVisibility(View.VISIBLE);
+        }
+        else {
             Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
         }
 

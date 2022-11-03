@@ -6,15 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="6dp"
     android:elevation="8dp"
-    app:cardUseCompatPadding="true"
-    >
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_color"
-        android:padding="2dp"
-        >
+        android:padding="2dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/dba_recycle_view_image"
@@ -32,15 +30,16 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/dba_recycle_view_image"
             android:fontFamily="casual"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_toLeftOf="@+id/dba_recycle_decline_btn"
             android:text="MD Mojahid AL Tarif"
             android:paddingLeft="10dp"
-            android:textColor="@color/black"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
+            android:textColor="@color/orange1"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt1"
+            android:id="@+id/txt1_pp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -48,22 +47,77 @@
             android:layout_below="@+id/dba_name_recycle_view"
             android:paddingLeft="10dp"
             android:text="Profession :"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textColor="@color/orange"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/dba_recycle_view_profession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
-            android:layout_toRightOf="@+id/txt1"
+            android:layout_toRightOf="@+id/txt1_pp"
             android:layout_below="@+id/dba_name_recycle_view"
             android:paddingLeft="5dp"
             android:text="student"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-           />
+            android:textColor="@color/orange1"
+            android:textSize="12sp" />
 
+        <TextView
+            android:id="@+id/txt18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:layout_toRightOf="@+id/dba_recycle_view_image"
+            android:layout_below="@+id/txt1_pp"
+            android:paddingLeft="10dp"
+            android:text="Mobile:"
+            android:textColor="@color/orange"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dba_recycle_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:layout_toRightOf="@+id/txt18"
+            android:layout_below="@+id/dba_recycle_view_profession"
+            android:paddingLeft="5dp"
+            android:text="01717268128"
+            android:textColor="@color/orange1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/dba_recycle_decline_btn"
+            android:layout_width="50dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:paddingLeft="5dp"
+            android:text="Decline"
+            android:background="@drawable/decline_btn"
+            android:padding="3dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="3dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/dba_recycle_accept_btn"
+            android:layout_width="50dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+          android:layout_below="@+id/dba_recycle_decline_btn"
+            android:layout_alignParentEnd="true"
+            android:paddingLeft="5dp"
+            android:text="Accept"
+            android:background="@drawable/accept_btn"
+            android:padding="3dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="3dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </RelativeLayout>
 
 

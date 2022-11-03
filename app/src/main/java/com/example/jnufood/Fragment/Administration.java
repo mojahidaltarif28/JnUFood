@@ -136,7 +136,23 @@ public class Administration extends Fragment {
                                     progressBar.setVisibility(View.GONE);
                                     ad_btn.setVisibility(View.VISIBLE);
                                 }
-                            }else{
+                            }
+                            else if(snapshot.child("Restaurant").hasChild(mobile_s)){
+                                final String get_db_pass=snapshot.child("Restaurant").child(mobile_s).child("password").getValue(String.class);
+                                if (get_db_pass.equals(password_s)){
+                                    getActivity().finish();
+                                    Intent in=new Intent(getActivity(), MainActivity.class);
+                                    in.putExtra("login_code","-1010");
+                                    in.putExtra("mobile",mobile_s);
+                                    in.putExtra("type","Restaurant");
+                                    startActivity(in);
+                                }else {
+                                    incorrect.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.GONE);
+                                    ad_btn.setVisibility(View.VISIBLE);
+                                }
+                            }
+                            else{
                                 incorrect.setVisibility(View.VISIBLE);
                                 progressBar.setVisibility(View.GONE);
                                 ad_btn.setVisibility(View.VISIBLE);

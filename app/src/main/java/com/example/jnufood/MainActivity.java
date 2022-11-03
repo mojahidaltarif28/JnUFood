@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 
+import com.example.jnufood.Fragment.AddFoodItem;
 import com.example.jnufood.Fragment.Add_Admin;
 import com.example.jnufood.Fragment.Add_Menu_Item;
 import com.example.jnufood.Fragment.Admin_Account;
@@ -26,6 +27,11 @@ import com.example.jnufood.Fragment.Logout;
 import com.example.jnufood.Fragment.My_Account;
 import com.example.jnufood.Fragment.Your_Order;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -40,7 +46,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawerLayout;
@@ -124,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
 
-                    navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(false);
                     navigationView.getMenu().findItem(R.id.customer_List).setVisible(true);
                     navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(true);
                     navigationView.getMenu().findItem(R.id.add_Admin).setVisible(true);
@@ -153,6 +159,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(true);
                     navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(true);
 
+                }else if(login_value.equals("-1010")){
+                    navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.history).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.your_Order).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
+
+                    navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(true);
+                    navigationView.getMenu().findItem(R.id.customer_List).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.add_Admin).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(false);
+
+                    navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(false);
+                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(false);
                 }
                 else {
 
@@ -297,12 +320,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.add_Menu_Item:
                 String mobile = bundle.getString("mobile");
-                Bundle bundle1 = new Bundle();
-                Add_Menu_Item add_menu_item=new Add_Menu_Item();
-                bundle1.putString("otp_id", mobile);
-                add_menu_item.setArguments(bundle1);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, add_menu_item,null).addToBackStack(null).commit();
-                break;
+                databaseReference.child("Administration").child("Restaurant").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                      final String  res_name =snapshot.child(mobile).child("restaurant_name").getValue(String.class);
+                        Bundle bundle1 = new Bundle();
+                        AddFoodItem add_menu_item=new AddFoodItem();
+                        bundle1.putString("otp_id", mobile);
+                        bundle1.putString("res_name",res_name);
+                        add_menu_item.setArguments(bundle1);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, add_menu_item,null).addToBackStack(null).commit();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+               break;
             case R.id.customer_List:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Customer_List(),null).addToBackStack(null).commit();
                 break;
@@ -318,6 +355,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.history_Delivery_Boy:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new History_Delivery_Boy(),null).addToBackStack(null).commit();
                 break;
+
             case R.id.delivery_Boy_Account:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Delivery_Boy_Account(),null).addToBackStack(null).commit();
                 break;

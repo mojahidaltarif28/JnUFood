@@ -34,7 +34,7 @@
             android:paddingLeft="10dp"
             android:text="Coka Cola"
             android:textColor="@color/orange1"
-            android:textSize="22sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:paddingLeft="10dp"
             android:text="৳"
             android:textColor="@color/orange1"
-            android:textSize="32sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -62,7 +62,7 @@
             android:paddingLeft="3dp"
             android:text="150"
             android:textColor="@color/orange1"
-            android:textSize="32sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -74,8 +74,8 @@
             android:fontFamily="casual"
             android:paddingLeft="10dp"
             android:text="Net:"
-            android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textColor="@color/orange"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <TextView
@@ -87,33 +87,90 @@
             android:fontFamily="casual"
             android:paddingLeft="3dp"
             android:text="200ml"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
+            android:textColor="@color/orange1"
+            android:textSize="12sp" />
         <TextView
-            android:id="@+id/txt_res"
+            android:id="@+id/status_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/net_txt"
-            android:layout_toRightOf="@+id/food_list_recycle_view_image"
-            android:fontFamily="casual"
+            android:layout_below="@+id/name_recycle_view"
+            android:layout_toRightOf="@+id/net_recycle_view"
             android:paddingLeft="10dp"
-            android:text="Restaurant:"
-            android:textColor="@color/black"
-            android:textSize="14sp"
+            android:text="Status:"
+            android:textColor="@color/orange"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/restaurant_recycle_view"
-            android:layout_width="match_parent"
+            android:id="@+id/status_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_recycle_view"
+            android:layout_toRightOf="@+id/status_txt"
+            android:paddingLeft="3dp"
+            android:text="unavailable"
+            android:textColor="@color/orange1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/food_available"
+            android:layout_width="80dp"
+            android:background="@drawable/accept_btn"
             android:layout_height="wrap_content"
             android:layout_below="@+id/net_txt"
-            android:layout_toRightOf="@+id/txt_res"
-            android:fontFamily="casual"
-            android:paddingLeft="3dp"
-            android:text="cafe login cafe login cafe login"
-            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/food_list_recycle_view_image"
+            android:padding="3dp"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="center"
+            android:text="Available"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+           />
+        <TextView
+            android:id="@+id/food_unavailable"
+            android:layout_width="80dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/decline_btn"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/net_txt"
+            android:layout_toRightOf="@+id/food_available"
+            android:padding="3dp"
+            android:textAlignment="center"
+            android:text="Unvailable"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/update_btn_food"
+            android:layout_width="80dp"
+            android:background="@drawable/received_btn"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/net_txt"
+            android:textAlignment="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/food_unavailable"
+            android:padding="3dp"
+            android:layout_marginBottom="5dp"
+            android:text="Update"
+            android:textColor="@color/white"
             android:textSize="14sp" />
+        <TextView
+            android:id="@+id/menu_item_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:text="X"
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/close_bg"/>
 
     </RelativeLayout>
 

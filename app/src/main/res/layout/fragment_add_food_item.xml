@@ -58,6 +58,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/add_food_item_recycle_view"
             android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:background="@color/bg_color"
             android:layout_height="match_parent" />
 
     </LinearLayout>
@@ -94,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="16dp"
+            android:imeOptions="actionNext"
             android:layout_marginRight="5dp"
             android:background="@drawable/input_bg"
             android:drawableLeft="@drawable/ic_department"
@@ -117,6 +120,7 @@
                 android:drawableLeft="@drawable/ic_department"
                 android:drawablePadding="5dp"
                 android:hint="price"
+                android:imeOptions="actionNext"
                 android:inputType="number"
                 android:padding="10dp"
                 android:textSize="16sp"
@@ -135,25 +139,12 @@
                 android:hint="Net amount"
                 android:padding="10dp"
                 android:textSize="16sp"
+                android:imeOptions="actionNext"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <EditText
-            android:id="@+id/restaurant_add_food_item"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/input_bg"
-            android:drawableLeft="@drawable/ic_department"
-            android:drawablePadding="5dp"
-            android:hint="Restaurant Name"
-            android:padding="10dp"
-            android:textSize="16sp"
-            />
 
         <TextView
             android:id="@+id/upload_add_food_image"
@@ -162,6 +153,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="5dp"
+            android:imeOptions="actionDone"
             android:background="@drawable/input_bg"
             android:drawableLeft="@drawable/ic_menu_gallery"
             android:drawablePadding="5dp"
@@ -199,9 +191,143 @@
                 android:layout_gravity="center"
                 android:background="@drawable/icon"
                 android:visibility="gone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rs_name"
+                android:visibility="gone"
+                />
         </LinearLayout>
 
     </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:id="@+id/update_food_item"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/arrow_back_update_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_arrow_back" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/update_food_item_iv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/fastfood"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+        <EditText
+            android:id="@+id/name_update_food_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:imeOptions="actionNext"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_department"
+            android:drawablePadding="5dp"
+            android:hint="Food Name"
+            android:padding="10dp"
+            android:textSize="16sp"
+            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            >
+
+            <EditText
+                android:id="@+id/price_update_food_item"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/input_bg"
+                android:drawableLeft="@drawable/ic_department"
+                android:drawablePadding="5dp"
+                android:hint="price"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/net_update_food_item"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/input_bg"
+                android:drawableLeft="@drawable/ic_department"
+                android:drawablePadding="5dp"
+                android:hint="Net amount"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:imeOptions="actionNext"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/upload_update_food_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="5dp"
+            android:imeOptions="actionDone"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_menu_gallery"
+            android:drawablePadding="5dp"
+            android:hint="Upload Image"
+            android:padding="10dp"
+            android:textSize="16sp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/update_food_save_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/btn_bg"
+                android:padding="10dp"
+                android:text="UPDATE"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+
+                />
+
+            <ProgressBar
+                android:id="@+id/update_food_item_progressbar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@drawable/icon"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

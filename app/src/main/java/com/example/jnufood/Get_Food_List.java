@@ -6,17 +6,19 @@ public class Get_Food_List {
     private String photo;
     private String price;
     private String restaurant;
+    private String status;
 
     public Get_Food_List(){
 
     }
 
-    public Get_Food_List(String amount, String name, String photo, String price, String restaurant) {
+    public Get_Food_List(String amount, String name, String photo, String price, String restaurant,String status) {
         this.amount = amount;
         this.name = name;
         this.photo = photo;
         this.price = price;
         this.restaurant = restaurant;
+        this.status=status;
     }
 
     public String getName() {
@@ -57,5 +59,13 @@ public class Get_Food_List {
 
     public void setRestaurant(String restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

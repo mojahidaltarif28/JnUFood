@@ -28,17 +28,24 @@ public class Get_DBA_Modal_Adapter extends FirebaseRecyclerAdapter<Get_DBA_Modal
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Get_DBA_Modal model) {
         holder.name.setText(model.getName());
         holder.profession.setText(model.getProfession());
+        holder.mobile.setText(model.getMobile());
         Glide.with(holder.img.getContext()).load(model.getImage())
                 .placeholder(R.drawable.ic_person)
                 .circleCrop()
                 .error(R.drawable.ic_person)
                 .into(holder.img);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickEvent_dba_admin.on_DBA_Admin_Click(model.getName().toString(),model.getMobile().toString(),
                         model.getEmail().toString(),model.getProfession().toString(),model.getAddress().toString(),
                         model.getImage().toString(),model.getNid().toString());
+            }
+        });
+        holder.decline_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickEvent_dba_admin.decline_click(model.getMobile());
             }
         });
     }
@@ -52,10 +59,14 @@ public class Get_DBA_Modal_Adapter extends FirebaseRecyclerAdapter<Get_DBA_Modal
     }
     class myViewHolder extends RecyclerView.ViewHolder{
         CircleImageView img;
-        TextView name,profession;
+        TextView name,profession,txt1_pp,mobile,accept_btn,decline_btn;
         CardView cardView;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            txt1_pp=itemView.findViewById(R.id.txt1_pp);
+            mobile=itemView.findViewById(R.id.dba_recycle_mobile);
+            accept_btn=itemView.findViewById(R.id.dba_recycle_accept_btn);
+            decline_btn=itemView.findViewById(R.id.dba_recycle_decline_btn);
             img=(CircleImageView) itemView.findViewById(R.id.dba_recycle_view_image);
             name=(TextView) itemView.findViewById(R.id.dba_name_recycle_view);
             profession=(TextView) itemView.findViewById(R.id.dba_recycle_view_profession);
@@ -64,6 +75,7 @@ public class Get_DBA_Modal_Adapter extends FirebaseRecyclerAdapter<Get_DBA_Modal
     }
     public interface OnClickEvent_DBA_admin{
         void on_DBA_Admin_Click(String name,String mobile,String email,String profession,String address,String image,String nid);
-    }
+        void decline_click(String mobile);
+   }
 
 }

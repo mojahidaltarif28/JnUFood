@@ -1,7 +1,7 @@
 package com.example.jnufood;
 
 public class Get_Food_Item_recycleModal {
-    String name,price,amount,photo,restaurant;
+    String name,price,amount,photo,restaurant,status;
 
     public String getName() {
         return name;
@@ -41,5 +41,13 @@ public class Get_Food_Item_recycleModal {
 
     public void setRestaurant(String restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

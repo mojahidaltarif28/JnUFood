@@ -40,6 +40,8 @@ OnCLickEventFoodList onCLickEventFoodList;
         TextView price=list_item_view.findViewById(R.id.grid_item_price);
         ImageView photo=list_item_view.findViewById(R.id.grid_image_food_list);
         TextView restaurant=list_item_view.findViewById(R.id.restaurant);
+        TextView status_food=list_item_view.findViewById(R.id.status_food_list);
+        status_food.setText(get_food_list.getStatus());
         name.setText(get_food_list.getName());
         amount.setText(get_food_list.getAmount());
         price.setText(get_food_list.getPrice());
@@ -48,7 +50,7 @@ OnCLickEventFoodList onCLickEventFoodList;
         list_item_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onCLickEventFoodList.on_click_food_list(get_food_list.getName(), get_food_list.getAmount(), get_food_list.getPrice(), get_food_list.getRestaurant(),get_food_list.getPhoto());
+                onCLickEventFoodList.on_click_food_list(get_food_list.getName(), get_food_list.getAmount(), get_food_list.getPrice(), get_food_list.getRestaurant(),get_food_list.getPhoto(),get_food_list.getStatus());
             }
         });
 
@@ -56,6 +58,6 @@ OnCLickEventFoodList onCLickEventFoodList;
 
     }
     public interface OnCLickEventFoodList{
-        void on_click_food_list(String name,String amount,String price,String restaurant,String image);
+        void on_click_food_list(String name,String amount,String price,String restaurant,String image,String status);
     }
 }

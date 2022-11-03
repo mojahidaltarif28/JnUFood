@@ -24,6 +24,8 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jnufood.Get_Food_Item_recycleModal;
+import com.example.jnufood.Get_Food_Item_recycle_Adapter;
 import com.example.jnufood.Get_Menu_Item_Recycle_Adapter;
 import com.example.jnufood.Get_Menu_Item_Recycle_view;
 import com.example.jnufood.MainActivity;
@@ -49,13 +51,15 @@ public class Add_Menu_Item extends Fragment {
     private FirebaseStorage storage;
     private FirebaseDatabase database;
     TextView add_btn, back_btn, save_btn, upload_image;
+    String res_name;
     ImageView image;
     ProgressBar progressBar;
     EditText name;
     String mobile;
     LinearLayout menu_list_show, menu_list_add_show, search_bar;
     RecyclerView recyclerView;
-    Get_Menu_Item_Recycle_Adapter get_menu_item_recycle_adapter;
+   Get_Food_Item_recycle_Adapter get_food_item_recycle_adapter;
+    DatabaseReference databaseReference = database.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
     public Uri imgUrl, uri1;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,184 +107,207 @@ public class Add_Menu_Item extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add__menu__item, container, false);
-        Bundle bundle = this.getArguments();
-        mobile = bundle.getString("otp_id");
+//        Bundle bundle = this.getArguments();
+//        mobile = bundle.getString("otp_id");
+//
+//        databaseReference.child("Administration").child("Restaurant").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.hasChild(mobile)){
+//                    res_name=snapshot.child(mobile).child("restaurant_name").getValue(String.class);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        recyclerView = (RecyclerView) view.findViewById(R.id.add_menu_item_recycle_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        FirebaseRecyclerOptions<Get_Food_Item_recycleModal> options =
+//                new FirebaseRecyclerOptions.Builder<Get_Food_Item_recycleModal>()
+//                        .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("food_Item").child(res_name).child("item list"), Get_Food_Item_recycleModal.class)
+//                        .build();
 
+//        get_food_item_recycle_adapter = new Get_Food_Item_recycle_Adapter(options);
+//        recyclerView.setAdapter(get_food_item_recycle_adapter);
+//        get_food_item_recycle_adapter.setOnclickEvent(new Get_Food_Item_recycle_Adapter.OnclickEventAddFoodItem() {
+//            @Override
+//            public void on_food_click(String name, String photo, String price, String net, String restaurant) {
+//                Toast.makeText(getActivity(), name + " " + price + " " + net + " " + restaurant, Toast.LENGTH_SHORT).show();
+//            }
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.add_menu_item_recycle_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        FirebaseRecyclerOptions<Get_Menu_Item_Recycle_view> options =
-                new FirebaseRecyclerOptions.Builder<Get_Menu_Item_Recycle_view>()
-                        .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("food_Item"), Get_Menu_Item_Recycle_view.class)
-                        .build();
-
-        get_menu_item_recycle_adapter = new Get_Menu_Item_Recycle_Adapter(options);
-        recyclerView.setAdapter(get_menu_item_recycle_adapter);
-        get_menu_item_recycle_adapter.setOnClickEvent(new Get_Menu_Item_Recycle_Adapter.OnClickEventAdd_Menu_Item() {
-            @Override
-            public void on_menu_click(String name) {
-                Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
-                AddFoodItem addFoodItem=new AddFoodItem();
-                Bundle bundle1=new Bundle();
-                bundle1.putString("item_name",name);
-                bundle1.putString("mobile",mobile);
-                addFoodItem.setArguments(bundle1);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,addFoodItem , null).addToBackStack(null).commit();
-            }
-        });
-
-
-        add_btn = view.findViewById(R.id.add_menu_item_btn_ad);
+//            @Override
+//            public void available_click(String name, String restaurant) {
+//                Toast.makeText(getActivity(),  name + " " + restaurant, Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void unavailable_click(String name, String restaurant) {
+//                Toast.makeText(getActivity(),  name + " " + restaurant, Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void delete_click(String name, String restaurant) {
+//                Toast.makeText(getActivity(),  name + " " + restaurant, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//
+//        add_btn = view.findViewById(R.id.add_menu_item_btn_ad);
         back_btn = view.findViewById(R.id.arrow_back_btn);
-        save_btn = view.findViewById(R.id.add_menu_save_btn);
-        upload_image = view.findViewById(R.id.upload_add_menu_image);
-        image = view.findViewById(R.id.add_menu_item_iv);
-        name = view.findViewById(R.id.add_menu_item_name);
-        progressBar = view.findViewById(R.id.add_menu_item_progressbar);
-        menu_list_show = view.findViewById(R.id.menu_item_layout);
-        menu_list_add_show = view.findViewById(R.id.add_menu_item_layout);
+//        save_btn = view.findViewById(R.id.add_menu_save_btn);
+//        upload_image = view.findViewById(R.id.upload_add_menu_image);
+//        image = view.findViewById(R.id.add_menu_item_iv);
+//        name = view.findViewById(R.id.add_menu_item_name);
+//        progressBar = view.findViewById(R.id.add_menu_item_progressbar);
+//        menu_list_show = view.findViewById(R.id.menu_item_layout);
+//        menu_list_add_show = view.findViewById(R.id.add_menu_item_layout);
+//
+//        search_bar = view.findViewById(R.id.search_bar_add_bar);
+//        add_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                menu_list_show.setVisibility(View.GONE);
+//                menu_list_add_show.setVisibility(View.VISIBLE);
+//                search_bar.setVisibility(View.GONE);
+//            }
+//        });
+//        back_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                menu_list_show.setVisibility(View.VISIBLE);
+//                menu_list_add_show.setVisibility(View.GONE);
+//                search_bar.setVisibility(View.VISIBLE);
+//            }
+//        });
+//        upload_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent galleryIntent = new Intent();
+//                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+//                galleryIntent.setType("image/*");
+//                startActivityForResult(galleryIntent, 2);
+//            }
+//        });
 
-        search_bar = view.findViewById(R.id.search_bar_add_bar);
-        add_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                menu_list_show.setVisibility(View.GONE);
-                menu_list_add_show.setVisibility(View.VISIBLE);
-                search_bar.setVisibility(View.GONE);
-            }
-        });
-        back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                menu_list_show.setVisibility(View.VISIBLE);
-                menu_list_add_show.setVisibility(View.GONE);
-                search_bar.setVisibility(View.VISIBLE);
-            }
-        });
-        upload_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent galleryIntent = new Intent();
-                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-                galleryIntent.setType("image/*");
-                startActivityForResult(galleryIntent, 2);
-            }
-        });
-
-        storage = FirebaseStorage.getInstance();
-        save_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                save_btn.setVisibility(View.GONE);
-                progressBar.setVisibility(View.VISIBLE);
-                if (name.getText().toString().isEmpty()) {
-                    showError(name, "Enter the Category name");
-                    save_btn.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
-                } else if (upload_image.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "Please Select Image", Toast.LENGTH_SHORT).show();
-                    save_btn.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
-                } else {
-                    final StorageReference reference = storage.getReference().child("images").child("Menu Item Image").child(name.getText().toString()).child("img");
-                    final DatabaseReference databaseReference = database.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
-                    databaseReference.child("food_Item").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(name.getText().toString())) {
-                                Toast.makeText(getActivity(), "This Category Already exists??", Toast.LENGTH_SHORT).show();
-                                save_btn.setVisibility(View.VISIBLE);
-                                progressBar.setVisibility(View.GONE);
-                            } else {
-                                reference.putFile(imgUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                            @Override
-                                            public void onSuccess(Uri uri) {
-                                                databaseReference.child("food_Item").addListenerForSingleValueEvent(new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                                        databaseReference.child("food_Item").child(name.getText().toString()).child("name").setValue(name.getText().toString());
-                                                        databaseReference.child("food_Item").child(name.getText().toString()).child("photo").setValue(uri.toString());
-                                                        save_btn.setVisibility(View.VISIBLE);
-                                                        progressBar.setVisibility(View.GONE);
-                                                        upload_image.setText("");
-                                                        name.setText("");
-                                                        Toast.makeText(getActivity(), "Successfully Saved", Toast.LENGTH_SHORT).show();
-                                                       Intent in=new Intent(getActivity(), MainActivity.class);
-                                                           in.putExtra("login_code","-50");
-                                                           in.putExtra("mobile",mobile);
-                                                           in.putExtra("type","Admin");
-                                                           startActivity(in);
-                                                           getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Add_Menu_Item()).commit();
-
-                                                    }
-
-                                                    @Override
-                                                    public void onCancelled(@NonNull DatabaseError error) {
-                                                        save_btn.setVisibility(View.VISIBLE);
-                                                        progressBar.setVisibility(View.GONE);
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    }
-                                });
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-
-                }
-            }
-        });
-        SearchView searchView = view.findViewById(R.id.search_menu_item_ad);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                txtSearch(s);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                txtSearch(s);
-                return false;
-            }
-        });
+//        storage = FirebaseStorage.getInstance();
+//        save_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                save_btn.setVisibility(View.GONE);
+//                progressBar.setVisibility(View.VISIBLE);
+//                if (name.getText().toString().isEmpty()) {
+//                    showError(name, "Enter the Category name");
+//                    save_btn.setVisibility(View.VISIBLE);
+//                    progressBar.setVisibility(View.GONE);
+//                } else if (upload_image.getText().toString().isEmpty()) {
+//                    Toast.makeText(getActivity(), "Please Select Image", Toast.LENGTH_SHORT).show();
+//                    save_btn.setVisibility(View.VISIBLE);
+//                    progressBar.setVisibility(View.GONE);
+//                } else {
+//                    final StorageReference reference = storage.getReference().child("images").child("Menu Item Image").child(name.getText().toString()).child("img");
+//                    databaseReference.child("food_Item").addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                            if (snapshot.hasChild(name.getText().toString())) {
+//                                Toast.makeText(getActivity(), "This Category Already exists??", Toast.LENGTH_SHORT).show();
+//                                save_btn.setVisibility(View.VISIBLE);
+//                                progressBar.setVisibility(View.GONE);
+//                            } else {
+//                                reference.putFile(imgUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                                    @Override
+//                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                            @Override
+//                                            public void onSuccess(Uri uri) {
+//                                                databaseReference.child("food_Item").addListenerForSingleValueEvent(new ValueEventListener() {
+//                                                    @Override
+//                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                                                        databaseReference.child("food_Item").child(name.getText().toString()).child("name").setValue(name.getText().toString());
+//                                                        databaseReference.child("food_Item").child(name.getText().toString()).child("photo").setValue(uri.toString());
+//                                                        save_btn.setVisibility(View.VISIBLE);
+//                                                        progressBar.setVisibility(View.GONE);
+//                                                        upload_image.setText("");
+//                                                        name.setText("");
+//                                                        Toast.makeText(getActivity(), "Successfully Saved", Toast.LENGTH_SHORT).show();
+//                                                       Intent in=new Intent(getActivity(), MainActivity.class);
+//                                                           in.putExtra("login_code","-50");
+//                                                           in.putExtra("mobile",mobile);
+//                                                           in.putExtra("type","Admin");
+//                                                           startActivity(in);
+//                                                           getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Add_Menu_Item()).commit();
+//
+//                                                    }
+//
+//                                                    @Override
+//                                                    public void onCancelled(@NonNull DatabaseError error) {
+//                                                        save_btn.setVisibility(View.VISIBLE);
+//                                                        progressBar.setVisibility(View.GONE);
+//                                                    }
+//                                                });
+//                                            }
+//                                        });
+//                                    }
+//                                });
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//
+//                        }
+//                    });
+//
+//
+//                }
+//            }
+//        });
+//        SearchView searchView = view.findViewById(R.id.search_menu_item_ad);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                txtSearch(s);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                txtSearch(s);
+//                return false;
+//            }
+//        });
         return view;
     }
+//
+//    private void txtSearch(String str) {
+//        FirebaseRecyclerOptions<Get_Menu_Item_Recycle_view> options =
+//                new FirebaseRecyclerOptions.Builder<Get_Menu_Item_Recycle_view>()
+//                        .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("food_Item").orderByChild("name").startAt(str).endAt(str + "~"), Get_Menu_Item_Recycle_view.class)
+//                        .build();
+   //     get_food_item_recycle_adapter = new Get_Food_Item_recycle_Adapter(options);
+//        get_menu_item_recycle_adapter.startListening();
+//        recyclerView.setAdapter(get_menu_item_recycle_adapter);
+//        get_menu_item_recycle_adapter.setOnClickEvent(new Get_Menu_Item_Recycle_Adapter.OnClickEventAdd_Menu_Item() {
+//            @Override
+//            public void on_menu_click(String name) {
+//                Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
+//                AddFoodItem addFoodItem=new AddFoodItem();
+//                Bundle bundle=new Bundle();
+//                bundle.putString("item_name",name);
+//                bundle.putString("mobile",mobile);
+//                addFoodItem.setArguments(bundle);
+//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, addFoodItem, null).addToBackStack(null).commit();
+//            }
+      //  });
 
-    private void txtSearch(String str) {
-        FirebaseRecyclerOptions<Get_Menu_Item_Recycle_view> options =
-                new FirebaseRecyclerOptions.Builder<Get_Menu_Item_Recycle_view>()
-                        .setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("food_Item").orderByChild("name").startAt(str).endAt(str + "~"), Get_Menu_Item_Recycle_view.class)
-                        .build();
-        get_menu_item_recycle_adapter = new Get_Menu_Item_Recycle_Adapter(options);
-        get_menu_item_recycle_adapter.startListening();
-        recyclerView.setAdapter(get_menu_item_recycle_adapter);
-        get_menu_item_recycle_adapter.setOnClickEvent(new Get_Menu_Item_Recycle_Adapter.OnClickEventAdd_Menu_Item() {
-            @Override
-            public void on_menu_click(String name) {
-                Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
-                AddFoodItem addFoodItem=new AddFoodItem();
-                Bundle bundle=new Bundle();
-                bundle.putString("item_name",name);
-                bundle.putString("mobile",mobile);
-                addFoodItem.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, addFoodItem, null).addToBackStack(null).commit();
-            }
-        });
 
-
-    }
+   // }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -296,7 +323,7 @@ public class Add_Menu_Item extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        get_menu_item_recycle_adapter.startListening();
+        get_food_item_recycle_adapter.startListening();
 
     }
 

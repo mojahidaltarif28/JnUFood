@@ -97,7 +97,7 @@ public class FoodList extends Fragment {
         }
         gridView = view.findViewById(R.id.food_list_grid_view);
         list = new ArrayList<>();
-        databaseReference.child("food_Item").child(item_name).child("item list").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("food_Item").child(item_name).child("item list1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
@@ -109,12 +109,15 @@ public class FoodList extends Fragment {
                 gridView.setAdapter(adapter);
                 adapter.setOnCLickEventFoodList(new Food_List_Adapter.OnCLickEventFoodList() {
                     @Override
-                    public void on_click_food_list(String name, String amount, String price, String restaurant, String image) {
+                    public void on_click_food_list(String name, String amount, String price, String restaurant, String image,String status) {
                         ShowDetailsCart showDetailsCart = new ShowDetailsCart();
                         if(mobile.equals("")){
                             Toast.makeText(getActivity(), "Please first Login", Toast.LENGTH_SHORT).show();
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login(),null).addToBackStack(null).commit();
-                        }else {
+                        }else if(status.equals("unavailable")){
+                            Toast.makeText(getActivity(),"This item is currently unavailable",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
                             Bundle bundle1 = new Bundle();
                             bundle1.putString("name", name);
                             bundle1.putString("net", amount);
@@ -208,12 +211,15 @@ public class FoodList extends Fragment {
                 gridView.setAdapter(adapter);
                 adapter.setOnCLickEventFoodList(new Food_List_Adapter.OnCLickEventFoodList() {
                     @Override
-                    public void on_click_food_list(String name, String amount, String price, String restaurant, String image) {
+                    public void on_click_food_list(String name, String amount, String price, String restaurant, String image,String status) {
                         ShowDetailsCart showDetailsCart = new ShowDetailsCart();
                         if(mobile.equals("")){
                             Toast.makeText(getActivity(), "Please first Login", Toast.LENGTH_SHORT).show();
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new Login(),null).addToBackStack(null).commit();
-                        }else {
+                        }else if(status.equals("unavailable")){
+                            Toast.makeText(getActivity(),"This item is currently unavailable",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
                             Bundle bundle1 = new Bundle();
                             bundle1.putString("name", name);
                             bundle1.putString("net", amount);

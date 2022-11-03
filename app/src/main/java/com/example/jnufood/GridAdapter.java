@@ -50,16 +50,17 @@ public class GridAdapter extends ArrayAdapter<Get_Menu_Item> {
         listitemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              // Toast.makeText(getContext(), "ttt"+get_menu_item.getName(), Toast.LENGTH_SHORT).show();
-               name=get_menu_item.getName();
+                // Toast.makeText(getContext(), "ttt"+get_menu_item.getName(), Toast.LENGTH_SHORT).show();
+                name = get_menu_item.getRestaurant();
 //                Toast.makeText(getContext(), ""+name, Toast.LENGTH_SHORT).show();
                 onClickEvent.onhomeclick(name);
-                           }
+            }
         });
 
         return listitemView;
     }
-    public interface OnClickEvent{
+
+    public interface OnClickEvent {
         void onhomeclick(String name);
     }
 

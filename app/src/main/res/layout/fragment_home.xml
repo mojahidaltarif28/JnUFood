@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/search_bar_layout"
@@ -154,7 +154,7 @@
                     android:layout_marginStart="36dp"
                     android:background="@drawable/notification_count"
                     android:paddingTop="3dp"
-                    android:text="10"
+                    android:text="0"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="12sp"
@@ -293,9 +293,77 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Order Request"
+                android:textSize="25sp"
+                android:paddingBottom="5dp"
+                android:fontFamily="casual"
+                android:textColor="@color/green_yellow"
+                />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Delivery Boy" />
+            android:orientation="vertical"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view_order_request"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_color"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/home_restaurant_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Food Request"
+                android:textSize="25sp"
+                android:paddingBottom="5dp"
+                android:fontFamily="casual"
+                android:textColor="@color/green_yellow"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view_order_request_retaurant"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_color"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
