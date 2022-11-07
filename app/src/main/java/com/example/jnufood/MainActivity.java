@@ -4,14 +4,12 @@ package com.example.jnufood;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 
 import com.example.jnufood.Fragment.AddFoodItem;
 import com.example.jnufood.Fragment.Add_Admin;
-import com.example.jnufood.Fragment.Add_Menu_Item;
 import com.example.jnufood.Fragment.Admin_Account;
 import com.example.jnufood.Fragment.Administration;
 import com.example.jnufood.Fragment.ApplyForDeliveryBoy;
@@ -353,7 +351,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Admin_Account(),null).addToBackStack(null).commit();
                 break;
             case R.id.history_Delivery_Boy:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new History_Delivery_Boy(),null).addToBackStack(null).commit();
+                if (bundle != null) {
+                    if (bundle.getString("login_code") != null) {
+                        String mobile1 = bundle.getString("mobile");
+                        Bundle bundle1 = new Bundle();
+                        History_Delivery_Boy history=new History_Delivery_Boy();
+                        bundle1.putString("otp_id", mobile1);
+                        history.setArguments(bundle1);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history,null).addToBackStack(null).commit();
+                    }
+                }
                 break;
 
             case R.id.delivery_Boy_Account:

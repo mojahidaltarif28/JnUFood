@@ -97,7 +97,7 @@ public class FoodList extends Fragment {
         }
         gridView = view.findViewById(R.id.food_list_grid_view);
         list = new ArrayList<>();
-        databaseReference.child("food_Item").child(item_name).child("item list1").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("food_Item").child(item_name).child("item list").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();

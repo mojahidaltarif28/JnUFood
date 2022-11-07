@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/order_request_recycle"
+    android:id="@+id/db_home_recycle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="8dp"
@@ -23,65 +23,56 @@
             android:layout_marginTop="5dp"
             android:fontFamily="serif"
             android:paddingRight="2dp"
-            android:text="Status:"
+            android:text="pick up:"
             android:textColor="@color/orange"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/order_request_status"
+            android:id="@+id/db_request_pickup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
+           android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/txt4"
             android:fontFamily="serif"
             android:paddingRight="2dp"
-            android:text="paid"
+            android:text="Hanif Biriyani House Dhaka"
             android:textColor="@color/orange1"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/txt_tk_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_tk_3"
+            android:layout_below="@+id/db_request_destination"
             android:layout_marginLeft="12dp"
             android:fontFamily="serif"
-            android:text="Payment Amount:"
+            android:text="mobile:"
             android:textColor="@color/orange"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txt_tk_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_tk_3"
-            android:layout_toRightOf="@id/txt_tk_5"
-            android:fontFamily="serif"
-            android:text="৳"
-            android:textColor="@color/orange1"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/total_payment_amount_db"
+            android:id="@+id/db_delivery_mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_tk_3"
-            android:layout_marginEnd="5dp"
-            android:layout_toRightOf="@+id/txt_tk_2"
+            android:layout_below="@+id/db_request_destination"
+            android:layout_toRightOf="@id/txt_tk_5"
             android:fontFamily="serif"
-            android:text="5000"
+            android:text="01717268128"
             android:textColor="@color/orange1"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
+
 
         <TextView
-            android:id="@+id/delivery_request_accept_btn"
+            android:id="@+id/db_request_accept_btn"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view_order_request"
+           android:layout_below="@+id/db_request_pickup"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="12dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/received_btn"
             android:paddingLeft="5dp"
             android:textAlignment="center"
@@ -90,68 +81,36 @@
             android:text="Accept"
             android:textColor="@color/white"
             android:textSize="14sp" />
-        <TextView
-            android:id="@+id/complete_processing"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view_order_request"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/received_btn"
-            android:paddingLeft="5dp"
-            android:textAlignment="center"
-            android:paddingRight="5dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="5dp"
-            android:text="Complete"
-            android:visibility="visible"
-            android:textColor="@color/white"
-            android:textSize="11sp" />
-        <TextView
-            android:id="@+id/view_order_request"
-            android:layout_width="60dp"
-            android:visibility="visible"
-            android:layout_height="wrap_content"
-           android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
-            android:text="View"
-            android:textSize="14sp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/received_btn"
-            android:paddingLeft="5dp"
-            android:textAlignment="center"
-            android:paddingRight="5dp"
-            android:paddingTop="1dp"
-            android:paddingBottom="1dp"
-            android:textColor="@color/white"
-             />
+
+
+
+
 
         <TextView
             android:id="@+id/txt_tk_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/order_request_status"
+            android:layout_below="@+id/db_request_pickup"
             android:layout_marginLeft="12dp"
             android:fontFamily="serif"
-            android:text="mobile:"
+            android:text="destination:"
             android:textColor="@color/orange"
-            android:textSize="14sp" />
+            android:textSize="11sp" />
 
         <TextView
-            android:id="@+id/order_request_mobile"
+            android:id="@+id/db_request_destination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/order_request_status"
+            android:layout_below="@+id/db_request_pickup"
             android:layout_marginLeft="2dp"
             android:layout_toRightOf="@id/txt_tk_3"
+            android:layout_toLeftOf="@+id/db_request_accept_btn"
             android:layout_weight="1"
             android:fontFamily="serif"
             android:paddingRight="2dp"
-            android:text="01717268128"
+            android:text="CSE Department ,Jagannath University"
             android:textColor="@color/orange1"
-            android:textSize="14sp" />
+            android:textSize="11sp" />
 
 
 

@@ -379,11 +379,7 @@ public class AddFoodItem extends Fragment {
                                                         price.setText("");
                                                         net.setText("");
                                                         upload_image.setText("");
-//                                                        Intent in = new Intent(getActivity(), MainActivity.class);
-//                                                        in.putExtra("login_code", "-1010");
-//                                                        in.putExtra("mobile", mobile);
-//                                                        in.putExtra("type", "Restaurant");
-//                                                        startActivity(in);
+
                                                     }
 
                                                     @Override

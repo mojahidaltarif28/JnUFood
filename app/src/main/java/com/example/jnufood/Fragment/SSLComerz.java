@@ -142,7 +142,7 @@ public class SSLComerz extends Fragment implements SSLCTransactionResponseListen
 
                 for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
                     Get_My_Cart_Modal get_my_cart_modal = dataSnapshot.getValue(Get_My_Cart_Modal.class);
-                    String Name, mobile, net, photo, price, total_item, total_price;
+                    String Name, mobile, net, photo, price, total_item, total_price,restaurant;
                     Name = get_my_cart_modal.getName();
                     mobile = get_my_cart_modal.getMobile();
                     net = get_my_cart_modal.getNet();
@@ -150,10 +150,28 @@ public class SSLComerz extends Fragment implements SSLCTransactionResponseListen
                     price = get_my_cart_modal.getPrice();
                     total_item = get_my_cart_modal.getTotal_item();
                     total_price = get_my_cart_modal.getTotal_price();
+                    restaurant=get_my_cart_modal.getRestaurant();
+
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("status").setValue("paid");
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("restaurant").setValue(restaurant);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("mobile").setValue(mobile);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("delivery_address").setValue(address);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("delivery_mobile").setValue(de_mobile);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("payment_amount").setValue(total_check_amount);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("list").child(Name).child("Name").setValue(Name);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("list").child(Name).child("price").setValue(price);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("list").child(Name).child("net").setValue(net);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("list").child(Name).child("mobile").setValue(mobile);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("list").child(Name).child("photo").setValue(photo);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("list").child(Name).child("total_item").setValue(total_item);
+                    databaseReference.child("Order_Table_Restaurant").child(restaurant).child(mobile).child("list").child(Name).child("total_price").setValue(total_price);
+
                     databaseReference.child("Order_Table").child(mobile).child("status").setValue("paid");
-                    databaseReference.child("Order_Table").child(mobile).child("delivery address").setValue(address);
-                    databaseReference.child("Order_Table").child(mobile).child("delivery mobile").setValue(de_mobile);
-                    databaseReference.child("Order_Table").child(mobile).child("payment amount").setValue(total_check_amount);
+                    databaseReference.child("Order_Table").child(mobile).child("restaurant").setValue(restaurant);
+                    databaseReference.child("Order_Table").child(mobile).child("mobile").setValue(mobile);
+                    databaseReference.child("Order_Table").child(mobile).child("delivery_address").setValue(address);
+                    databaseReference.child("Order_Table").child(mobile).child("delivery_mobile").setValue(de_mobile);
+                    databaseReference.child("Order_Table").child(mobile).child("payment_amount").setValue(total_check_amount);
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("Name").setValue(Name);
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("price").setValue(price);
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("net").setValue(net);
@@ -161,6 +179,8 @@ public class SSLComerz extends Fragment implements SSLCTransactionResponseListen
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("photo").setValue(photo);
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("total_item").setValue(total_item);
                     databaseReference.child("Order_Table").child(mobile).child("list").child(Name).child("total_price").setValue(total_price);
+
+
                 }
                 databaseReference.child("Cart_List").child(mobile).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

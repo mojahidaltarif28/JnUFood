@@ -142,6 +142,7 @@ public class ShowDetailsCart extends Fragment {
 
                         }
                         else if(snapshot.child(mobile).hasChild("Total")){
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("restaurant").setValue(restaurant_t.getText().toString());
                             databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("Name").setValue(title);
                             databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("price").setValue(price);
                             databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("net").setValue(net);
@@ -156,6 +157,7 @@ public class ShowDetailsCart extends Fragment {
                             Toast.makeText(getActivity(),"Added to Your Cart",Toast.LENGTH_SHORT).show();
                         }
                         else {
+                            databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("restaurant").setValue(restaurant_t.getText().toString());
                             databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("Name").setValue(title);
                             databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("price").setValue(price);
                             databaseReference.child("Cart_List").child(mobile).child("list").child(title).child("net").setValue(net);

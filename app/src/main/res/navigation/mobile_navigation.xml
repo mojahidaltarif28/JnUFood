@@ -70,11 +70,7 @@
         android:name="com.example.jnufood.Fragment.Forgot_password_change_password"
         android:label="fragment_forgot_password_change_password"
         tools:layout="@layout/fragment_forgot_password_change_password" />
-    <fragment
-        android:id="@+id/add_Menu_Item"
-        android:name="com.example.jnufood.Fragment.Add_Menu_Item"
-        android:label="fragment_add__menu__item"
-        tools:layout="@layout/fragment_add__menu__item" />
+
     <fragment
         android:id="@+id/admin_Account"
         android:name="com.example.jnufood.Fragment.Admin_Account"
@@ -140,5 +136,10 @@
         android:name="com.example.jnufood.Fragment.History_View"
         android:label="fragment_history__view"
         tools:layout="@layout/fragment_history__view" />
+    <fragment
+        android:id="@+id/viewOrderTableRestaurant"
+        android:name="com.example.jnufood.Fragment.ViewOrderTableRestaurant"
+        android:label="fragment_view_order_table_restaurant"
+        tools:layout="@layout/fragment_view_order_table_restaurant" />
 
 </navigation>

@@ -1,7 +1,7 @@
 package com.example.jnufood;
 
 public class Get_My_Cart_Modal {
-    String Name,mobile,net,photo,price,total_item,total_price;
+    String Name,mobile,net,photo,price,total_item,total_price,restaurant;
 
     public String getName() {
         return Name;
@@ -57,5 +57,13 @@ public class Get_My_Cart_Modal {
 
     public void setTotal_price(String total_price) {
         this.total_price = total_price;
+    }
+
+    public String getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(String restaurant) {
+        this.restaurant = restaurant;
     }
 }

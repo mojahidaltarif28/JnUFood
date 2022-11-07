@@ -35,7 +35,7 @@
         <item
             android:id="@+id/nav_applyForDeliveryBoy"
             android:icon="@drawable/ic_find"
-            android:title="@string/find_job" />
+            android:title="Application form" />
         <item
             android:id="@+id/nav_administration"
             android:icon="@drawable/ic_admin"
@@ -69,7 +69,7 @@
         <item
             android:id="@+id/history_Delivery_Boy"
             android:icon="@drawable/ic_history"
-            android:title="History"
+            android:title="Current Delivery"
             android:visible="false" />
 
         <item
