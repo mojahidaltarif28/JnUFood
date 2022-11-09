@@ -1,0 +1,57 @@
+package com.example.jnufood;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+public class Delivery_Boy_Info_Adapter extends FirebaseRecyclerAdapter<Delivery_Boy_Info_Model,Delivery_Boy_Info_Adapter.myViewHolder> {
+
+    public Delivery_Boy_Info_Adapter(@NonNull FirebaseRecyclerOptions<Delivery_Boy_Info_Model> options) {
+        super(options);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Delivery_Boy_Info_Model model) {
+
+        holder.name.setText(model.getName());
+        holder.mobile.setText(model.getMobile());
+        holder.profession.setText(model.getProfession());
+        Glide.with(holder.imageView.getContext()).
+                load(model.getPhoto())
+                .placeholder(R.drawable.ic_person)
+                .circleCrop()
+                .error(R.drawable.ic_person)
+                .into(holder.imageView);
+    }
+
+    @NonNull
+    @Override
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.delivery_boy_list_recycle_view,parent,false);
+        return new myViewHolder(view);
+    }
+
+    class myViewHolder extends RecyclerView.ViewHolder{
+        TextView name,mobile,profession;
+        CardView cardView;
+        ImageView imageView;
+        public myViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name=itemView.findViewById(R.id.name_db_recycle_view);
+            mobile=itemView.findViewById(R.id.mobile_db_recycle_view);
+            profession=itemView.findViewById(R.id.profession_db_recycle_view);
+            cardView=itemView.findViewById(R.id.delivery_boy_list_recycle);
+            imageView=itemView.findViewById(R.id.delivery_boy_image);
+        }
+    }
+}

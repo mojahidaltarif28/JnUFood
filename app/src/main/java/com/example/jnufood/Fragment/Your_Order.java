@@ -202,9 +202,9 @@ public class Your_Order extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot1) {
                         if (snapshot1.hasChild(mobile)) {
                             String d_address, d_mobile, pay_amount;
-                            d_address = snapshot1.child(mobile).child("delivery address").getValue(String.class);
-                            d_mobile = snapshot1.child(mobile).child("delivery mobile").getValue(String.class);
-                            pay_amount = snapshot1.child(mobile).child("payment amount").getValue(String.class);
+                            d_address = snapshot1.child(mobile).child("delivery_address").getValue(String.class);
+                            d_mobile = snapshot1.child(mobile).child("delivery_mobile").getValue(String.class);
+                            pay_amount = snapshot1.child(mobile).child("payment_amount").getValue(String.class);
 
                             for (DataSnapshot dataSnapshot : snapshot1.child(mobile).child("list").getChildren()) {
                                 Get_My_Cart_Modal get_my_cart_modal = dataSnapshot.getValue(Get_My_Cart_Modal.class);

@@ -60,11 +60,6 @@
             android:icon="@drawable/ic_add_moderator"
             android:title="Add Admin"
             android:visible="false" />
-        <item
-            android:id="@+id/admin_Account"
-            android:icon="@drawable/ic_my_account"
-            android:title="My Account"
-            android:visible="false" />
 
         <item
             android:id="@+id/history_Delivery_Boy"
@@ -72,11 +67,6 @@
             android:title="Current Delivery"
             android:visible="false" />
 
-        <item
-            android:id="@+id/delivery_Boy_Account"
-            android:icon="@drawable/ic_my_account"
-            android:title="My Account"
-            android:visible="false" />
         <item
             android:id="@+id/contact_us"
             android:icon="@drawable/ic_contact"

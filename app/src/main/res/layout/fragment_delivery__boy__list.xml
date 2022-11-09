@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
     tools:context=".Fragment.Delivery_Boy_List">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange1"
+            android:textSize="25sp"
+            android:textColor="@color/green_yellow"
+            android:textAlignment="center"
+            android:text="Delivery Boy List"
+            android:fontFamily="casual"
+            android:paddingBottom="4dp"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Delivery boy list" />
+        android:orientation="horizontal">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view_delivery_boy_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/bg_color"
+            android:layout_marginStart="12sp"
+            android:layout_marginEnd="12sp"
+            android:layout_marginBottom="10dp" />
+    </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

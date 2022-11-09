@@ -24,10 +24,11 @@
 
             <TextView
                 android:id="@+id/for_db_btn"
-                android:layout_width="120dp"
+                android:layout_width="150dp"
+                android:textAlignment="center"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/btn_bg"
+                android:layout_marginRight="5dp"
+                android:background="@color/blue"
                 android:padding="5dp"
                 android:text="For deliver Boy"
                 android:textColor="@color/white"
@@ -35,10 +36,11 @@
 
             <TextView
                 android:id="@+id/for_res_btn"
-                android:layout_width="120dp"
+                android:layout_width="150dp"
+                android:textAlignment="center"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/btn_bg"
+                android:layout_marginLeft="5dp"
+                android:background="@color/orange"
                 android:padding="5dp"
                 android:text="For Restaurant"
                 android:textColor="@color/white"
@@ -211,6 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:paddingBottom="30dp"
                 android:orientation="vertical">
 
                 <ProgressBar

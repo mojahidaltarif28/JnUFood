@@ -72,11 +72,6 @@
         tools:layout="@layout/fragment_forgot_password_change_password" />
 
     <fragment
-        android:id="@+id/admin_Account"
-        android:name="com.example.jnufood.Fragment.Admin_Account"
-        android:label="fragment_admin__account"
-        tools:layout="@layout/fragment_admin__account" />
-    <fragment
         android:id="@+id/application_Admin"
         android:name="com.example.jnufood.Fragment.Application_Admin"
         android:label="fragment_application__admin"
@@ -91,11 +86,6 @@
         android:name="com.example.jnufood.Fragment.Delivery_Boy_List"
         android:label="fragment_delivery__boy__list"
         tools:layout="@layout/fragment_delivery__boy__list" />
-    <fragment
-        android:id="@+id/delivery_Boy_Account"
-        android:name="com.example.jnufood.Fragment.Delivery_Boy_Account"
-        android:label="fragment_delivery__boy__account"
-        tools:layout="@layout/fragment_delivery__boy__account" />
     <fragment
         android:id="@+id/history_Delivery_Boy"
         android:name="com.example.jnufood.Fragment.History_Delivery_Boy"

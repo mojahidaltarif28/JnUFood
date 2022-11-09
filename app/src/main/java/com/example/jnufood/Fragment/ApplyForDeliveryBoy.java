@@ -106,7 +106,7 @@ public class ApplyForDeliveryBoy extends Fragment {
         for_db_btn = view.findViewById(R.id.for_db_btn);
         for_res_btn = view.findViewById(R.id.for_res_btn);
         db_show=view.findViewById(R.id.dba_app_form);
-        for_db_btn.setBackgroundResource(R.drawable.received_btn);
+        for_db_btn.setBackgroundResource(R.color.blue);
         res_show=view.findViewById(R.id.application_restaurant_show);
 
         btn_group=view.findViewById(R.id.btn_group);
@@ -123,8 +123,8 @@ public class ApplyForDeliveryBoy extends Fragment {
             public void onClick(View view) {
                 db_show.setVisibility(View.VISIBLE);
                 res_show.setVisibility(View.GONE);
-                for_db_btn.setBackgroundResource(R.drawable.received_btn);
-                for_res_btn.setBackgroundResource(R.drawable.btn_bg);
+                for_db_btn.setBackgroundResource(R.color.blue);
+                for_res_btn.setBackgroundResource(R.color.orange);
             }
         });
         for_res_btn.setOnClickListener(new View.OnClickListener() {
@@ -132,8 +132,8 @@ public class ApplyForDeliveryBoy extends Fragment {
             public void onClick(View view) {
                 res_show.setVisibility(View.VISIBLE);
                 db_show.setVisibility(View.GONE);
-                for_res_btn.setBackgroundResource(R.drawable.received_btn);
-                for_db_btn.setBackgroundResource(R.drawable.btn_bg);
+                for_res_btn.setBackgroundResource(R.color.blue);
+                for_db_btn.setBackgroundResource(R.color.orange);
             }
         });
         ProgressBar progressBar = view.findViewById(R.id.dba_progress_bar);

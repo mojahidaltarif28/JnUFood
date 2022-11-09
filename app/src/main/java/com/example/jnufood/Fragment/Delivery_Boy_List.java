@@ -3,12 +3,20 @@ package com.example.jnufood.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.jnufood.Delivery_Boy_Info_Adapter;
+import com.example.jnufood.Delivery_Boy_Info_Model;
+import com.example.jnufood.Get_history_modal;
+import com.example.jnufood.History_Adapter;
 import com.example.jnufood.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,9 @@ import com.example.jnufood.R;
  * create an instance of this fragment.
  */
 public class Delivery_Boy_List extends Fragment {
+
+    RecyclerView recyclerView;
+    Delivery_Boy_Info_Adapter delivery_boy_info_adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +72,20 @@ public class Delivery_Boy_List extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delivery__boy__list, container, false);
+        View view=inflater.inflate(R.layout.fragment_delivery__boy__list, container, false);
+
+        recyclerView=view.findViewById(R.id.recycle_view_delivery_boy_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        FirebaseRecyclerOptions<Delivery_Boy_Info_Model> options = new FirebaseRecyclerOptions.Builder<Delivery_Boy_Info_Model>().setQuery(FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/").child("Administration").child("Delivery_man"), Delivery_Boy_Info_Model.class).build();
+        options.getSnapshots();
+        delivery_boy_info_adapter = new Delivery_Boy_Info_Adapter(options);
+        recyclerView.setAdapter(delivery_boy_info_adapter);
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        delivery_boy_info_adapter.startListening();
     }
 }

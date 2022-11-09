@@ -10,12 +10,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.jnufood.Fragment.AddFoodItem;
 import com.example.jnufood.Fragment.Add_Admin;
-import com.example.jnufood.Fragment.Admin_Account;
 import com.example.jnufood.Fragment.Administration;
 import com.example.jnufood.Fragment.ApplyForDeliveryBoy;
 import com.example.jnufood.Fragment.Contact_Us;
 import com.example.jnufood.Fragment.Customer_List;
-import com.example.jnufood.Fragment.Delivery_Boy_Account;
 import com.example.jnufood.Fragment.Delivery_Boy_List;
 import com.example.jnufood.Fragment.History;
 import com.example.jnufood.Fragment.History_Delivery_Boy;
@@ -69,27 +67,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Bundle bundle = getIntent().getExtras();
         Bundle bundle1 = new Bundle();
         if (savedInstanceState == null) {
-            HomeFragment homeFragment=new HomeFragment();
+            HomeFragment homeFragment = new HomeFragment();
             if (bundle != null) {
-                if (bundle.getString("login_code") != null && bundle.getString("type")!=null) {
+                if (bundle.getString("login_code") != null && bundle.getString("type") != null) {
                     String mobile = bundle.getString("mobile");
-                    String type=bundle.getString("type");
+                    String type = bundle.getString("type");
                     bundle1.putString("otp_id", mobile);
-                    bundle1.putString("type",type);
+                    bundle1.putString("type", type);
                     homeFragment.setArguments(bundle1);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
                 }
-            }else {
+            } else {
 
-                bundle1.putString("otp_id","");
-                bundle1.putString("type","Customer");
+                bundle1.putString("otp_id", "");
+                bundle1.putString("type", "Customer");
                 homeFragment.setArguments(bundle1);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
             }
             navigationView.setCheckedItem(R.id.nav_home);
         }
-
-
 
 
         if (bundle != null) {
@@ -98,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String mobile = bundle.getString("mobile");
                 if (login_value.equals("-505")) {
                     //customer
-                   // Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(true);
                     navigationView.getMenu().findItem(R.id.history).setVisible(true);
@@ -111,15 +107,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.customer_List).setVisible(false);
                     navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(false);
                     navigationView.getMenu().findItem(R.id.add_Admin).setVisible(false);
-                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(false);
 
                     navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(false);
-                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(false);
 
-                }
-                else if(login_value.equals("-50")){
+                } else if (login_value.equals("-50")) {
                     //admin
-                   // Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);
@@ -132,14 +125,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.customer_List).setVisible(true);
                     navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(true);
                     navigationView.getMenu().findItem(R.id.add_Admin).setVisible(true);
-                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(true);
                     navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(false);
-                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(false);
 
-                }
-                else if(login_value.equals("-100")){
+                } else if (login_value.equals("-100")) {
                     //delivery boy
-                 //   Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(this, mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);
@@ -147,17 +137,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
                     navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
-
                     navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(false);
                     navigationView.getMenu().findItem(R.id.customer_List).setVisible(false);
                     navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(false);
                     navigationView.getMenu().findItem(R.id.add_Admin).setVisible(false);
-                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(false);
-
                     navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(true);
-                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(true);
 
-                }else if(login_value.equals("-1010")){
+                } else if (login_value.equals("-1010")) {
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);
@@ -165,19 +151,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
                     navigationView.getMenu().findItem(R.id.nav_applyForDeliveryBoy).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_administration).setVisible(false);
-
                     navigationView.getMenu().findItem(R.id.add_Menu_Item).setVisible(true);
                     navigationView.getMenu().findItem(R.id.customer_List).setVisible(false);
                     navigationView.getMenu().findItem(R.id.delivery_Boy_List).setVisible(false);
                     navigationView.getMenu().findItem(R.id.add_Admin).setVisible(false);
-                    navigationView.getMenu().findItem(R.id.admin_Account).setVisible(false);
-
                     navigationView.getMenu().findItem(R.id.history_Delivery_Boy).setVisible(false);
-                    navigationView.getMenu().findItem(R.id.delivery_Boy_Account).setVisible(false);
-                }
-                else {
+                } else {
 
-                  //  Toast.makeText(this, "Logout:"+mobile, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(this, "Logout:"+mobile, Toast.LENGTH_SHORT).show();
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(true);
                     navigationView.getMenu().findItem(R.id.my_Account).setVisible(false);
                     navigationView.getMenu().findItem(R.id.history).setVisible(false);
@@ -205,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -229,32 +209,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
 
             case R.id.nav_home:
-                HomeFragment homeFragment=new HomeFragment();
+                HomeFragment homeFragment = new HomeFragment();
                 if (bundle != null) {
                     if (bundle.getString("login_code") != null) {
                         String mobile = bundle.getString("mobile");
-                        String type=bundle.getString("type");
+                        String type = bundle.getString("type");
                         Bundle bundle1 = new Bundle();
 
                         bundle1.putString("otp_id", mobile);
-                        bundle1.putString("type",type);
+                        bundle1.putString("type", type);
                         homeFragment.setArguments(bundle1);
-                        String ROOT_FRAGMENT_TAG="HomeFragment";
-                        FragmentManager fm=getSupportFragmentManager();
-                        FragmentTransaction ft=fm.beginTransaction();
-                        ft.replace(R.id.fragment, homeFragment,null).addToBackStack(null).commit();
+                        String ROOT_FRAGMENT_TAG = "HomeFragment";
+                        FragmentManager fm = getSupportFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment, homeFragment, null).addToBackStack(null).commit();
 //                        fm.popBackStack();
                     }
-                }else {
+                } else {
                     Bundle bundle1 = new Bundle();
-                    bundle1.putString("otp_id","");
-                    bundle1.putString("type","Customer");
+                    bundle1.putString("otp_id", "");
+                    bundle1.putString("type", "Customer");
                     homeFragment.setArguments(bundle1);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment, homeFragment).commit();
                 }
                 break;
             case R.id.nav_login:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login(),null).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Login(), null).addToBackStack(null).commit();
                 break;
             case R.id.my_Account:
                 if (bundle != null) {
@@ -264,15 +244,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         My_Account my_account = new My_Account();
                         bundle1.putString("otp_id", mobile);
                         my_account.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account,null).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, my_account, null).addToBackStack(null).commit();
                     }
                 }
                 break;
             case R.id.nav_applyForDeliveryBoy:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ApplyForDeliveryBoy(),null).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ApplyForDeliveryBoy(), null).addToBackStack(null).commit();
                 break;
             case R.id.nav_administration:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Administration(),null).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Administration(), null).addToBackStack(null).commit();
                 break;
             case R.id.your_Order:
                 if (bundle != null) {
@@ -282,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Your_Order your_order = new Your_Order();
                         bundle1.putString("otp_id", mobile);
                         your_order.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, your_order,null).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, your_order, null).addToBackStack(null).commit();
                     }
                 }
                 break;
@@ -294,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         History history = new History();
                         bundle1.putString("otp_id", mobile);
                         history.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history,null).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history, null).addToBackStack(null).commit();
                     }
                 }
                 break;
@@ -302,18 +282,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (bundle != null) {
                     if (bundle.getString("login_code") != null) {
                         String mobile = bundle.getString("mobile");
-                        String type=bundle.getString("type");
+                        String type = bundle.getString("type");
                         Bundle bundle1 = new Bundle();
                         Logout logout = new Logout();
-                        bundle1.putString("type",type);
+                        bundle1.putString("type", type);
                         bundle1.putString("otp_id", mobile);
                         logout.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logout,null).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logout, null).addToBackStack(null).commit();
                     }
                 }
-                   break;
+                break;
             case R.id.contact_us:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Contact_Us(),null).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Contact_Us(), null).addToBackStack(null).commit();
                 break;
 
             case R.id.add_Menu_Item:
@@ -321,13 +301,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 databaseReference.child("Administration").child("Restaurant").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                      final String  res_name =snapshot.child(mobile).child("restaurant_name").getValue(String.class);
+                        final String res_name = snapshot.child(mobile).child("restaurant_name").getValue(String.class);
                         Bundle bundle1 = new Bundle();
-                        AddFoodItem add_menu_item=new AddFoodItem();
+                        AddFoodItem add_menu_item = new AddFoodItem();
                         bundle1.putString("otp_id", mobile);
-                        bundle1.putString("res_name",res_name);
+                        bundle1.putString("res_name", res_name);
                         add_menu_item.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, add_menu_item,null).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, add_menu_item, null).addToBackStack(null).commit();
 
                     }
 
@@ -337,35 +317,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
 
-               break;
+                break;
             case R.id.customer_List:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Customer_List(),null).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Customer_List(), null).addToBackStack(null).commit();
                 break;
             case R.id.delivery_Boy_List:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Delivery_Boy_List(),null).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Delivery_Boy_List(), null).addToBackStack(null).commit();
                 break;
             case R.id.add_Admin:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Add_Admin(),null).addToBackStack(null).commit();
-                break;
-            case R.id.admin_Account:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Admin_Account(),null).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Add_Admin(), null).addToBackStack(null).commit();
                 break;
             case R.id.history_Delivery_Boy:
                 if (bundle != null) {
                     if (bundle.getString("login_code") != null) {
                         String mobile1 = bundle.getString("mobile");
                         Bundle bundle1 = new Bundle();
-                        History_Delivery_Boy history=new History_Delivery_Boy();
+                        History_Delivery_Boy history = new History_Delivery_Boy();
                         bundle1.putString("otp_id", mobile1);
                         history.setArguments(bundle1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history,null).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, history, null).addToBackStack(null).commit();
                     }
                 }
                 break;
 
-            case R.id.delivery_Boy_Account:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Delivery_Boy_Account(),null).addToBackStack(null).commit();
-                break;
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);

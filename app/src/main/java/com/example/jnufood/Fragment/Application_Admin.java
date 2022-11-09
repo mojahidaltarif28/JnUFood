@@ -121,6 +121,7 @@ public class Application_Admin extends Fragment {
                         Random rnd = new Random();
                         int number = rnd.nextInt(999999);
                         String password = String.format("%06d", number);
+                        databaseReference.child("Administration").child("Delivery_man").child(mobile).child("mobile").setValue(mobile);
                         databaseReference.child("Administration").child("Delivery_man").child(mobile).child("address").setValue(address);
                         databaseReference.child("Administration").child("Delivery_man").child(mobile).child("email").setValue(email);
                         databaseReference.child("Administration").child("Delivery_man").child(mobile).child("name").setValue(name);
@@ -200,14 +201,14 @@ public class Application_Admin extends Fragment {
         res_btn = view.findViewById(R.id.admin_res_btn);
         db_show = view.findViewById(R.id.delivery_boy_application);
         res_show = view.findViewById(R.id.restaurant_application);
-        db_btn.setBackgroundResource(R.drawable.received_btn);
+        db_btn.setBackgroundResource(R.color.blue);
         db_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 db_show.setVisibility(View.VISIBLE);
                 res_show.setVisibility(View.GONE);
-                db_btn.setBackgroundResource(R.drawable.received_btn);
-                res_btn.setBackgroundResource(R.drawable.btn_bg);
+                db_btn.setBackgroundResource(R.color.blue);
+                res_btn.setBackgroundResource(R.color.orange);
 
             }
         });
@@ -216,8 +217,8 @@ public class Application_Admin extends Fragment {
             public void onClick(View view) {
                 db_show.setVisibility(View.GONE);
                 res_show.setVisibility(View.VISIBLE);
-                db_btn.setBackgroundResource(R.drawable.btn_bg);
-                res_btn.setBackgroundResource(R.drawable.received_btn);
+                db_btn.setBackgroundResource(R.color.orange);
+                res_btn.setBackgroundResource(R.color.blue);
             }
         });
 
@@ -241,7 +242,7 @@ public class Application_Admin extends Fragment {
                         databaseReference.child("food_Item").child(res_name).child("name").setValue(food_category);
                         databaseReference.child("food_Item").child(res_name).child("photo").setValue(image);
                         databaseReference.child("food_Item").child(res_name).child("restaurant").setValue(res_name);
-
+                        databaseReference.child("Administration").child("Restaurant").child(mobile).child("mobile").setValue(mobile);
                         databaseReference.child("Administration").child("Restaurant").child(mobile).child("address").setValue(address);
                         databaseReference.child("Administration").child("Restaurant").child(mobile).child("email").setValue(email);
                         databaseReference.child("Administration").child("Restaurant").child(mobile).child("restaurant_name").setValue(res_name);
