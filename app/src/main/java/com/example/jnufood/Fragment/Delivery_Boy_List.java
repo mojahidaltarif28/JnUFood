@@ -15,6 +15,7 @@ import com.example.jnufood.Delivery_Boy_Info_Model;
 import com.example.jnufood.Get_history_modal;
 import com.example.jnufood.History_Adapter;
 import com.example.jnufood.R;
+import com.example.jnufood.ViewDeliveryBoyList;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -80,6 +81,22 @@ public class Delivery_Boy_List extends Fragment {
         options.getSnapshots();
         delivery_boy_info_adapter = new Delivery_Boy_Info_Adapter(options);
         recyclerView.setAdapter(delivery_boy_info_adapter);
+        delivery_boy_info_adapter.setOnclickEvent(new Delivery_Boy_Info_Adapter.OnClickEventDBINFO() {
+            @Override
+            public void OnClickDBINFO(String address, String email, String name, String nid, String photo, String profession,String mobile) {
+                Bundle bundle=new Bundle();
+                ViewDeliveryBoyList viewDeliveryBoyList=new ViewDeliveryBoyList();
+                bundle.putString("address",address);
+                bundle.putString("email",email);
+                bundle.putString("name",name);
+                bundle.putString("nid",nid);
+                bundle.putString("photo",photo);
+                bundle.putString("profession",profession);
+                bundle.putString("mobile",mobile);
+                viewDeliveryBoyList.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,viewDeliveryBoyList,null).addToBackStack(null).commit();
+            }
+        });
         return view;
     }
 

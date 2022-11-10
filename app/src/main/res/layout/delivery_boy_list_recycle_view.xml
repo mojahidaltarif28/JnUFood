@@ -52,14 +52,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/name_db_recycle_view"
             android:layout_toRightOf="@+id/txt2"
-            android:fontFamily="casual"
             android:paddingLeft="2dp"
             android:text="01717268128"
             android:textColor="@color/orange1"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            />
         <TextView
-            android:id="@+id/txt3"
+            android:id="@+id/txt3125"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt2"
@@ -74,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt2"
-            android:layout_toRightOf="@+id/txt3"
+            android:layout_toRightOf="@+id/txt3125"
             android:paddingLeft="2dp"
             android:text="student"
             android:textColor="@color/orange1"

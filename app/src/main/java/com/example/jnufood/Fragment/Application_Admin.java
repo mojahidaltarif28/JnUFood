@@ -295,11 +295,11 @@ public class Application_Admin extends Fragment {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(getActivity(), "Successfully Accept", Toast.LENGTH_SHORT).show();
-//                                Intent in = new Intent(getActivity(), MainActivity.class);
-//                                in.putExtra("login_code", "-50");
-//                                in.putExtra("mobile", mobile_log);
-//                                in.putExtra("type", "Admin");
-//                                startActivity(in);
+                                Intent in = new Intent(getActivity(), MainActivity.class);
+                                in.putExtra("login_code", "-50");
+                                in.putExtra("mobile", mobile_log);
+                                in.putExtra("type", "Admin");
+                                startActivity(in);
 
                             }
                         });
