@@ -145,7 +145,7 @@
             android:layout_marginLeft="18dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="ADD"
             android:visibility="visible"
             android:background="@drawable/btn_bg"

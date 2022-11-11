@@ -1,14 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     tools:context=".Fragment.Contact_Us">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Contact Us" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:paddingLeft="25dp"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="16sp"
+           android:textStyle="bold"
+           android:textColor="@color/orange1"
+           android:text="Food Order Incomplete:"/>
+       <me.biubiubiu.justifytext.library.JustifyTextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="15sp"
+           android:text="In the rare occasion that you do not receive food that is on your receipt, we will make it up to you. Please call us as soon as you notice that any food items were not received in your order. You may cancel the missed food before we prepare it without any question, and we will refund the amount paid for the missed food with a store credit. No cash refunds.\nPlease note: we do provide courtesy items such as disposable silverware, sauce, etc. when requested for free. If we mistakenly omit a free courtesy item you are welcome to let us know so we may address the issue with our staff, however, we cannot provide discounts, refunds or store credit."/>
 
-</FrameLayout>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="16sp"
+           android:textStyle="bold"
+           android:textColor="@color/orange1"
+           android:text="Food Dissatisfaction:"/>
+       <me.biubiubiu.justifytext.library.JustifyTextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="15sp"
+           android:text="We cook our food fresh to order with only the finest and freshest ingredients. We take great care and pride in all of the dishes we make. Refunds and/or replacement food are available upon request for orders in which the food is wrong, omitted and other similar circumstances. Refunds are not typically provided for food that a guest simply does not like."
+           />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="16sp"
+           android:textStyle="bold"
+           android:textColor="@color/orange1"
+           android:text="Spice Level:"/>
+       <me.biubiubiu.justifytext.library.JustifyTextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="15sp"
+           android:text="We offer a choice of spice levels (Mild, Medium, Hot, and Thai Hot) but spice can be different for everyone. We usually suggest that you are on the side of caution and choose a lower spice level because you can add spice in, but can’t take it out! We do not offer discounts or refunds for a preferred different spice level."
+           />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="16sp"
+           android:textStyle="bold"
+           android:textColor="@color/orange1"
+           android:text="Cancel Order:"/>
+       <me.biubiubiu.justifytext.library.JustifyTextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="15sp"
+           android:text="Sorry, we cannot cancel, refund or give store credit if you change your mind or mistakenly order an item after the order is prepared. We cannot provide any refund or store credit for non-food items or beverages."
+           />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="16sp"
+           android:textStyle="bold"
+           android:textColor="@color/orange1"
+           android:text="Complimentary Food:"/>
+       <me.biubiubiu.justifytext.library.JustifyTextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textSize="15sp"
+           android:text="Sorry, we cannot provide a refund or cash value on any complimentary food."/>
+   </LinearLayout>
+
+</ScrollView>

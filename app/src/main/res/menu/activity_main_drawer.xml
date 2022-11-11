@@ -67,10 +67,6 @@
             android:title="Current Delivery"
             android:visible="false" />
 
-        <item
-            android:id="@+id/contact_us"
-            android:icon="@drawable/ic_contact"
-            android:title="Help Center" />
 
     </group>
     <item android:title="Settings">

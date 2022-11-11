@@ -21,7 +21,7 @@
         android:label="@string/history"
         tools:layout="@layout/fragment_history" />
     <fragment
-        android:id="@+id/contact_us"
+        android:id="@+id/condition"
         android:name="com.example.jnufood.Fragment.Contact_Us"
         android:label="@string/contact"
         tools:layout="@layout/fragment_contact__us" />

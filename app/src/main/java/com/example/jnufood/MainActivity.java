@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 }
                 break;
-            case R.id.contact_us:
+            case R.id.condition:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Contact_Us(), null).addToBackStack(null).commit();
                 break;
 
