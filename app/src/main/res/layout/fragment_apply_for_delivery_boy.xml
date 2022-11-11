@@ -89,7 +89,6 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp" />
 
             <EditText
@@ -109,7 +108,6 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp" />
 
             <EditText
@@ -128,7 +126,6 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp" />
 
             <EditText
@@ -148,7 +145,6 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp" />
 
             <EditText
@@ -167,7 +163,6 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp" />
 
             <TextView
@@ -187,7 +182,6 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp" />
 
             <TextView
@@ -206,7 +200,6 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="#242526"
-                android:textColorHint="#242526"
                 android:textSize="16sp" />
 
             <LinearLayout

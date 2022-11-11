@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
     tools:context=".Fragment.Add_Admin">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Add Admin" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Admin"
+            android:textColor="@color/green_yellow"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:background="@color/orange1"
+            android:paddingBottom="3dp"
+            android:fontFamily="casual"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical">
 
-</FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="Name"
+            android:textColor="#0077c0"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/ada_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/input_bg"
+            android:minHeight="48dp"
+            android:paddingLeft="5dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="mobile"
+            android:textColor="#0077c0"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/ada_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/input_bg"
+            android:minHeight="48dp"
+            android:paddingLeft="5dp"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:text="Email"
+            android:textColor="#0077c0"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/ada_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/input_bg"
+            android:minHeight="48dp"
+            android:paddingLeft="5dp"
+            android:textColor="@color/text_color"
+            android:textSize="18dp"
+            android:inputType="textEmailAddress"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/ada_add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"
+            android:text="ADD"
+            android:visibility="visible"
+            android:background="@drawable/btn_bg"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="17sp" />
+        <ProgressBar
+            android:id="@+id/ada_progress"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:visibility="gone"
+            android:layout_gravity="center"/>
+
+
+
+    </LinearLayout>
+</LinearLayout>
