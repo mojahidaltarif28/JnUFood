@@ -122,7 +122,7 @@ public class HomeFragment extends Fragment {
             restaurant_home_show.setVisibility(View.GONE);
             HomeGridView = view.findViewById(R.id.home_grid_view);
             list = new ArrayList<>();
-            databaseReference.child("food_Item").addValueEventListener(new ValueEventListener() {
+            databaseReference.child("food_Item1").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     list.clear();
@@ -390,7 +390,7 @@ public class HomeFragment extends Fragment {
 
     private void txtSearch(String str) {
         list = new ArrayList<>();
-        databaseReference.child("food_Item").orderByChild("name").startAt(str).endAt(str + "~").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("food_Item1").orderByChild("name").startAt(str).endAt(str + "~").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();

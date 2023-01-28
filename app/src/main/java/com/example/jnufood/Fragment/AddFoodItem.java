@@ -190,12 +190,12 @@ public class AddFoodItem extends Fragment {
                         databaseReference.child("food_Item").child(restaurant).child("item list").child(name).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
                             @Override
                             public void onSuccess(Object o) {
-                                getActivity().finish();
-                                Intent in=new Intent(getActivity(), MainActivity.class);
-                                in.putExtra("login_code","-1010");
-                                in.putExtra("mobile",mobile);
-                                in.putExtra("type","Restaurant");
-                                startActivity(in);
+//                                getActivity().finish();
+//                                Intent in=new Intent(getActivity(), MainActivity.class);
+//                                in.putExtra("login_code","-1010");
+//                                in.putExtra("mobile",mobile);
+//                                in.putExtra("type","Restaurant");
+//                                startActivity(in);
                             }
                         });
                     }
@@ -205,6 +205,11 @@ public class AddFoodItem extends Fragment {
 
                     }
                 });
+//                Intent in=new Intent(getActivity(), MainActivity.class);
+//                in.putExtra("login_code","-1010");
+//                in.putExtra("mobile",mobile);
+//                in.putExtra("type","Restaurant");
+//                startActivity(in);
             }
 
             @Override
@@ -217,13 +222,14 @@ public class AddFoodItem extends Fragment {
                         databaseReference.child("food_Item").child(restaurant).child("item list").child(name).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
                             @Override
                             public void onSuccess(Object o) {
-                                getActivity().finish();
-                                Intent in=new Intent(getActivity(), MainActivity.class);
-                                in.putExtra("login_code","-1010");
-                                in.putExtra("mobile",mobile);
-                                in.putExtra("type","Restaurant");
-                                startActivity(in);
+//                                getActivity().finish();
+//                                Intent in=new Intent(getActivity(), MainActivity.class);
+//                                in.putExtra("login_code","-1010");
+//                                in.putExtra("mobile",mobile);
+//                                in.putExtra("type","Restaurant");
+//                                startActivity(in);
                             }
+
                         });
                     }
 
@@ -232,6 +238,11 @@ public class AddFoodItem extends Fragment {
 
                     }
                 });
+//                Intent in=new Intent(getActivity(), MainActivity.class);
+//                in.putExtra("login_code","-1010");
+//                in.putExtra("mobile",mobile);
+//                in.putExtra("type","Restaurant");
+//                startActivity(in);
             }
 
             @Override
@@ -240,12 +251,12 @@ public class AddFoodItem extends Fragment {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(getActivity(),"Successfully Deleted",Toast.LENGTH_SHORT).show();
-                        getActivity().finish();
-                        Intent in=new Intent(getActivity(), MainActivity.class);
-                        in.putExtra("login_code","-1010");
-                        in.putExtra("mobile",mobile);
-                        in.putExtra("type","Restaurant");
-                        startActivity(in);
+                      //  getActivity().finish();
+//                        Intent in=new Intent(getActivity(), MainActivity.class);
+//                        in.putExtra("login_code","-1010");
+//                        in.putExtra("mobile",mobile);
+//                        in.putExtra("type","Restaurant");
+//                        startActivity(in);
                     }
                 });
             }
@@ -291,12 +302,12 @@ public class AddFoodItem extends Fragment {
                                                   update_food_save_btn.setVisibility(View.VISIBLE);
                                                   update_food_progress.setVisibility(View.GONE);
                                                   Toast.makeText(getActivity(),"Update Successful",Toast.LENGTH_SHORT).show();
-                                                  getActivity().finish();
-                                                  Intent in=new Intent(getActivity(), MainActivity.class);
-                                                  in.putExtra("login_code","-1010");
-                                                  in.putExtra("mobile",mobile);
-                                                  in.putExtra("type","Restaurant");
-                                                  startActivity(in);
+                                        //          getActivity().finish();
+//                                                  Intent in=new Intent(getActivity(), MainActivity.class);
+//                                                  in.putExtra("login_code","-1010");
+//                                                  in.putExtra("mobile",mobile);
+//                                                  in.putExtra("type","Restaurant");
+//                                                  startActivity(in);
                                               }
                                           });
 
@@ -329,12 +340,12 @@ public class AddFoodItem extends Fragment {
                                                                 update_food_save_btn.setVisibility(View.VISIBLE);
                                                                 update_food_progress.setVisibility(View.GONE);
                                                                 Toast.makeText(getActivity(),"Update Successful",Toast.LENGTH_SHORT).show();
-                                                                getActivity().finish();
-                                                                Intent in=new Intent(getActivity(), MainActivity.class);
-                                                                in.putExtra("login_code","-1010");
-                                                                in.putExtra("mobile",mobile);
-                                                                in.putExtra("type","Restaurant");
-                                                                startActivity(in);
+                                                           //     getActivity().finish();
+//                                                                Intent in=new Intent(getActivity(), MainActivity.class);
+//                                                                in.putExtra("login_code","-1010");
+//                                                                in.putExtra("mobile",mobile);
+//                                                                in.putExtra("type","Restaurant");
+//                                                                startActivity(in);
                                                             }
                                                         });
 
@@ -407,12 +418,12 @@ public class AddFoodItem extends Fragment {
                                                         price.setText("");
                                                         net.setText("");
                                                         upload_image.setText("");
-                                                        getActivity().finish();
-                                                        Intent in=new Intent(getActivity(), MainActivity.class);
-                                                        in.putExtra("login_code","-1010");
-                                                        in.putExtra("mobile",mobile);
-                                                        in.putExtra("type","Restaurant");
-                                                        startActivity(in);
+                                                       // getActivity().finish();
+//                                                        Intent in=new Intent(getActivity(), MainActivity.class);
+//                                                        in.putExtra("login_code","-1010");
+//                                                        in.putExtra("mobile",mobile);
+//                                                        in.putExtra("type","Restaurant");
+//                                                        startActivity(in);
 
                                                     }
 

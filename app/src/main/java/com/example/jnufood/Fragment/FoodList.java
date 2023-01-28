@@ -97,7 +97,7 @@ public class FoodList extends Fragment {
         }
         gridView = view.findViewById(R.id.food_list_grid_view);
         list = new ArrayList<>();
-        databaseReference.child("food_Item").child(item_name).child("item list").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("food_Item1").child(item_name).child("item list1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
@@ -199,7 +199,7 @@ public class FoodList extends Fragment {
 
     private void txtSearch(String str) {
         list = new ArrayList<>();
-        databaseReference.child("food_Item").child(item_name).child("item list").orderByChild("name").startAt(str).endAt(str + "~").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("food_Item1").child(item_name).child("item list1").orderByChild("name").startAt(str).endAt(str + "~").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();

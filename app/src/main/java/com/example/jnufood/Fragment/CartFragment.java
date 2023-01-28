@@ -297,7 +297,7 @@ public class CartFragment extends Fragment {
                     email=snapshot.child(mobile).child("Name").getValue(String.class);
                     final String dept = snapshot.child(mobile).child("Department").getValue(String.class);
                     check_name.setText(name);
-                    delivery_address.setText(dept+" Department,Jagannath University");
+                    delivery_address.setText(dept+"");
                 }
             }
 

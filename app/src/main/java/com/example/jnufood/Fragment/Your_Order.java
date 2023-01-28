@@ -1,8 +1,10 @@
 package com.example.jnufood.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -50,7 +52,7 @@ public class Your_Order extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     String mobile;
     View pay_a, process_a_line, process_a, destination_line, destination_a, receive_line, receive_a;
-    TextView empty_order, receive_btn, pay_txt, process_txt, destination_txt, receive_txt;
+    TextView empty_order, receive_btn, pay_txt, process_txt, destination_txt, receive_txt,cancel_btn;
     RecyclerView recyclerView;
     My_Order_Adapter my_order_adapter;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jnufood-default-rtdb.firebaseio.com/");
@@ -90,7 +92,7 @@ public class Your_Order extends Fragment {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -113,6 +115,14 @@ public class Your_Order extends Fragment {
         process_txt = view.findViewById(R.id.process_txt);
         destination_txt = view.findViewById(R.id.destination_txt);
         receive_txt = view.findViewById(R.id.receive_txt);
+        cancel_btn=view.findViewById(R.id.cancel_btn);
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode("01717268127")));
+                startActivity(intent);
+            }
+        });
         receive_btn = view.findViewById(R.id.receive_btn);
         databaseReference.child("Order_Table").addValueEventListener(new ValueEventListener() {
             @Override
@@ -151,6 +161,7 @@ public class Your_Order extends Fragment {
                         receive_a.setBackgroundResource(R.drawable.my_order_animation_bg_success);
                         receive_txt.setTextColor(Color.parseColor("#0077c0"));
                         receive_btn.setVisibility(View.VISIBLE);
+                        cancel_btn.setVisibility(View.INVISIBLE);
                     } else {
                         show_my_order.setVisibility(View.GONE);
                         empty_order.setVisibility(View.VISIBLE);

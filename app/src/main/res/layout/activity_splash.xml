@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="serif"
-        android:text="@string/jnufood"
+        android:text="Yummy Food"
         android:textColor="#AE053E"
         android:textSize="24sp"
         android:textStyle="bold"
