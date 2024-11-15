@@ -24,4 +24,4 @@ The application provides users with the ability to browse through a list of avai
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/food-delivery-app.git
+   git clone https://github.com/mojahidaltarif28/JnUFood.git
